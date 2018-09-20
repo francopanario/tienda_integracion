@@ -3,15 +3,11 @@ package dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import entities.ClubEntity;
-import entities.JugadorEntity;
 import entities.ProductoEntity;
 import entities.UsuarioEntity;
-import exceptions.ClubException;
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
 import hbt.HibernateUtil;
-import negocio.Jugador;
 import negocio.Producto;
 
 public class ProductoDAO {
@@ -23,7 +19,7 @@ public class ProductoDAO {
 	private ProductoDAO () {}
 	
 	
-	public static ProductoDAO getIntancia() {
+	public static ProductoDAO getInstancia() {
 		if(instancia == null)
 			instancia = new ProductoDAO();
 		return instancia;	
@@ -42,22 +38,20 @@ public class ProductoDAO {
 	}
 	
 	public void grabar(Producto producto){		
-		ProductoEntity je = new ProductoEntity(producto.getCodBarra(), producto.getNombre(), producto.getPrecio());
+		ProductoEntity pe = new ProductoEntity(producto.getCodBarra(), producto.getNombre(), producto.getPrecio());
 		UsuarioEntity usuario = null;
 		try {
 			usuario = UsuarioDAO.getInstancia().findById(producto.getUsuario().getUsuario_id());
 		} catch (UsuarioException e) {			 
 			e.printStackTrace();
 		}
-		je.setUsuario(usuario);
+		pe.setUsuario(usuario);
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.saveOrUpdate(je);
+		session.saveOrUpdate(pe);
 		session.getTransaction().commit();
 		session.close();
 	}
-	
-	
 
 }

@@ -95,9 +95,9 @@ public class Usuario {
 	public void setTipo_usuario(String tipo_usuario) {
 		this.tipo_usuario = tipo_usuario;
 	}
+	
 
 	public void save(){
-		System.out.println(this.getUsername());
 		UsuarioDAO.getInstancia().grabar(this);
 	}
 	

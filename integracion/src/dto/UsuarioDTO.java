@@ -4,9 +4,7 @@ import java.io.Serializable;
 
 public class UsuarioDTO implements Serializable{
 
-	/**
-	 * Yo soy un DTO, asi que tengo solo estado, no tengo comportamiento de ningun tipo, solo acciones asociadas a la presentacion y/o trasferencia de datos
-	 * */
+	
 	private static final long serialVersionUID = 9142896418624834351L;
 	private String usuario_id;
 	private String username;
@@ -15,6 +13,7 @@ public class UsuarioDTO implements Serializable{
 	private String mail;
 	private String direccion;
 	private String tipo_usuario;
+	
 	
 	public UsuarioDTO() {}
 
@@ -29,6 +28,7 @@ public class UsuarioDTO implements Serializable{
 		this.direccion = direccion;
 		this.tipo_usuario = tipo_usuario;
 	}
+	
 
 	public String getUsuario_id() {
 		return usuario_id;
@@ -85,8 +85,5 @@ public class UsuarioDTO implements Serializable{
 	public void setTipo_usuario(String tipo_usuario) {
 		this.tipo_usuario = tipo_usuario;
 	}
-	
-	
-	
 	
 }

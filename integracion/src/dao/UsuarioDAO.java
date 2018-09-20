@@ -21,14 +21,15 @@ public class UsuarioDAO {
 	private static UsuarioDAO instancia;
 	
 	
-	
 	private UsuarioDAO() {}
+	
 	
 	public static UsuarioDAO getInstancia() {
 		if(instancia == null)
 			instancia = new UsuarioDAO();
 		return instancia;
 	}
+	
 	
 	public Usuario findByID(String usuario_id) throws UsuarioException {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -41,6 +42,18 @@ public class UsuarioDAO {
 		}
 	}
 	
+	/*public ClubEntity findByID(Integer idClub) throws ClubException {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ClubEntity ce = (ClubEntity) session.createQuery("from ClubEntity where id = ?")
+					.setParameter(0, idClub)
+					.uniqueResult();
+		if(ce != null){
+			return ce;
+		}
+		else 
+			throw new ClubException("El club solicitado no existe");
+	}*/
 	
 	public UsuarioEntity findById(String usuario_id) throws UsuarioException {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -55,11 +68,9 @@ public class UsuarioDAO {
 	
 	public void grabar(Usuario Usuario){
 		UsuarioEntity je = new UsuarioEntity(Usuario.getUsuario_id(),Usuario.getUsername(),Usuario.getPassword(),Usuario.getTelefono(),Usuario.getMail(),Usuario.getDireccion(),Usuario.getTipo_usuario());
-		System.out.println("asdddddddddddddddddddddddddddddddddd" + je.getDireccion());
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-
 		session.save(je);
 		session.getTransaction().commit();
 		session.close();

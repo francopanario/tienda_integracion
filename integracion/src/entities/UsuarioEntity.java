@@ -1,10 +1,8 @@
 package entities;
 
-import javax.persistence.EmbeddedId;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +11,7 @@ public class UsuarioEntity {
 	
 	
 	@Id
+	@Column(name="usuario_id")
 	private String usuario_id;
 	private String username;
 	private String password;

@@ -1,5 +1,7 @@
 package negocio;
 
+import dao.ProductoDAO;
+import dao.UsuarioDAO;
 import entities.ProductoEntity;
 import entities.UsuarioEntity;
 
@@ -16,6 +18,15 @@ public class Producto {
 		this.precio   = Producto.getPrecio();
 		this.usuario  = new Usuario(Producto.getUsuario());
 	}
+	
+	public Producto(String codBarra, String nombre, float precio) {
+		super();
+		this.codBarra = codBarra;
+		this.nombre = nombre;
+		this.precio = precio;
+	}
+
+
 
 	public String getCodBarra() {
 		return codBarra;
@@ -47,6 +58,10 @@ public class Producto {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public void save() {
+		ProductoDAO.getInstancia().grabar(this);		
 	}
 	
 }

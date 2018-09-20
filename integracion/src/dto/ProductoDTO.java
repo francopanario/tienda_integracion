@@ -6,14 +6,13 @@ import negocio.Usuario;
 
 public class ProductoDTO implements Serializable{
 
-	/**
-	 * Yo soy un DTO, asi que tengo solo estado, no tengo comportamiento de ningun tipo, solo acciones asociadas a la presentacion y/o trasferencia de datos
-	 * */
+	
 	private static final long serialVersionUID = 9142896418624834351L;
 	private String codBarra;
 	private String nombre;
 	private float precio;
 	private UsuarioDTO usuario;
+	
 	
 	public ProductoDTO() {}
 
@@ -25,6 +24,7 @@ public class ProductoDTO implements Serializable{
 		this.usuario = usuario;
 	}
 
+	
 	public String getCodBarra() {
 		return codBarra;
 	}
@@ -55,14 +55,6 @@ public class ProductoDTO implements Serializable{
 
 	public void setUsuario(UsuarioDTO usuario) {
 		this.usuario = usuario;
-	}
-	
-	
-	
-	
-	
-
-	
-	
+	}	
 	
 }

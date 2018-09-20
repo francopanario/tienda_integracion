@@ -1,5 +1,6 @@
 package entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,6 +15,7 @@ public class ProductoEntity {
 	
 	
 	@Id
+	@Column (name="codBarra")
 	private String codBarra;
 	private String nombre;
 	private float precio;	
