@@ -12,6 +12,7 @@ import negocio.Usuario;
 @Table(name="productos")
 public class ProductoEntity {
 	
+	
 	@Id
 	private String codBarra;
 	private String nombre;
@@ -19,31 +20,49 @@ public class ProductoEntity {
 	@ManyToOne()
 	@JoinColumn(name="usuario_id")
 	private UsuarioEntity usuario;
-	public String getCodBarra() {
-		return codBarra;
-	}
-	public void setCodBarra(String codBarra) {
+	
+	
+	public ProductoEntity() {}	
+	
+	public ProductoEntity(String codBarra, String nombre, float precio, UsuarioEntity usuario) {
+		super();
 		this.codBarra = codBarra;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	public float getPrecio() {
-		return precio;
-	}
-	public void setPrecio(float precio) {
 		this.precio = precio;
-	}
-	public UsuarioEntity getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(UsuarioEntity usuario) {
 		this.usuario = usuario;
 	}
 
-		
 
+	public String getCodBarra() {
+		return codBarra;
+	}
+	
+	public void setCodBarra(String codBarra) {
+		this.codBarra = codBarra;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public float getPrecio() {
+		return precio;
+	}
+	
+	public void setPrecio(float precio) {
+		this.precio = precio;
+	}
+	
+	public UsuarioEntity getUsuario() {
+		return usuario;
+	}
+	
+	public void setUsuario(UsuarioEntity usuario) {
+		this.usuario = usuario;
+	}
+	
 }
