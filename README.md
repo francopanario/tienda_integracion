@@ -1,2 +1,2 @@
 # tienda_integracion
-tpo integracion
+PULLEA ANTES DE PUSHEAR O TE MATO
