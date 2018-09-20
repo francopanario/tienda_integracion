@@ -58,5 +58,10 @@ local.properties
 
 # JDT-specific (Eclipse Java Development Tools)     
 .classpath
+# Scala IDE specific (Scala & Java development for Eclipse)
+.cache-main
+.scala_dependencies
+.worksheet/bin/
 
+hibernate.properties
 # End of https://www.gitignore.io/api/eclipse
