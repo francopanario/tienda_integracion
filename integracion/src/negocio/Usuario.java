@@ -98,7 +98,7 @@ public class Usuario {
 
 	public void save(){
 		System.out.println(this.getUsername());
-		UsuarioDAO.getInstance().grabar(this);
+		UsuarioDAO.getInstancia().grabar(this);
 	}
 	
 	public void dummyMetodo()

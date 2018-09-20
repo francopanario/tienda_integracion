@@ -24,12 +24,11 @@ public class ProductoEntity {
 	
 	public ProductoEntity() {}	
 	
-	public ProductoEntity(String codBarra, String nombre, float precio, UsuarioEntity usuario) {
+	public ProductoEntity(String codBarra, String nombre, float precio) {
 		super();
 		this.codBarra = codBarra;
 		this.nombre = nombre;
-		this.precio = precio;
-		this.usuario = usuario;
+		this.precio = precio;		
 	}
 
 

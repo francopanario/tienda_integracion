@@ -18,13 +18,16 @@ public class JugadorDAO {
 	 * */
 	private static JugadorDAO instancia;
 	
+	
 	private JugadorDAO() {}
+	
 	
 	public static JugadorDAO getInstance() {
 		if(instancia == null)
 			instancia = new JugadorDAO();
 		return instancia;
 	}
+	
 
 	public Jugador getJugadorById(String tipo, Integer numero) throws JugadorException {
 		
@@ -58,7 +61,5 @@ public class JugadorDAO {
 		session.getTransaction().commit();
 		session.close();
 	}
-
-
 
 }
