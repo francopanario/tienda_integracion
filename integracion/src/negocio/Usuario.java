@@ -26,11 +26,7 @@ public class Usuario {
 		this.password=Usuario.getPassword();
 		this.mail=Usuario.getMail();
 		this.direccion=Usuario.getDireccion();
-	}
-	
-	
-	
-	
+	}	
 	
 	public Usuario(String usuario_id, String username, String password, String telefono, String mail, String direccion,
 			String tipo_usuario) {
@@ -44,121 +40,61 @@ public class Usuario {
 		this.tipo_usuario = tipo_usuario;
 	}
 
-
-
-
-
 	public String getUsuario_id() {
 		return usuario_id;
 	}
-
-
-
-
 
 	public void setUsuario_id(String usuario_id) {
 		this.usuario_id = usuario_id;
 	}
 
-
-
-
-
 	public String getUsername() {
 		return username;
 	}
-
-
-
-
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-
-
-
-
 	public String getPassword() {
 		return password;
 	}
-
-
-
-
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
-
-
-
 	public String getTelefono() {
 		return telefono;
 	}
-
-
-
-
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
-
-
-
-
 	public String getMail() {
 		return mail;
 	}
-
-
-
-
 
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
-
-
-
-
 	public String getDireccion() {
 		return direccion;
 	}
-
-
-
-
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
 
-
-
-
-
 	public String getTipo_usuario() {
 		return tipo_usuario;
 	}
 
-
-
-
-
 	public void setTipo_usuario(String tipo_usuario) {
 		this.tipo_usuario = tipo_usuario;
 	}
-
-
-
-
 
 	public void save(){
 		System.out.println(this.getUsername());
@@ -169,6 +105,5 @@ public class Usuario {
 	{
 		System.out.println("Soy un objeto de negocio por lo que tengo comportamiento");
 	}
-	
 
 }
