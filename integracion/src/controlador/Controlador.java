@@ -55,7 +55,7 @@ public class Controlador {
 		Usuario usuario;
 		try {
 			usuario = new Usuario((UsuarioEntity)UsuarioDAO.getInstancia().findById(usuario_id));
-			Producto producto = new Producto(codBarra,nombre,precio);
+			Producto producto = new Producto(codBarra,nombre,precio,activo);
 			producto.setUsuario(usuario);			
 			producto.save();
 		} catch (UsuarioException e) {

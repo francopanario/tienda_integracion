@@ -11,19 +11,22 @@ public class Producto {
 	private String nombre;
 	private float precio;
 	private Usuario usuario;
+	private boolean activo;
 	
 	public Producto(ProductoEntity Producto) {
 		this.codBarra = Producto.getCodBarra();
 		this.nombre   = Producto.getNombre();
 		this.precio   = Producto.getPrecio();
 		this.usuario  = new Usuario(Producto.getUsuario());
+		this.activo=Producto.isActivo();
 	}
 	
-	public Producto(String codBarra, String nombre, float precio) {
+	public Producto(String codBarra, String nombre, float precio,boolean activo) {
 		super();
 		this.codBarra = codBarra;
 		this.nombre = nombre;
 		this.precio = precio;
+		this.activo=activo;
 	}
 
 
@@ -63,5 +66,15 @@ public class Producto {
 	public void save() {
 		ProductoDAO.getInstancia().grabar(this);		
 	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+	
+	
 	
 }

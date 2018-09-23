@@ -23,15 +23,17 @@ public class ProductoEntity {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="usuario_id")
 	private UsuarioEntity usuario;
+	private boolean activo;
 	
 	
 	public ProductoEntity() {}	
 	
-	public ProductoEntity(String codBarra, String nombre, float precio) {
+	public ProductoEntity(String codBarra, String nombre, float precio,boolean activo) {
 		super();
 		this.codBarra = codBarra;
 		this.nombre = nombre;
 		this.precio = precio;		
+		this.activo=activo;
 	}
 
 
@@ -65,6 +67,14 @@ public class ProductoEntity {
 	
 	public void setUsuario(UsuarioEntity usuario) {
 		this.usuario = usuario;
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 	
 }

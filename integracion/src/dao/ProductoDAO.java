@@ -38,7 +38,7 @@ public class ProductoDAO {
 	}
 	
 	public void grabar(Producto producto){		
-		ProductoEntity pe = new ProductoEntity(producto.getCodBarra(), producto.getNombre(), producto.getPrecio());
+		ProductoEntity pe = new ProductoEntity(producto.getCodBarra(), producto.getNombre(), producto.getPrecio(),producto.isActivo());
 		UsuarioEntity usuario = null;
 		try {
 			usuario = UsuarioDAO.getInstancia().findById(producto.getUsuario().getUsuario_id());
