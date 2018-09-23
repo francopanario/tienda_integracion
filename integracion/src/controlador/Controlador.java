@@ -5,10 +5,13 @@ import negocio.Jugador;
 import negocio.Producto;
 import dao.ClubDAO;
 import dao.JugadorDAO;
+import dao.ProductoDAO;
 import dto.JugadorDTO;
+import dto.ProductoDTO;
 import entities.ClubEntity;
 import exceptions.ClubException;
 import exceptions.JugadorException;
+import exceptions.ProductoException;
 import exceptions.UsuarioException;
 import negocio.Usuario;
 import dao.UsuarioDAO;
@@ -30,7 +33,7 @@ public class Controlador {
 	}
 	
 	
-	public JugadorDTO getJugadorByDNI(String tipo, Integer numero) throws JugadorException
+	/*public JugadorDTO getJugadorByDNI(String tipo, Integer numero) throws JugadorException
 	{
 		return JugadorDAO.getInstance().getJugadorById(tipo, numero).toDTO();
 	}
@@ -48,7 +51,7 @@ public class Controlador {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-	}
+	}*/
 	
 	public void nuevoProducto(String codBarra, String nombre, float precio, String usuario_id,boolean activo)
 	{
@@ -61,6 +64,10 @@ public class Controlador {
 		} catch (UsuarioException e) {
 			e.printStackTrace();
 		}		
+	}
+	
+	public ProductoDTO buscarProdutoById(String codBarra) throws ProductoException{
+		return ProductoDAO.getInstancia().getProductoById(codBarra).toDTO();
 	}
 	
 	public void nuevoUsuario(String usuario_id,String username , String password,  String telefono,String mail,String direccion,String tipo_usuario, boolean activo)

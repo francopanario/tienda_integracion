@@ -2,6 +2,8 @@ package negocio;
 
 import dao.ProductoDAO;
 import dao.UsuarioDAO;
+import dto.JugadorDTO;
+import dto.ProductoDTO;
 import entities.ProductoEntity;
 import entities.UsuarioEntity;
 
@@ -75,6 +77,14 @@ public class Producto {
 		this.activo = activo;
 	}
 	
-	
-	
+	public ProductoDTO toDTO()
+	{
+		ProductoDTO p = new ProductoDTO();
+		p.setCodBarra(this.codBarra);
+		p.setNombre(this.nombre);
+		p.setPrecio(this.precio);
+		p.setUsuario(this.usuario.toDTO());		
+		return p;
+	}
+		
 }

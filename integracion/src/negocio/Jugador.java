@@ -2,6 +2,7 @@ package negocio;
 
 import dao.JugadorDAO;
 import dto.JugadorDTO;
+import dto.ProductoDTO;
 import entities.JugadorEntity;
 
 public class Jugador {
@@ -70,8 +71,5 @@ public class Jugador {
 		System.out.println("Soy un objeto de negocio por lo que tengo comportamiento");
 	}
 	
-	public JugadorDTO toDTO()
-	{
-		return new JugadorDTO(tipo, numero, nombre, categoria, club.getNombre());
-	}
+	
 }

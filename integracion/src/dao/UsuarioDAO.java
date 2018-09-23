@@ -62,8 +62,6 @@ public class UsuarioDAO {
 		Session session = sf.openSession();
 		UsuarioEntity ue = (UsuarioEntity) session.createQuery("from UsuarioEntity where usuario_id = ?")
 				.setParameter(0, usuario_id).uniqueResult();
-		
-
 		if(ue != null){
 			return ue;
 		}

@@ -8,6 +8,7 @@ import entities.UsuarioEntity;
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
 import hbt.HibernateUtil;
+import negocio.Jugador;
 import negocio.Producto;
 
 public class ProductoDAO {
@@ -29,7 +30,8 @@ public class ProductoDAO {
 	public Producto getProductoById(String codBarra) throws ProductoException{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		ProductoEntity pe = (ProductoEntity) session.createQuery("from ProductoEntity where codBarra = ?");
+		ProductoEntity pe = (ProductoEntity) session.createQuery("from ProductoEntity where producto_id = ?")
+				.setParameter(0, codBarra);
 		if (pe!=null){
 			return new Producto(pe);			
 		}else {
@@ -52,6 +54,6 @@ public class ProductoDAO {
 		session.saveOrUpdate(pe);
 		session.getTransaction().commit();
 		session.close();
-	}
+	}	
 
 }

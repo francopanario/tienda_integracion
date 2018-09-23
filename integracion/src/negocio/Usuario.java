@@ -1,7 +1,7 @@
 package negocio;
 
 import dao.UsuarioDAO;
-
+import dto.UsuarioDTO;
 import entities.UsuarioEntity;
 
 public class Usuario {
@@ -104,17 +104,25 @@ public class Usuario {
 		UsuarioDAO.getInstancia().grabar(this);
 	}
 	
-	public void dummyMetodo()
-	{
-		System.out.println("Soy un objeto de negocio por lo que tengo comportamiento");
-	}
-
 	public boolean isActivo() {
 		return activo;
 	}
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+
+	public UsuarioDTO toDTO() {
+		UsuarioDTO u = new UsuarioDTO();
+		u.setUsuario_id(this.usuario_id);
+		u.setUsername(this.username);
+		u.setPassword(this.password);
+		u.setMail(this.mail);
+		u.setDireccion(this.direccion);
+		u.setTelefono(this.telefono);
+		u.setActivo(this.activo);
+		u.setTipo_usuario(this.tipo_usuario);
+		return u;
 	}
 
 }
