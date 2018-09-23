@@ -71,15 +71,18 @@ public class ProductoDAO {
 		}else {
 			throw new ProductoException("El Producto no existe, verifique el codigo de barras");
 		}		
-	}
+	}	
 
-
-	public void activarProducto(String codBarra) throws ProductoException {
+	public void modificarProducto(String codBarra, String nombre, float precio, String usuario_id, boolean b) throws UsuarioException, ProductoException {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		ProductoEntity pe = (ProductoEntity) session.createQuery("from ProductoEntity where producto_id = ?")
 				.setParameter(0, codBarra).uniqueResult();
+		UsuarioEntity usuario = UsuarioDAO.getInstancia().findById(usuario_id); 
 		if (pe!=null){
+			pe.setNombre(nombre);
+			pe.setPrecio(precio);
+			pe.setUsuario(usuario);
 			pe.setActivo(true);
 			session.beginTransaction();
 			session.save(pe);
@@ -87,7 +90,8 @@ public class ProductoDAO {
 			session.close();
 		}else {
 			throw new ProductoException("El Producto no existe, verifique el codigo de barras");
-		}		
+		}
+		
 	}	
 
 }

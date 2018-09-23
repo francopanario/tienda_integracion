@@ -54,6 +54,10 @@ public class Controlador {
 		}		
 	}*/
 	
+	
+	//ProductoABM
+	
+	
 	public void nuevoProducto(String codBarra, String nombre, float precio, String usuario_id,boolean activo)
 	{
 		Usuario usuario;
@@ -77,15 +81,19 @@ public class Controlador {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}	
 	
-	public void ActivarProducto(String codBarra) {
+	public void modificarUsuario(String codBarra, String nombre, float precio, String usuario_id, boolean b) {
 		try {
-			ProductoDAO.getInstancia().activarProducto(codBarra);						
+			ProductoDAO.getInstancia().modificarProducto(codBarra,nombre,precio,usuario_id,b);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+		
+	}	
+	
+	//UsuarioABM
+	
 	
 	public void nuevoUsuario(String usuario_id,String username , String password,  String telefono,String mail,String direccion,String tipo_usuario, boolean activo)
 	{	
@@ -111,15 +119,6 @@ public class Controlador {
 			e.printStackTrace();
 		}
 	}
-	
-	public void activarUsuario(String usuario_id) {
-		try {
-			UsuarioDAO.getInstancia().activarUsuario(usuario_id);						
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 
 	public void modificarUsuario(String usuario_id,String username, String mail, String direccion, String telefono, String tipo_usuario,
 			boolean b) {
@@ -128,6 +127,6 @@ public class Controlador {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}	
+	}
 
 }
