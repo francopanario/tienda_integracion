@@ -60,10 +60,9 @@ public class UsuarioDAO {
 	public UsuarioEntity findById(String usuario_id) throws UsuarioException {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		UsuarioEntity ue = (UsuarioEntity) session.createQuery("from UsuarioEntity where usuario_id = 123")
-				.uniqueResult();
+		UsuarioEntity ue = (UsuarioEntity) session.createQuery("from UsuarioEntity where usuario_id = ?")
+				.setParameter(0, usuario_id).uniqueResult();
 		
-	
 
 		if(ue != null){
 			return ue;
