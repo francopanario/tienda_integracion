@@ -8,6 +8,7 @@ import dao.JugadorDAO;
 import dao.ProductoDAO;
 import dto.JugadorDTO;
 import dto.ProductoDTO;
+import dto.UsuarioDTO;
 import entities.ClubEntity;
 import exceptions.ClubException;
 import exceptions.JugadorException;
@@ -70,6 +71,22 @@ public class Controlador {
 		return ProductoDAO.getInstancia().getProductoById(codBarra).toDTO();
 	}
 	
+	public void bajaProducto(String codBarra) {
+		try {
+			ProductoDAO.getInstancia().bajaProducto(codBarra);						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void ActivarProducto(String codBarra) {
+		try {
+			ProductoDAO.getInstancia().activarProducto(codBarra);						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void nuevoUsuario(String usuario_id,String username , String password,  String telefono,String mail,String direccion,String tipo_usuario, boolean activo)
 	{	
 		
@@ -82,4 +99,35 @@ public class Controlador {
 			e.printStackTrace();
 		}
 	}
+	
+	public UsuarioDTO buscarUsuarioById(String usuario_id) throws UsuarioException{
+		return UsuarioDAO.getInstancia().getUsuarioById(usuario_id).toDTO();
+	}
+
+	public void bajaUsuario(String usuario_id) {
+		try {
+			UsuarioDAO.getInstancia().bajaUsuario(usuario_id);						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void activarUsuario(String usuario_id) {
+		try {
+			UsuarioDAO.getInstancia().activarUsuario(usuario_id);						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	public void modificarUsuario(String usuario_id,String username, String mail, String direccion, String telefono, String tipo_usuario,
+			boolean b) {
+		try {
+			UsuarioDAO.getInstancia().modificarUsuario(usuario_id,username,mail,direccion,telefono,tipo_usuario,b);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}	
+
 }

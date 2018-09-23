@@ -54,6 +54,40 @@ public class ProductoDAO {
 		session.saveOrUpdate(pe);
 		session.getTransaction().commit();
 		session.close();
+	}
+
+
+	public void bajaProducto(String codBarra) throws ProductoException {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ProductoEntity pe = (ProductoEntity) session.createQuery("from ProductoEntity where producto_id = ?")
+				.setParameter(0, codBarra).uniqueResult();
+		if (pe!=null){
+			pe.setActivo(false);
+			session.beginTransaction();
+			session.save(pe);
+			session.getTransaction().commit();
+			session.close();
+		}else {
+			throw new ProductoException("El Producto no existe, verifique el codigo de barras");
+		}		
+	}
+
+
+	public void activarProducto(String codBarra) throws ProductoException {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ProductoEntity pe = (ProductoEntity) session.createQuery("from ProductoEntity where producto_id = ?")
+				.setParameter(0, codBarra).uniqueResult();
+		if (pe!=null){
+			pe.setActivo(true);
+			session.beginTransaction();
+			session.save(pe);
+			session.getTransaction().commit();
+			session.close();
+		}else {
+			throw new ProductoException("El Producto no existe, verifique el codigo de barras");
+		}		
 	}	
 
 }
