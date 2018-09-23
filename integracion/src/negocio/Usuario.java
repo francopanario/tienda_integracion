@@ -16,6 +16,7 @@ public class Usuario {
 	private String mail;
 	private String direccion;
 	private String tipo_usuario;
+	private boolean activo;
 	
 	public Usuario(UsuarioEntity Usuario) {
 
@@ -29,7 +30,7 @@ public class Usuario {
 	}	
 	
 	public Usuario(String usuario_id, String username, String password, String telefono, String mail, String direccion,
-			String tipo_usuario) {
+			String tipo_usuario, boolean activo) {
 		super();
 		this.usuario_id = usuario_id;
 		this.username = username;
@@ -38,6 +39,7 @@ public class Usuario {
 		this.mail = mail;
 		this.direccion = direccion;
 		this.tipo_usuario = tipo_usuario;
+		this.activo=activo;
 	}
 
 	public String getUsuario_id() {
@@ -104,6 +106,14 @@ public class Usuario {
 	public void dummyMetodo()
 	{
 		System.out.println("Soy un objeto de negocio por lo que tengo comportamiento");
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 }

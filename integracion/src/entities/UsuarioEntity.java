@@ -19,12 +19,13 @@ public class UsuarioEntity {
 	private String mail;
 	private String direccion;
 	private String tipo_usuario;
+	private boolean activo;
 	
 	
 	public UsuarioEntity() {}	
 	
 	public UsuarioEntity(String usuario_id, String username, String password, String telefono, String mail,
-			String direccion, String tipo_usuario) {
+			String direccion, String tipo_usuario,boolean activo) {
 		super();
 		this.usuario_id = usuario_id;
 		this.username = username;
@@ -33,6 +34,7 @@ public class UsuarioEntity {
 		this.mail = mail;
 		this.direccion = direccion;
 		this.tipo_usuario = tipo_usuario;
+		this.activo=activo;
 	}
 
 	
@@ -96,5 +98,14 @@ public class UsuarioEntity {
 	{
 		System.out.println("Soy un objeto de negocio por que tengo comportamiento");
 	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
 	
 }

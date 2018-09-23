@@ -63,11 +63,11 @@ public class Controlador {
 		}		
 	}
 	
-	public void nuevoUsuario(String usuario_id,String username , String password,  String telefono,String mail,String direccion,String tipo_usuario)
+	public void nuevoUsuario(String usuario_id,String username , String password,  String telefono,String mail,String direccion,String tipo_usuario, boolean activo)
 	{	
 		
 		try {
-			Usuario usuario = new Usuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario);
+			Usuario usuario = new Usuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario,activo);
 			System.out.println(usuario.getUsername());
 			usuario.save();
 		} catch (Exception e) {
