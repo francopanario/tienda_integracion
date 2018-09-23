@@ -16,8 +16,8 @@ public class ProductoEntity {
 	
 	
 	@Id
-	@Column (name="codBarra")
-	private String codBarra;
+	@Column (name="producto_id")
+	private String producto_id;
 	private String nombre;
 	private float precio;	
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -30,7 +30,7 @@ public class ProductoEntity {
 	
 	public ProductoEntity(String codBarra, String nombre, float precio,boolean activo) {
 		super();
-		this.codBarra = codBarra;
+		this.producto_id = codBarra;
 		this.nombre = nombre;
 		this.precio = precio;		
 		this.activo=activo;
@@ -38,11 +38,11 @@ public class ProductoEntity {
 
 
 	public String getCodBarra() {
-		return codBarra;
+		return producto_id;
 	}
 	
 	public void setCodBarra(String codBarra) {
-		this.codBarra = codBarra;
+		this.producto_id = codBarra;
 	}
 	
 	public String getNombre() {
