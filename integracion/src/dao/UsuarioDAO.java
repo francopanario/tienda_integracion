@@ -63,6 +63,7 @@ public class UsuarioDAO {
 		UsuarioEntity ue = (UsuarioEntity) session.createQuery("from UsuarioEntity where usuario_id = ?")
 				.setParameter(0, usuario_id).uniqueResult();
 		
+		
 
 		if(ue != null){
 			return ue;
@@ -80,5 +81,8 @@ public class UsuarioDAO {
 		session.getTransaction().commit();
 		session.close();
 	}
-
+	
+	
+	
+	
 }

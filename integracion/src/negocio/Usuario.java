@@ -18,6 +18,7 @@ public class Usuario {
 	private String tipo_usuario;
 	private boolean activo;
 	
+	
 	public Usuario(UsuarioEntity Usuario) {
 
 		this.usuario_id=Usuario.getUsuario_id();
