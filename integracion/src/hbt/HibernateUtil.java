@@ -18,6 +18,7 @@ public class HibernateUtil
              config.addAnnotatedClass(JugadorEntity.class);
              config.addAnnotatedClass(UsuarioEntity.class);
              config.addAnnotatedClass(ClubEntity.class);
+             config.addAnnotatedClass(ProductoEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex)

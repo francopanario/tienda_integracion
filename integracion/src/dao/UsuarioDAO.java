@@ -4,6 +4,8 @@ import hbt.HibernateUtil;
 import negocio.Producto;
 import negocio.Usuario;
 
+import javax.management.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -58,7 +60,11 @@ public class UsuarioDAO {
 	public UsuarioEntity findById(String usuario_id) throws UsuarioException {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		UsuarioEntity ue = (UsuarioEntity) session.createQuery("from UsuarioEntity where usuario_id = ?");
+		UsuarioEntity ue = (UsuarioEntity) session.createQuery("from UsuarioEntity where usuario_id = 123")
+				.uniqueResult();
+		
+	
+
 		if(ue != null){
 			return ue;
 		}

@@ -50,7 +50,7 @@ public class Controlador {
 		}		
 	}
 	
-	public void nuevoProducto(String codBarra, String nombre, float precio, String usuario_id)
+	public void nuevoProducto(String codBarra, String nombre, float precio, String usuario_id,boolean activo)
 	{
 		Usuario usuario;
 		try {
