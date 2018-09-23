@@ -31,7 +31,7 @@ public class ProductoDAO {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		ProductoEntity pe = (ProductoEntity) session.createQuery("from ProductoEntity where producto_id = ?")
-				.setParameter(0, codBarra);
+				.setParameter(0, codBarra).uniqueResult();
 		if (pe!=null){
 			return new Producto(pe);			
 		}else {
