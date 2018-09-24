@@ -33,7 +33,6 @@ public class Inicio extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
-		System.out.println("SAFDGHFNGHFNgdmh");
 		//request.getRequestDispatcher("/index.jsp").forward(request, response);
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -44,7 +43,6 @@ public class Inicio extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		String jspPage = "/index.jsp";
-		
 		if ((action == null) || (action.length() < 1)) {
 			action = "default";
 			request.setAttribute("excepcion", "");
@@ -56,18 +54,22 @@ public class Inicio extends HttpServlet {
 
 			String usuario = request.getParameter("usuario");
 			String contrasena = request.getParameter("password");
-			Controlador.getInstancia().nuevoUsuario("asdasdasd", "asdasdasdsa", "asdas", "asdsa", "asdasd", "asdsa", "asdsa",true );
+		
 			//HACER EL LOGIN
 			
 			//HACER EL DISPATCH PARA VISTA COMPRADOR O VISTA VENDEDOR
 			dispatch("vistaVendedor.jsp", request, response);
 		}
 		else if ("altaCliente".equalsIgnoreCase(action)) {
-			String email = request.getParameter("email");
-			String nombre = request.getParameter("nombre");
-			String apellido = request.getParameter("apellido");
+			String mail = request.getParameter("mail");
+			String username = request.getParameter("username");
+			String telefono = request.getParameter("telefono");
 			String password = request.getParameter("password");
+			String usuario_id=request.getParameter("dni");
+			String direccion=request.getParameter("direccion");
+			String tipo_usuario=request.getParameter("tipo_usuario");
 			
+			Controlador.getInstancia().nuevoUsuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario, true);
 			//HACER EL ALTA CLIENTE
 		}
 	}

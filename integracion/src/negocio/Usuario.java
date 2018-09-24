@@ -101,7 +101,6 @@ public class Usuario {
 	
 
 	public void save(){
-		System.out.println(this.getDireccion()+"afgsfhdgjfhkjhlkjlk");
 		UsuarioDAO.getInstancia().grabar(this);
 	}
 	

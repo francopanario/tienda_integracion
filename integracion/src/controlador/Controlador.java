@@ -100,7 +100,6 @@ public class Controlador {
 		
 		try {
 			Usuario usuario = new Usuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario,activo);
-			System.out.println(usuario.getUsername());
 			usuario.save();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
