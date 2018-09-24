@@ -19,7 +19,7 @@ public class HibernateUtil
              config.addAnnotatedClass(UsuarioEntity.class);
              config.addAnnotatedClass(ClubEntity.class);
              config.addAnnotatedClass(ProductoEntity.class);
-             config.addAnnotatedClass(VentaEntity.class);
+             //config.addAnnotatedClass(VentaEntity.class);
              config.addAnnotatedClass(ReclamoEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
