@@ -2,10 +2,8 @@ package entities;
 
 import javax.persistence.*;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/francopanario/tienda_integracion.git
+
 @Entity
 @Table(name="ventas")
 public class VentaEntity {
