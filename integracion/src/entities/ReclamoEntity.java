@@ -1,5 +1,11 @@
 package entities;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Entity;
+
 @Entity
 @Table(name="reclamos")
 public class ReclamoEntity {
