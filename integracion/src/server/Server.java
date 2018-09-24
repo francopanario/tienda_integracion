@@ -13,12 +13,19 @@ import delegado.BusinessDelegate;
 
 public class Server {
 
+	public static void main(String[] args) throws RemoteException {
+		new Server();
+		//BusinessDelegate.getInstancia().cargarTodasUbicacionesYArticulos();
+
+	}
 	public Server() {
 		publicar();
 	}
 	
 	
 	private void publicar() {
+	
+		
 		try {
     		LocateRegistry.createRegistry(1099);
             InterfazRemota ir = new ObjetoRemoto();
@@ -32,9 +39,5 @@ public class Server {
 		}
     }
 	
-	public static void main(String[] args) throws RemoteException {
-		new Server();
-		//BusinessDelegate.getInstancia().cargarTodasUbicacionesYArticulos();
-		System.out.println("Ubicaciones y Articulos Deposito cargados con exito");
-	}
+	
 }

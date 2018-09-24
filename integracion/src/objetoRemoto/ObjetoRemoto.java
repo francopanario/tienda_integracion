@@ -48,10 +48,14 @@ public class ObjetoRemoto extends UnicastRemoteObject implements InterfazRemota 
 	
 	@Override
 	public void agregarUsuario(String usuario_id, String username, String password, String telefono, String mail,
-			String direccion, String tipo_usuario, boolean activo) {
+			String direccion, String tipo_usuario, boolean activo) throws RemoteException {
+			System.out.println(usuario_id);
+			Controlador.getInstancia().nuevoUsuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario, activo);
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 /*
 
