@@ -1,6 +1,14 @@
 package entities;
 
+<<<<<<< HEAD
 import javax.persistence.*;
+=======
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Entity;
+>>>>>>> branch 'master' of https://github.com/francopanario/tienda_integracion.git
 
 @Entity
 @Table(name="reclamos")
