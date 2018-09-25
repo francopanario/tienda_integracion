@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 import controlador.*;
-import dto.ProductoDTO;
 import exceptions.UsuarioException;
+import negocio.Producto;
 import negocio.Usuario;
 /**
  * Servlet implementation class Inicio
@@ -61,7 +61,7 @@ public class Inicio extends HttpServlet {
 				if (usuario != null ) {
 					if (usuario.getTipo_usuario().equalsIgnoreCase("comprador")) {
 						action = "default";
-						List <ProductoDTO> productos;
+						List <Producto> productos;
 						productos = Controlador.getInstancia().getAllProductos();
 						System.out.println(productos.get(0).getUsuario().getUsuario_id());
 						request.setAttribute("productos", productos);

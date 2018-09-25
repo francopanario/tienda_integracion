@@ -99,7 +99,7 @@ public class ProductoDAO {
 	}
 
 
-	public List<ProductoDTO> getAllDTO() {
+	/*public List<ProductoDTO> getAllDTO() {
 		List<Producto> productos = getAll();
 		System.out.println((productos.get(0).getUsuario().getUsuario_id()));
 		List<ProductoDTO> productosDTO= new ArrayList<>();
@@ -107,7 +107,7 @@ public class ProductoDAO {
 			productosDTO.add(prod.toDTO());
 		}
 		return productosDTO;
-	}
+	}*/
 	
 	public List<Producto> getAll() {
 		List<Producto> productos = new ArrayList<>();

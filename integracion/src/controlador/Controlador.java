@@ -139,8 +139,8 @@ public class Controlador {
 	
 	// ############################ TIENDA ############################ 
 	
-	public List<ProductoDTO> getAllProductos() {
-		return ProductoDAO.getInstancia().getAllDTO();
+	public List<Producto> getAllProductos() {
+		return ProductoDAO.getInstancia().getAll();
 	}
 
 }
