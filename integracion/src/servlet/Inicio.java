@@ -53,26 +53,22 @@ public class Inicio extends HttpServlet {
 		if ("default".equalsIgnoreCase(action)) {
 			jspPage = "/index.jsp";
 		} else if ("login".equalsIgnoreCase(action)) {
-
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-			System.out.println(username);
 			try {
 				Usuario usuario = Controlador.getInstancia().existeUsuario(username,password);
 				if (usuario != null ) {
-					System.out.println("Bien pa");
-					dispatch("vistaVendedor.jsp", request, response);
-					System.out.println(usuario.getTipo_usuario());
+					if (usuario.getTipo_usuario() == "comprador") {
+						dispatch("vistaVendedorvistaComprador.jsp", request, response);
+					}else {
+						dispatch("vistaVendedor.jsp", request, response);
+					}
 				}
 			} catch (UsuarioException e) {				
 				action = "default";
 				request.setAttribute("excepcion", "");
-				dispatch(jspPage, request, response);
-			}				
-			//HACER EL LOGIN
-			
-			//HACER EL DISPATCH PARA VISTA COMPRADOR O VISTA VENDEDOR
-			
+				dispatch(jspPage, request, response);		
+			}			
 		}
 		else if ("altaCliente".equalsIgnoreCase(action)) {
 			String mail         = request.getParameter("mail");

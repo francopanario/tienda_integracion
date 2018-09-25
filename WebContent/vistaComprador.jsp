@@ -23,7 +23,8 @@
         </ul>    
         <ul class="nav pull-right">
           <li class="divider-vertical"></li>
-          <li><a href="/integracion-Front">Salir</a></li>
+          <!-- ################ ACA CERRAR SESION DE USUARIO ######### -->
+          <li><a href="#">Salir</a></li>
         </ul>
       </div><!-- /.nav-collapse -->
     </div>
