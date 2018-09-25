@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 import controlador.*;
+import dto.ProductoDTO;
 import exceptions.UsuarioException;
 import negocio.Usuario;
 /**
@@ -58,9 +59,16 @@ public class Inicio extends HttpServlet {
 			try {
 				Usuario usuario = Controlador.getInstancia().existeUsuario(username,password);
 				if (usuario != null ) {
-					if (usuario.getTipo_usuario() == "comprador") {
-						dispatch("vistaVendedorvistaComprador.jsp", request, response);
+					if (usuario.getTipo_usuario().equalsIgnoreCase("comprador")) {
+						action = "default";
+						List <ProductoDTO> productos;
+						productos = Controlador.getInstancia().getAllProductos();
+						System.out.println(productos.get(0).getUsuario().getUsuario_id());
+						request.setAttribute("productos", productos);
+						dispatch("vistaComprador.jsp", request, response);
 					}else {
+						action = "default";
+						request.setAttribute("excepcion", "");
 						dispatch("vistaVendedor.jsp", request, response);
 					}
 				}
@@ -79,7 +87,7 @@ public class Inicio extends HttpServlet {
 			String direccion    = request.getParameter("direccion");
 			String tipo_usuario = request.getParameter("tipo_usuario");			
 			Controlador.getInstancia().nuevoUsuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario, true);
-			if (tipo_usuario == "comprador") {
+			if (tipo_usuario.equalsIgnoreCase("comprador")) {
 				dispatch("vistaComprador.jsp", request, response);
 			}else {
 				dispatch("vistaVendedor.jsp", request, response);

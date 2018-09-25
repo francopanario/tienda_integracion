@@ -122,6 +122,7 @@ public class Usuario {
 		u.setTelefono(this.telefono);
 		u.setActivo(this.activo);
 		u.setTipo_usuario(this.tipo_usuario);
+		System.out.println(u.getUsuario_id());
 		return u;
 	}
 

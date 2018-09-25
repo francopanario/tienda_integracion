@@ -30,3 +30,28 @@
     </div>
   </div><!-- /navbar-inner -->
 </div>
+<div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Codigo de Barras</th>
+				<th>Nombre</th>
+				<th>Precio</th>
+				<th>Cantidad</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${productos}" var="p"> 
+				<tr>
+					<td>${p.codBarra}</td>
+					<td>${p.nombre}</td>
+					<td>${p.precio}</td>
+					<td><input style="max-width: 60px;"type="number" value="0" name="cantidad_${p.codBarra}" id="cantidad_${p.codBarra}"></td>
+					<td>
+						<input id="compra" type="button" value="Comprar" class="btn btn-info" onclick="#" />
+					</td>  
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</div>

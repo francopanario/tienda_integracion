@@ -1,8 +1,12 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import dto.ProductoDTO;
 import entities.ProductoEntity;
 import entities.UsuarioEntity;
 import exceptions.ProductoException;
@@ -92,6 +96,31 @@ public class ProductoDAO {
 			throw new ProductoException("El Producto no existe, verifique el codigo de barras");
 		}
 		
-	}	
+	}
+
+
+	public List<ProductoDTO> getAllDTO() {
+		List<Producto> productos = getAll();
+		System.out.println((productos.get(0).getUsuario().getUsuario_id()));
+		List<ProductoDTO> productosDTO= new ArrayList<>();
+		for(Producto prod : productos){
+			productosDTO.add(prod.toDTO());
+		}
+		return productosDTO;
+	}
+	
+	public List<Producto> getAll() {
+		List<Producto> productos = new ArrayList<>();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		List<ProductoEntity> list = session.createQuery("from ProductoEntity").list();
+		for(ProductoEntity entity: list) {
+			productos.add(entity.toNegocio());
+		}
+		if (productos.size()>1) {
+			System.out.println("si");
+		}
+		return productos;
+	}
 
 }

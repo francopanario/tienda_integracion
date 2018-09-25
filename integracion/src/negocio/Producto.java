@@ -83,7 +83,8 @@ public class Producto {
 		p.setCodBarra(this.codBarra);
 		p.setNombre(this.nombre);
 		p.setPrecio(this.precio);
-		p.setUsuario(this.usuario.toDTO());		
+		p.setUsuario(this.usuario.toDTO());
+		System.out.println(p.getUsuario().getUsuario_id());
 		return p;
 	}
 		

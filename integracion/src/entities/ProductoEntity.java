@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import negocio.Producto;
 import negocio.Usuario;
 
 @Entity
@@ -34,6 +35,10 @@ public class ProductoEntity {
 		this.nombre = nombre;
 		this.precio = precio;		
 		this.activo=activo;
+	}
+	
+	public Producto toNegocio(){
+		return new Producto(codBarra, nombre, precio, activo);
 	}
 
 

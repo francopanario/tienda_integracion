@@ -3,6 +3,9 @@ package controlador;
 import negocio.Club;
 import negocio.Jugador;
 import negocio.Producto;
+
+import java.util.List;
+
 import dao.ClubDAO;
 import dao.JugadorDAO;
 import dao.ProductoDAO;
@@ -131,6 +134,13 @@ public class Controlador {
 
 	public Usuario existeUsuario(String username, String password) throws UsuarioException {
 		return UsuarioDAO.getInstancia().existeUsuario(username,password);		
+	}
+
+	
+	// ############################ TIENDA ############################ 
+	
+	public List<ProductoDTO> getAllProductos() {
+		return ProductoDAO.getInstancia().getAllDTO();
 	}
 
 }
