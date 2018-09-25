@@ -128,4 +128,9 @@ public class Controlador {
 		}
 	}
 
+
+	public Usuario existeUsuario(String username, String password) throws UsuarioException {
+		return UsuarioDAO.getInstancia().existeUsuario(username,password);		
+	}
+
 }

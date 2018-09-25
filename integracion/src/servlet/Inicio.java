@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 import controlador.*;
+import exceptions.UsuarioException;
+import negocio.Usuario;
 /**
  * Servlet implementation class Inicio
  */
@@ -52,25 +54,40 @@ public class Inicio extends HttpServlet {
 			jspPage = "/index.jsp";
 		} else if ("login".equalsIgnoreCase(action)) {
 
-			String usuario = request.getParameter("usuario");
-			String contrasena = request.getParameter("password");
-		
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			System.out.println(username);
+			try {
+				Usuario usuario = Controlador.getInstancia().existeUsuario(username,password);
+				if (usuario != null ) {
+					System.out.println("Bien pa");
+					dispatch("vistaVendedor.jsp", request, response);
+					System.out.println(usuario.getTipo_usuario());
+				}
+			} catch (UsuarioException e) {				
+				action = "default";
+				request.setAttribute("excepcion", "");
+				dispatch(jspPage, request, response);
+			}				
 			//HACER EL LOGIN
 			
 			//HACER EL DISPATCH PARA VISTA COMPRADOR O VISTA VENDEDOR
-			dispatch("vistaVendedor.jsp", request, response);
+			
 		}
 		else if ("altaCliente".equalsIgnoreCase(action)) {
-			String mail = request.getParameter("mail");
-			String username = request.getParameter("username");
-			String telefono = request.getParameter("telefono");
-			String password = request.getParameter("password");
-			String usuario_id=request.getParameter("dni");
-			String direccion=request.getParameter("direccion");
-			String tipo_usuario=request.getParameter("tipo_usuario");
-			
+			String mail         = request.getParameter("mail");
+			String username     = request.getParameter("username");
+			String telefono     = request.getParameter("telefono");
+			String password     = request.getParameter("password");
+			String usuario_id   = request.getParameter("dni");
+			String direccion    = request.getParameter("direccion");
+			String tipo_usuario = request.getParameter("tipo_usuario");			
 			Controlador.getInstancia().nuevoUsuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario, true);
-			//HACER EL ALTA CLIENTE
+			if (tipo_usuario == "comprador") {
+				dispatch("vistaComprador.jsp", request, response);
+			}else {
+				dispatch("vistaVendedor.jsp", request, response);
+			}
 		}
 	}
 

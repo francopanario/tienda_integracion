@@ -130,6 +130,19 @@ public class UsuarioDAO {
 	}
 
 
+	public Usuario existeUsuario(String username, String password) throws UsuarioException {
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		UsuarioEntity ue = (UsuarioEntity) session.createQuery("from UsuarioEntity where username = ? and password = ?")
+				.setParameter(0, username).setParameter(1,password).uniqueResult();
+		if (ue!=null){
+			return new Usuario(ue);			
+		}else {
+			throw new UsuarioException("El usuario no existe, verifique el codigo de barras");
+		}
+	}
+
+
 	
 	
 }
