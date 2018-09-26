@@ -62,7 +62,8 @@ public class Inicio extends HttpServlet {
 				if (usuario != null ) {
 					if (usuario.getTipo_usuario().equalsIgnoreCase("comprador")) {
 						action = "default";
-						request.setAttribute("excepcion", "");
+						request.setAttribute("usuario", usuario);
+						System.out.print(request.getAttribute(usuario.getUsername()));
 						dispatch("vistaComprador.jsp", request, response);
 					}else {
 						action = "default";
@@ -99,9 +100,10 @@ public class Inicio extends HttpServlet {
 			/*
 			 * Env�a el control al JSP que pasamos como par�metro, y con los
 			 * request / response cargados con los par�metros
-			 */
+			 */		
 			RequestDispatcher rd = request.getRequestDispatcher(jsp);
 			rd.forward(request, response);
 		}
 	}
+	
 }

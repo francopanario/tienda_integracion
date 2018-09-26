@@ -13,6 +13,36 @@
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<script type="text/javascript">
+	function callPostServletCompra() {
+		//var cantidad=$("#cantidad_"+codBarra).val();
+		var codBarra = ${prod.codBarra};
+		var nombre = ${prod.nombre};
+		var precio = ${prod.precio};
+		var usuario_id = ${usuario.usuario_id};
+		alert(codBarra);
+		alert(nombre);
+		alert(precio);
+		alert(cantidad);
+		alert(usuario_id);
+		var url='Compra';
+		//$(button).prop('disabled',true);
+		console.log('cantidad '+cantidad);	
+		$.ajax({
+			url: url,
+		    type: "post",
+		    //data: {codBarra: codBarra, nombre: nombre, precio: precio, cantidad, usuario_id : usuario_id}
+		}).done(function (respuesta){
+			//$(button).prop('disabled',false);
+			$.unblockUI();
+			$.notify({message: 'Articulo agregado correctamente!'},{type: 'success'});
+		}).fail(function(){
+			$.unblockUI();
+			var responseJsonObj = JSON.parse(data.responseText);
+			$.notify({message: responseJsonObj.errorMessage},{type: 'danger'});
+		});
+	}
+</script>
 
 <div class="navbar">
   <div class="navbar-inner">
@@ -49,24 +79,24 @@
 			</tr>
 		</thead>
 		<tbody>
-		<% List<Producto> productos = Controlador.getInstancia().getAllProductos();
-		   Producto prod;    
-		%>
-		<% for (Iterator<Producto> i = productos.iterator(); i.hasNext();) {
+			<% List<Producto> productos = Controlador.getInstancia().getAllProductos();
+		  		Producto prod;    
+			%>
+			<% for (Iterator<Producto> i = productos.iterator(); i.hasNext();) {
 				prod = i.next();
-		%>
-		<tr>
-		<td><%out.print(prod.getCodBarra());%></td>
-		<td><%out.print(prod.getNombre());%></td>
-		<td><%out.print(prod.getPrecio());%></td>
-		<td><input style="max-width: 60px;"type="number" value="0" name="cantidad_${prod.codBarra}" id="cantidad_${prod.codBarra}"></td>
-					<td>
-						<input id="compra" type="button" value="Comprar" class="btn btn-info" onclick="#" />
-					</td>
-		</tr>
-		<%
-			}
-		%>
+			%>
+			<tr>
+				<td><%out.print(prod.getCodBarra());%></td>
+				<td><%out.print(prod.getNombre());%></td>
+				<td><%out.print(prod.getPrecio());%></td>
+				<td><input style="max-width: 60px;"type="number" value="0" name="cantidad_${prod.codBarra}" id="cantidad_${prod.codBarra}"></td>
+				<td>
+					<input id="compra" type="button" value="Comprar" class="btn btn-info" onclick="callPostServletCompra();" />					
+				</td>
+			</tr>
+			<%
+				}
+			%>
 		</tbody>
 	</table>
 </div>
