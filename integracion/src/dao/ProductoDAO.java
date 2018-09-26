@@ -119,10 +119,6 @@ public class ProductoDAO {
 			productos.add(entity.toNegocio(list.get(i)));
 			i++;
 		}
-		if (productos.size()>1) {
-			System.out.println(productos.get(0).getCodBarra());
-			System.out.println(productos.get(0).getUsuario().getUsuario_id());
-		}
 		return productos;
 	}
 

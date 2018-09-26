@@ -77,15 +77,14 @@ public class Producto {
 		this.activo = activo;
 	}
 	
-	public ProductoDTO toDTO()
+	/*public ProductoDTO toDTO()
 	{
 		ProductoDTO p = new ProductoDTO();
 		p.setCodBarra(this.codBarra);
 		p.setNombre(this.nombre);
 		p.setPrecio(this.precio);
-		p.setUsuario(this.usuario.toDTO());
-		System.out.println(p.getUsuario().getUsuario_id());
+		p.setUsuario(this.usuario.toDTO());		
 		return p;
-	}
+	}*/
 		
 }

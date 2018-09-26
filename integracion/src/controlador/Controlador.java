@@ -74,8 +74,8 @@ public class Controlador {
 		}		
 	}
 	
-	public ProductoDTO buscarProdutoById(String codBarra) throws ProductoException{
-		return ProductoDAO.getInstancia().getProductoById(codBarra).toDTO();
+	public Producto buscarProdutoById(String codBarra) throws ProductoException{
+		return ProductoDAO.getInstancia().getProductoById(codBarra);
 	}
 	
 	public void bajaProducto(String codBarra) {
@@ -110,8 +110,8 @@ public class Controlador {
 		}
 	}
 	
-	public UsuarioDTO buscarUsuarioById(String usuario_id) throws UsuarioException{
-		return UsuarioDAO.getInstancia().getUsuarioById(usuario_id).toDTO();
+	public Usuario buscarUsuarioById(String usuario_id) throws UsuarioException{
+		return UsuarioDAO.getInstancia().getUsuarioById(usuario_id);
 	}
 
 	public void bajaUsuario(String usuario_id) {

@@ -62,8 +62,7 @@ public class Inicio extends HttpServlet {
 					if (usuario.getTipo_usuario().equalsIgnoreCase("comprador")) {
 						action = "default";
 						List <Producto> productos;
-						productos = Controlador.getInstancia().getAllProductos();
-						System.out.println(productos.get(1).getUsuario().getUsuario_id());
+						productos = Controlador.getInstancia().getAllProductos();						
 						request.setAttribute("productos", productos);
 						dispatch("vistaComprador.jsp", request, response);
 					}else {
