@@ -36,6 +36,7 @@ public class Inicio extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
+		
 		//request.getRequestDispatcher("/index.jsp").forward(request, response);
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -61,9 +62,7 @@ public class Inicio extends HttpServlet {
 				if (usuario != null ) {
 					if (usuario.getTipo_usuario().equalsIgnoreCase("comprador")) {
 						action = "default";
-						List <Producto> productos;
-						productos = Controlador.getInstancia().getAllProductos();						
-						request.setAttribute("productos", productos);
+						request.setAttribute("excepcion", "");
 						dispatch("vistaComprador.jsp", request, response);
 					}else {
 						action = "default";
