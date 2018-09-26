@@ -114,11 +114,14 @@ public class ProductoDAO {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		List<ProductoEntity> list = session.createQuery("from ProductoEntity").list();
+		int i=0;
 		for(ProductoEntity entity: list) {
-			productos.add(entity.toNegocio());
+			productos.add(entity.toNegocio(list.get(i)));
+			i++;
 		}
 		if (productos.size()>1) {
-			System.out.println("si");
+			System.out.println(productos.get(0).getCodBarra());
+			System.out.println(productos.get(0).getUsuario().getUsuario_id());
 		}
 		return productos;
 	}

@@ -63,7 +63,7 @@ public class Inicio extends HttpServlet {
 						action = "default";
 						List <Producto> productos;
 						productos = Controlador.getInstancia().getAllProductos();
-						System.out.println(productos.get(0).getUsuario().getUsuario_id());
+						System.out.println(productos.get(1).getUsuario().getUsuario_id());
 						request.setAttribute("productos", productos);
 						dispatch("vistaComprador.jsp", request, response);
 					}else {

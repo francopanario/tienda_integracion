@@ -26,9 +26,9 @@ public class Producto {
 	public Producto(String codBarra, String nombre, float precio,boolean activo) {
 		super();
 		this.codBarra = codBarra;
-		this.nombre = nombre;
-		this.precio = precio;
-		this.activo=activo;
+		this.nombre   = nombre;
+		this.precio   = precio;
+		this.activo   = activo;		
 	}
 
 

@@ -37,8 +37,8 @@ public class ProductoEntity {
 		this.activo=activo;
 	}
 	
-	public Producto toNegocio(){
-		return new Producto(codBarra, nombre, precio, activo);
+	public Producto toNegocio(ProductoEntity productoEntity){
+		return new Producto(productoEntity);
 	}
 
 
