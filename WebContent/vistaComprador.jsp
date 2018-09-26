@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="negocio.Producto"%>
+<%@page import="controlador.Controlador"%>
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
@@ -41,17 +49,24 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${productos}" var="p"> 
-				<tr>
-					<td>${p.codBarra}</td>
-					<td>${p.nombre}</td>
-					<td>${p.precio}</td>
-					<td><input style="max-width: 60px;"type="number" value="0" name="cantidad_${p.codBarra}" id="cantidad_${p.codBarra}"></td>
+		<% List<Producto> productos = Controlador.getInstancia().getAllProductos();
+		   Producto prod;    
+		%>
+		<% for (Iterator<Producto> i = productos.iterator(); i.hasNext();) {
+				prod = i.next();
+		%>
+		<tr>
+		<td><%out.print(prod.getCodBarra());%></td>
+		<td><%out.print(prod.getNombre());%></td>
+		<td><%out.print(prod.getPrecio());%></td>
+		<td><input style="max-width: 60px;"type="number" value="0" name="cantidad_${prod.codBarra}" id="cantidad_${prod.codBarra}"></td>
 					<td>
 						<input id="compra" type="button" value="Comprar" class="btn btn-info" onclick="#" />
-					</td>  
-				</tr>
-			</c:forEach>
+					</td>
+		</tr>
+		<%
+			}
+		%>
 		</tbody>
 	</table>
 </div>
