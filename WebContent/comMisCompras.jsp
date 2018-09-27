@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="negocio.Producto"%>
+<%@page import="controlador.Controlador"%>
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
@@ -17,14 +25,12 @@
       <a class="brand" href="#">Integracion</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li class="active"><a>Mis Ventas</a></li>
-          <li><a href="venMisProductos.jsp">Mis Productos</a></li>
-          <li><a href="venSubirProducto.jsp">Subir Producto</a></li>
-          <li><a href="venMisQuejas.jsp">Mis Quejas</a></li>
+          <li><a href="vistaComprador.jsp">Tienda</a></li>
+          <li class="active"><a>Mis Compras</a></li>
+          <li><a href="comReclamos.jsp">Reclamos</a></li>
         </ul>    
         <ul class="nav pull-right">
           <li class="divider-vertical"></li>
-          <!-- ################ ACA CERRAR SESION DE USUARIO ######### -->
           <li><a href="/tienda_integracion">Salir</a></li>
         </ul>
       </div><!-- /.nav-collapse -->
@@ -32,5 +38,5 @@
   </div><!-- /navbar-inner -->
 </div>
 <body>
-	<center><h1>Estas son Mis Ventas</h1></center>
+	<center><h1>Estas son Mis Compras</h1></center>
 </body>

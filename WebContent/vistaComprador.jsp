@@ -25,14 +25,14 @@
       <a class="brand" href="#">Integracion</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li><a href="">Tienda</a></li>
-          <li><a href="">Mis Compras</a></li>
-          <li><a href="">Reclamos</a></li>
+          <li class="active"><a>Tienda</a></li>
+          <li><a href="comMisCompras.jsp">Mis Compras</a></li>
+          <li><a href="comReclamos.jsp">Reclamos</a></li>
         </ul>    
         <ul class="nav pull-right">
           <li class="divider-vertical"></li>
           <!-- ################ ACA CERRAR SESION DE USUARIO ######### -->
-          <li><a href="#">Salir</a></li>
+          <li><a href="/tienda_integracion">Salir</a></li>
         </ul>
       </div><!-- /.nav-collapse -->
     </div>

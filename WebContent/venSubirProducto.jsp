@@ -17,9 +17,9 @@
       <a class="brand" href="#">Integracion</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li class="active"><a>Mis Ventas</a></li>
-          <li><a href="venMisProductos.jsp">Mis Productos</a></li>
-          <li><a href="venSubirProducto.jsp">Subir Producto</a></li>
+       	  <li><a href="vistaVendedor.jsp">Mis Ventas</a></li>
+          <li><a href="venMisProductos.jsp">Mis Productos</a></li>  
+          <li class="active"><a>Subir Producto</a></li>
           <li><a href="venMisQuejas.jsp">Mis Quejas</a></li>
         </ul>    
         <ul class="nav pull-right">
@@ -32,5 +32,5 @@
   </div><!-- /navbar-inner -->
 </div>
 <body>
-	<center><h1>Estas son Mis Ventas</h1></center>
+	<center><h1>Esto es Subir Producto</h1></center>
 </body>
