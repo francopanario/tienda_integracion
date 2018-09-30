@@ -3,7 +3,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page import="negocio.Producto"%>
+<%@ page import="negocio.*"%>
 <%@page import="controlador.Controlador"%>
 
 
