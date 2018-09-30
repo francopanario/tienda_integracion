@@ -110,6 +110,17 @@ public class Inicio extends HttpServlet {
 			Controlador.getInstancia().nuevaFactura(String.valueOf(n), usuario, password, codBarra);
 			dispatch("vistaComprador.jsp", request, response);
 		}
+		
+		else if ("subirProducto".equalsIgnoreCase(action)) {
+			Random rand = new Random();
+			int  n = rand.nextInt(999999999) + 111111111;
+			String usuario = Controlador.getInstancia().getUsername();
+			String password = Controlador.getInstancia().getPassword();
+			String nombre = request.getParameter("nombre");
+			String precio = request.getParameter("precio");
+			Controlador.getInstancia().nuevoProducto(String.valueOf(n), nombre, Float.valueOf(precio), usuario, password);
+			dispatch("vistaVendedor.jsp", request, response);
+		}
 	}
 
 	protected void dispatch(String jsp, HttpServletRequest request, HttpServletResponse response)
