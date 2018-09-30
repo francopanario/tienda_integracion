@@ -23,6 +23,9 @@ import controlador.*;
 import exceptions.UsuarioException;
 import negocio.Producto;
 import negocio.Usuario;
+import java.util.Random;
+
+
 /**
  * Servlet implementation class Inicio
  */
@@ -102,10 +105,12 @@ public class Inicio extends HttpServlet {
 		}
 		
 		else if ("nuevaFactura".equalsIgnoreCase(action)) {
+			Random rand = new Random();
+			int  n = rand.nextInt(999999999) + 111111111;
 			String usuario = Controlador.getInstancia().getUsername();
 			String password = Controlador.getInstancia().getPassword();
 			String codBarra = request.getParameter("codBarra");
-			Controlador.getInstancia().nuevaFactura("1111", usuario, password, "123456", codBarra);
+			Controlador.getInstancia().nuevaFactura(String.valueOf(n), usuario, password, "123456", codBarra);
 			dispatch("vistaComprador.jsp", request, response);
 		}
 	}
