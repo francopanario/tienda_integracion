@@ -67,6 +67,7 @@ public class Inicio extends HttpServlet {
 			try {
 				Usuario usuario = Controlador.getInstancia().existeUsuario(username,password);
 				if (usuario != null ) {
+					Controlador.getInstancia().setearUsuario(username, password);
 					if (usuario.getTipo_usuario().equalsIgnoreCase("comprador")) {
 						action = "default";
 						request.setAttribute("usuario", usuario);
@@ -98,6 +99,12 @@ public class Inicio extends HttpServlet {
 			}else {
 				dispatch("vistaVendedor.jsp", request, response);
 			}
+		}
+		
+		else if ("nuevaFactura".equalsIgnoreCase(action)) {
+			String usuario = Controlador.getInstancia().getUsername();
+			String codBarra = request.getParameter("codBarra");
+			Controlador.getInstancia().nuevaFactura("1", usuario, "asd", codBarra);
 		}
 	}
 

@@ -35,7 +35,21 @@ public class Controlador {
 		return instancia;
 	}
 	
+	String username;
+	String password;
 	
+	public String getUsername() {
+		return username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setearUsuario (String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 	
 	//ProductoABM
 	

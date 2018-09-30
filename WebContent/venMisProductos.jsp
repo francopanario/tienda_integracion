@@ -34,3 +34,35 @@
 <body>
 	<center><h1>Estos son Mis Productos</h1></center>
 </body>
+<div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Codigo de Barras</th>
+				<th>Nombre</th>
+				<th>Precio</th>
+				<th>Cantidad</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<% List<Producto> productos = Controlador.getInstancia().getAllProductos();
+		  		Producto prod;    
+			%>
+			<% for (Iterator<Producto> i = productos.iterator(); i.hasNext();) {
+				prod = i.next();
+			%>
+			<tr>
+				<td><%out.print(prod.getCodBarra());%></td>
+				<td><%out.print(prod.getNombre());%></td>
+				<td><%out.print(prod.getPrecio());%></td>
+				<td><input style="max-width: 60px;"type="number" value="0" name="cantidad_${prod.codBarra}" id="cantidad_${prod.codBarra}"></td>
+				<td>
+					<input id="compra" type="button" value="Comprar" class="btn btn-info" onclick="callPostServletCompra();" />					
+				</td>
+			</tr>
+			<%
+				}
+			%>
+		</tbody>
+	</table>
+</div>
