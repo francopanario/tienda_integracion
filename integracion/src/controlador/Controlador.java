@@ -54,12 +54,12 @@ public class Controlador {
 	//ProductoABM
 	
 	
-	public void nuevoProducto(String codBarra, String nombre, float precio, String usuario_id,boolean activo)
+	public void nuevoProducto(String codBarra, String nombre, float precio,  String comprador_username,String comprador_password)
 	{
 		Usuario usuario;
 		try {
-			usuario = new Usuario((UsuarioEntity)UsuarioDAO.getInstancia().findById(usuario_id));
-			Producto producto = new Producto(codBarra,nombre,precio,activo);
+			usuario = existeUsuario(comprador_username, comprador_password);
+			Producto producto = new Producto(codBarra,nombre,precio,true);
 			producto.setUsuario(usuario);			
 			producto.save();
 		} catch (UsuarioException e) {
