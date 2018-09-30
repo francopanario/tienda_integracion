@@ -71,10 +71,10 @@ public class Inicio extends HttpServlet {
 					if (usuario.getTipo_usuario().equalsIgnoreCase("comprador")) {
 						action = "default";
 						request.setAttribute("usuario", usuario);
-						System.out.print(request.getAttribute(usuario.getUsername()));
 						dispatch("vistaComprador.jsp", request, response);
 					}else {
 						action = "default";
+						System.out.println(usuario.getUsuario_id());
 						request.setAttribute("usuario_id", usuario.getUsuario_id());
 						dispatch("vistaVendedor.jsp", request, response);
 					}
