@@ -3,11 +3,11 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.*;
-import entities.UsuarioEntity;
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
 import hbt.HibernateUtil;
@@ -127,6 +127,19 @@ public class ProductoDAO {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		List<ProductoEntity> list = session.createQuery("from ProductoEntity").list();
+		int i=0;
+		for(ProductoEntity entity: list) {
+			productos.add(entity.toNegocio(list.get(i)));
+			i++;
+		}
+		return productos;
+	}
+	
+	public List<Producto> getAllVendedor(String usuario_id) {
+		List<Producto> productos = new ArrayList<>();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		List<ProductoEntity> list = (List<ProductoEntity>) session.createQuery("from ProductoEntity where usuario_id=?").setString(0,usuario_id).list();
 		int i=0;
 		for(ProductoEntity entity: list) {
 			productos.add(entity.toNegocio(list.get(i)));

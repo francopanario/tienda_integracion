@@ -136,6 +136,10 @@ public class Controlador {
 		return ProductoDAO.getInstancia().getAll();
 	}
 	
+	public List<Producto> getAllProductosVendedor(String usuario_id) {
+		return ProductoDAO.getInstancia().getAllVendedor(usuario_id);
+	}
+	
 	// Factura ABM
 	
 	public void nuevaFactura(String factura_id, String comprador_username,String comprador_password, String producto_id)
