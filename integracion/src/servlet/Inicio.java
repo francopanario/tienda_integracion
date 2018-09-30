@@ -58,6 +58,7 @@ public class Inicio extends HttpServlet {
 			request.setAttribute("excepcion", "");
 			dispatch(jspPage, request, response);
 		}
+		
 		if ("default".equalsIgnoreCase(action)) {
 			jspPage = "/index.jsp";
 		} else if ("login".equalsIgnoreCase(action)) {
