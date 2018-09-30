@@ -4,6 +4,9 @@ import hbt.HibernateUtil;
 import negocio.Producto;
 import negocio.Usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.management.Query;
 
 import org.hibernate.Session;
@@ -126,6 +129,6 @@ public class UsuarioDAO {
 		}else {
 			throw new UsuarioException("El usuario no existe, verifique el codigo de barras");
 		}
-	}
+	}		
 	
 }

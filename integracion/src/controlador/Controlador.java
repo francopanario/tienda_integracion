@@ -8,7 +8,7 @@ import negocio.Producto;
 import java.sql.Date;
 import java.util.List;
 
-
+import dao.FacturaDAO;
 import dao.ProductoDAO;
 
 
@@ -159,6 +159,10 @@ public class Controlador {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public List<Factura> getAllFacturasVendedor(String usuario_id) {
+		return FacturaDAO.getInstancia().getAllFacturas(usuario_id);
 	}
 
 }
