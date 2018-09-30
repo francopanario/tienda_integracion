@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="navbar">
@@ -31,6 +31,38 @@
     </div>
   </div><!-- /navbar-inner -->
 </div>
-<body>
-	<center><h1>Esto es Subir Producto</h1></center>
-</body>
+<div align="center">
+	<div id="loginbox" style="margin-top: 50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h2>Subir Producto<h2>
+			</div>
+			<div style="padding-top: 30px" class="panel-body">
+				<div style="display: none" id="login-alert"
+					class="alert alert-danger col-sm-12">
+				</div>
+				<form id="loginform" method="post" action="Inicio?action=subirProducto" class="form-horizontal" role="form">
+					<div style="margin-bottom: 25px" class="input-group">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-user"></i>
+						</span> 
+						<input id="nombre" type="text" class="form-control" name="nombre" 
+							placeholder="Nombre..." />
+					</div>
+					<div style="margin-bottom: 25px" class="input-group">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-user"></i>
+						</span> 
+						<input id="precio" type="number" class="form-control" name="precio" 
+							placeholder="Precio..." />
+					</div>
+					<div style="margin-top: 10px" class="form-group">
+						<!-- #################################### BOTON SUBMIT ####################################-->
+						<div class="col-sm-12 controls">
+							<button id="btn-login" type="submit" class="btn btn-success">Subir</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
