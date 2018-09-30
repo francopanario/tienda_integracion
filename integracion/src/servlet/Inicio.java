@@ -106,7 +106,7 @@ public class Inicio extends HttpServlet {
 			String usuario = Controlador.getInstancia().getUsername();
 			String password = Controlador.getInstancia().getPassword();
 			String codBarra = request.getParameter("codBarra");
-			Controlador.getInstancia().nuevaFactura(String.valueOf(n), usuario, password, "123456", codBarra);
+			Controlador.getInstancia().nuevaFactura(String.valueOf(n), usuario, password, codBarra);
 			dispatch("vistaComprador.jsp", request, response);
 		}
 	}
