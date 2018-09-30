@@ -28,6 +28,7 @@ private static FacturaDAO instancia;
 		return instancia;	
 	}
 	
+	
 	public Factura getFacturaById(String factura_id) throws FacturaException{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
@@ -64,11 +65,6 @@ private static FacturaDAO instancia;
 		session.saveOrUpdate(fa);
 		session.getTransaction().commit();
 		session.close();
-	}
-	
-	
-	
-	
-	
+	}	
 	
 }

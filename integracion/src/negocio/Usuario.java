@@ -5,9 +5,7 @@ import dao.UsuarioDAO;
 import entities.UsuarioEntity;
 
 public class Usuario {
-	/**
-	 * Yo soy un objeto de negocio, asi que tengo datos y comportamiento que permite modificar los datos.
-	 * */
+
 	
 	private String usuario_id;
 	private String username;
@@ -43,6 +41,7 @@ public class Usuario {
 		this.activo=activo;
 	}
 
+	
 	public String getUsuario_id() {
 		return usuario_id;
 	}
@@ -98,7 +97,6 @@ public class Usuario {
 	public void setTipo_usuario(String tipo_usuario) {
 		this.tipo_usuario = tipo_usuario;
 	}
-	
 
 	public void save(){
 		UsuarioDAO.getInstancia().grabar(this);
@@ -111,7 +109,5 @@ public class Usuario {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
-
-
 
 }

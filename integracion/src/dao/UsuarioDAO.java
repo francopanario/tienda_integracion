@@ -44,19 +44,6 @@ public class UsuarioDAO {
 		}
 	}
 	
-	/*public ClubEntity findByID(Integer idClub) throws ClubException {
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		ClubEntity ce = (ClubEntity) session.createQuery("from ClubEntity where id = ?")
-					.setParameter(0, idClub)
-					.uniqueResult();
-		if(ce != null){
-			return ce;
-		}
-		else 
-			throw new ClubException("El club solicitado no existe");
-	}*/
-	
 	public UsuarioEntity findById(String usuario_id) throws UsuarioException {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
@@ -129,7 +116,6 @@ public class UsuarioDAO {
 			}		
 	}
 
-
 	public Usuario existeUsuario(String username, String password) throws UsuarioException {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
@@ -141,8 +127,5 @@ public class UsuarioDAO {
 			throw new UsuarioException("El usuario no existe, verifique el codigo de barras");
 		}
 	}
-
-
-	
 	
 }

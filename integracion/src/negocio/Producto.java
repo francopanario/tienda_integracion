@@ -14,6 +14,7 @@ public class Producto {
 	private Usuario usuario;
 	private boolean activo;
 	
+	
 	public Producto(ProductoEntity Producto) {
 		this.codBarra = Producto.getCodBarra();
 		this.nombre   = Producto.getNombre();
@@ -29,7 +30,6 @@ public class Producto {
 		this.precio   = precio;
 		this.activo   = activo;		
 	}
-
 
 
 	public String getCodBarra() {
@@ -75,15 +75,5 @@ public class Producto {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
-	
-	/*public ProductoDTO toDTO()
-	{
-		ProductoDTO p = new ProductoDTO();
-		p.setCodBarra(this.codBarra);
-		p.setNombre(this.nombre);
-		p.setPrecio(this.precio);
-		p.setUsuario(this.usuario.toDTO());		
-		return p;
-	}*/
 		
 }

@@ -26,16 +26,12 @@ import negocio.Usuario;
 import java.util.Random;
 
 
-/**
- * Servlet implementation class Inicio
- */
+
 @WebServlet("/Inicio")
 public class Inicio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+
 	public Inicio() {
 		super();
 	}

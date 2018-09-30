@@ -36,54 +36,38 @@ public class Factura {
 		return facturaID;
 	}
 
-
-
-
 	public Usuario getComprador() {
 		return comprador;
 	}
-
 
 	public Usuario getVendedor() {
 		return vendedor;
 	}
 
-
 	public Producto getArticulo() {
 		return articulo;
 	}
-
-	
-
 
 	public void setFacturaID(String facturaID) {
 		this.facturaID = facturaID;
 	}
 
-
-
-
 	public void setComprador(Usuario comprador) {
 		this.comprador = comprador;
 	}
-
 
 	public void setVendedor(Usuario vendedor) {
 		this.vendedor = vendedor;
 	}
 
-
 	public void setArticulo(Producto articulo) {
 		this.articulo = articulo;
-	}
-	
-	
+	}	
 	
 	public float getSubTotal() {
 		
 		return articulo.getPrecio() /* * cant*/;
 	}
-
 
 	public void save() {
 		// TODO Auto-generated method stub

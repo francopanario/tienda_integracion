@@ -41,21 +41,20 @@ public class ProductoDAO {
 		}else {
 			throw new ProductoException("El producto no existe, verifique el codigo de barras");
 		}
-	}
-	
+	}	
 	
 	public Usuario getVendedorAsociado(String codBarra) throws UsuarioException{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		UsuarioEntity us = (UsuarioEntity) session.createQuery("from UsuarioEntity as uss where uss.productos.producto_id=?")
+		ProductoEntity pe = (ProductoEntity) session.createQuery("from ProductoEntity as uss where uss.codBarra=?")
 				.setParameter(0, codBarra).uniqueResult();
-		if (us!=null){
-			return new Usuario(us);			
+		UsuarioEntity ue = UsuarioDAO.getInstancia().findById(pe.getUsuario().getUsuario_id());
+		if (ue!=null){
+			return new Usuario(ue);			
 		}else {
-			throw new UsuarioException("El usuario no existe, verifique el codigo de barras");
+			throw new UsuarioException("El producto no existe, verifique el codigo de barras");
 		}
-	}
-	
+	}	
 	
 	public ProductoEntity getProductoEntityById(String codBarra) throws ProductoException{
 		SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -85,7 +84,6 @@ public class ProductoDAO {
 		session.getTransaction().commit();
 		session.close();
 	}
-
 
 	public void bajaProducto(String codBarra) throws ProductoException {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -123,17 +121,6 @@ public class ProductoDAO {
 		}
 		
 	}
-
-
-	/*public List<ProductoDTO> getAllDTO() {
-		List<Producto> productos = getAll();
-		System.out.println((productos.get(0).getUsuario().getUsuario_id()));
-		List<ProductoDTO> productosDTO= new ArrayList<>();
-		for(Producto prod : productos){
-			productosDTO.add(prod.toDTO());
-		}
-		return productosDTO;
-	}*/
 	
 	public List<Producto> getAll() {
 		List<Producto> productos = new ArrayList<>();
