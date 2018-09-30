@@ -70,7 +70,7 @@
   </div><!-- /navbar-inner -->
 </div>
 <div>
-	<form method="post" action="Inicio?action=nuevoFactura">
+	<form method="post" action="Inicio?action=nuevaFactura">
 			<table class="table table-striped">
 			<thead>
 				<tr>
