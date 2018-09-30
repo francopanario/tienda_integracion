@@ -88,12 +88,12 @@
 					prod = i.next();
 				%>
 				<tr>
-					<td id="codBarra"><%out.print(prod.getCodBarra());%></td>
+					<td id="codBarra" label for="usermail"><%out.print(prod.getCodBarra());%></td>
 					<td><%out.print(prod.getNombre());%></td>
 					<td><%out.print(prod.getPrecio());%></td>
 					<td><input style="max-width: 60px;"type="number" value="0" name="cantidad" id="cantidad"></td>
 					<td>
-						<input id="compra" type="submit" value="Comprar" class="btn btn-info"/>					
+						<button id="btn-login" name="codBarra" value=<%out.print(prod.getCodBarra());%> type="submit" class="btn btn-success">Comprar</button>				
 					</td>
 				</tr>
 				<%

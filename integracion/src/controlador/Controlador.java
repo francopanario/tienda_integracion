@@ -144,9 +144,11 @@ public class Controlador {
 		Usuario vendedor;
 		Producto articulo;
 		try {
+			System.out.println("comprador   "+comprador_username+"    "+comprador_password+" vendedor   "+vendedor_id+"   producto"+producto_id);
 			comprador = existeUsuario(comprador_username, comprador_password);
 			vendedor = new Usuario((UsuarioEntity)UsuarioDAO.getInstancia().findById(vendedor_id));
 			articulo = new Producto((ProductoEntity)ProductoDAO.getInstancia().getProductoEntityById(producto_id));
+			
 			Factura factura=new Factura(factura_id, comprador, vendedor, articulo, 2);		
 			factura.save();
 		} catch (UsuarioException e) {
