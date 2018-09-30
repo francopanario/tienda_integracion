@@ -43,6 +43,19 @@ public class ProductoDAO {
 		}
 	}
 	
+	
+	public ProductoEntity getProductoEntityById(String codBarra) throws ProductoException{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ProductoEntity pe = (ProductoEntity) session.createQuery("from ProductoEntity where producto_id = ?")
+				.setParameter(0, codBarra).uniqueResult();
+		if (pe!=null){
+			return pe;			
+		}else {
+			throw new ProductoException("El producto no existe, verifique el codigo de barras");
+		}
+	}
+	
 	public void grabar(Producto producto){		
 		ProductoEntity pe = new ProductoEntity(producto.getCodBarra(), producto.getNombre(), producto.getPrecio(),producto.isActivo());
 		UsuarioEntity usuario = null;

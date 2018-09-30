@@ -25,39 +25,55 @@ public class FacturaEntity {
 	}
 	
 	@Id
-	@GeneratedValue
-	@Column(name = "id")
-	private int facturaID;
+	@Column(name = "factura_id")
+	private String factura_id;
 
 	private Date fecha;
 	
 	
-	@ManyToOne
-	@JoinColumn(name = "id_comprador")
+	@OneToOne
+	@JoinColumn(name = "comprador_id")
 	private UsuarioEntity comprador;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_vendedor")
+	@OneToOne
+	@JoinColumn(name = "vendedor")
 	private UsuarioEntity vendedor;
 	
 	
 	@OneToOne
+	@JoinColumn(name = "producto_id")
 	private ProductoEntity articulo;
 
 
-	public FacturaEntity(int facturaID, Date fecha, UsuarioEntity comprador, UsuarioEntity vendedor,
-			ProductoEntity articulo) {
+	public FacturaEntity(String factura_id, Date fecha) {
 		super();
-		this.facturaID = facturaID;
+		this.factura_id = factura_id;
 		this.fecha = fecha;
-		this.comprador = comprador;
-		this.vendedor = vendedor;
-		this.articulo = articulo;
+	}
+	
+
+	public String getFactura_id() {
+		return factura_id;
 	}
 
 
-	public int getFacturaID() {
-		return facturaID;
+	public void setFactura_id(String factura_id) {
+		this.factura_id = factura_id;
+	}
+
+
+	public UsuarioEntity getVendedor() {
+		return vendedor;
+	}
+
+
+	public void setVendedor(UsuarioEntity vendedor) {
+		this.vendedor = vendedor;
+	}
+
+
+	public String getfactura_id() {
+		return factura_id;
 	}
 
 
@@ -71,18 +87,15 @@ public class FacturaEntity {
 	}
 
 
-	public UsuarioEntity getVendedor() {
-		return vendedor;
-	}
-
+	
 
 	public ProductoEntity getArticulo() {
 		return articulo;
 	}
 
 
-	public void setFacturaID(int facturaID) {
-		this.facturaID = facturaID;
+	public void setfactura_id(String factura_id) {
+		this.factura_id = factura_id;
 	}
 
 
@@ -96,10 +109,7 @@ public class FacturaEntity {
 	}
 
 
-	public void setVendedor(UsuarioEntity vendedor) {
-		this.vendedor = vendedor;
-	}
-
+	
 
 	public void setArticulo(ProductoEntity articulo) {
 		this.articulo = articulo;

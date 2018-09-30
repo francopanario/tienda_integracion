@@ -15,12 +15,11 @@ public class HibernateUtil
         try
         {
         	 AnnotationConfiguration config = new AnnotationConfiguration();
-             config.addAnnotatedClass(JugadorEntity.class);
              config.addAnnotatedClass(UsuarioEntity.class);
-             config.addAnnotatedClass(ClubEntity.class);
              config.addAnnotatedClass(ProductoEntity.class);
              //config.addAnnotatedClass(VentaEntity.class);
              config.addAnnotatedClass(ReclamoEntity.class);
+             config.addAnnotatedClass(FacturaEntity.class);
              sessionFactory = config.buildSessionFactory();
         }
         catch (Throwable ex)
