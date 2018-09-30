@@ -5,6 +5,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page import="negocio.*"%>
 <%@page import="controlador.Controlador"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
@@ -45,8 +46,7 @@
 				<tr>
 					<th>Codigo de Barras</th>
 					<th>Nombre</th>
-					<th>Precio</th>
-					<th>Cantidad</th>				
+					<th>Precio</th>				
 				</tr>
 			</thead>
 			<tbody>
