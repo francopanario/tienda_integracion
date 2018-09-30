@@ -28,7 +28,6 @@ public class FacturaEntity {
 	@Column(name = "factura_id")
 	private String factura_id;
 
-	private Date fecha;
 	
 	
 	@OneToOne
@@ -45,10 +44,10 @@ public class FacturaEntity {
 	private ProductoEntity articulo;
 
 
-	public FacturaEntity(String factura_id, Date fecha) {
+	public FacturaEntity(String factura_id) {
 		super();
 		this.factura_id = factura_id;
-		this.fecha = fecha;
+
 	}
 	
 
@@ -77,9 +76,6 @@ public class FacturaEntity {
 	}
 
 
-	public Date getFecha() {
-		return fecha;
-	}
 
 
 	public UsuarioEntity getComprador() {
@@ -99,10 +95,7 @@ public class FacturaEntity {
 	}
 
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
+	
 
 	public void setComprador(UsuarioEntity comprador) {
 		this.comprador = comprador;

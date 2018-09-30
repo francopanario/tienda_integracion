@@ -1,9 +1,11 @@
 package controlador;
 
 import negocio.Club;
+import negocio.Factura;
 import negocio.Jugador;
 import negocio.Producto;
 
+import java.sql.Date;
 import java.util.List;
 
 import dao.ClubDAO;
@@ -13,6 +15,7 @@ import dto.JugadorDTO;
 import dto.ProductoDTO;
 import dto.UsuarioDTO;
 import entities.ClubEntity;
+import entities.ProductoEntity;
 import exceptions.ClubException;
 import exceptions.JugadorException;
 import exceptions.ProductoException;
@@ -142,5 +145,28 @@ public class Controlador {
 	public List<Producto> getAllProductos() {
 		return ProductoDAO.getInstancia().getAll();
 	}
+	
+	// Factura ABM
+	
+	public void nuevaFactura(String factura_id, String comprador_id, String vendedor_id,String producto_id)
+	{
+		Usuario comprador;
+		Usuario vendedor;
+		Producto articulo;
+		try {
+			comprador = new Usuario((UsuarioEntity)UsuarioDAO.getInstancia().findById(comprador_id));
+			vendedor = new Usuario((UsuarioEntity)UsuarioDAO.getInstancia().findById(vendedor_id));
+			articulo = new Producto((ProductoEntity)ProductoDAO.getInstancia().getProductoEntityById(producto_id));
+			Factura factura=new Factura(factura_id, comprador, vendedor, articulo, 2);		
+			factura.save();
+		} catch (UsuarioException e) {
+			e.printStackTrace();
+		} catch (ProductoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	
+	
 
 }

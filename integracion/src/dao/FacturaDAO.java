@@ -41,7 +41,7 @@ private static FacturaDAO instancia;
 	}
 	
 	public void grabar(Factura factura){		
-		FacturaEntity fa = new FacturaEntity(factura.getFacturaID(), factura.getFecha());
+		FacturaEntity fa = new FacturaEntity(factura.getFacturaID());
 		UsuarioEntity comprador = null;
 		UsuarioEntity vendedor = null;
 		ProductoEntity articulo=null;

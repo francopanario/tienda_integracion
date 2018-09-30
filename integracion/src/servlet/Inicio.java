@@ -3,8 +3,14 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.rmi.RemoteException;
+
 import java.sql.SQLException;
+
+
 import java.util.ArrayList;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;  
+import java.util.Date;  
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,6 +51,7 @@ public class Inicio extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String action = request.getParameter("action");
 		String jspPage = "/index.jsp";
 		if ((action == null) || (action.length() < 1)) {

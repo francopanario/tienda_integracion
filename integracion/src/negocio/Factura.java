@@ -2,22 +2,21 @@ package negocio;
 
 import java.util.Date;
 
+import dao.FacturaDAO;
 import entities.FacturaEntity;
 
 public class Factura {
 	
 	private String facturaID;
-	private Date fecha;
 	private Usuario comprador;
 	private Usuario vendedor;
 	private Producto articulo;
 	//private int cant;
 	
 	
-	public Factura(String facturaID, Date fecha, Usuario comprador, Usuario vendedor, Producto articulo , int cant) {
+	public Factura(String facturaID, Usuario comprador, Usuario vendedor, Producto articulo , int cant) {
 		super();
 		this.facturaID = facturaID;
-		this.fecha = fecha;
 		this.comprador = comprador;
 		this.vendedor = vendedor;
 		this.articulo = articulo;
@@ -27,7 +26,6 @@ public class Factura {
 
 	public Factura(FacturaEntity fa) {
 		this.facturaID=fa.getFactura_id();
-		this.fecha=fa.getFecha();
 		this.comprador=new Usuario(fa.getComprador());
 		this.vendedor=new Usuario(fa.getVendedor());
 		this.articulo=new Producto(fa.getArticulo());
@@ -39,9 +37,6 @@ public class Factura {
 	}
 
 
-	public Date getFecha() {
-		return fecha;
-	}
 
 
 	public Usuario getComprador() {
@@ -66,9 +61,6 @@ public class Factura {
 	}
 
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
 
 
 	public void setComprador(Usuario comprador) {
@@ -90,6 +82,13 @@ public class Factura {
 	public float getSubTotal() {
 		
 		return articulo.getPrecio() /* * cant*/;
+	}
+
+
+	public void save() {
+		// TODO Auto-generated method stub
+		FacturaDAO.getInstancia().grabar(this);
+		
 	}
 	
 }
