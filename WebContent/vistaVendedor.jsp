@@ -61,9 +61,6 @@
 					<td><%out.print(prod.getNombre());%></td>
 					<td><%out.print(prod.getPrecio());%></td>
 					<td><%out.print(prod.isActivo());%></td>					
-					<td>
-						<button id="btn-login" name="codBarra" value=<%out.print(prod.getCodBarra());%> type="submit" class="btn btn-success">Comprar</button>				
-					</td>
 				</tr>
 				<%
 					}
