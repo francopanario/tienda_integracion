@@ -138,13 +138,13 @@ public class Controlador {
 	
 	// Factura ABM
 	
-	public void nuevaFactura(String factura_id, String comprador_id, String vendedor_id,String producto_id)
+	public void nuevaFactura(String factura_id, String comprador_username,String comprador_password, String vendedor_id,String producto_id)
 	{
 		Usuario comprador;
 		Usuario vendedor;
 		Producto articulo;
 		try {
-			comprador = new Usuario((UsuarioEntity)UsuarioDAO.getInstancia().findById(comprador_id));
+			comprador = existeUsuario(comprador_username, comprador_password);
 			vendedor = new Usuario((UsuarioEntity)UsuarioDAO.getInstancia().findById(vendedor_id));
 			articulo = new Producto((ProductoEntity)ProductoDAO.getInstancia().getProductoEntityById(producto_id));
 			Factura factura=new Factura(factura_id, comprador, vendedor, articulo, 2);		
