@@ -6,13 +6,14 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import entities.ProductoEntity;
+import entities.*;
 import entities.UsuarioEntity;
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
 import hbt.HibernateUtil;
 
-import negocio.Producto;
+import negocio.*;
+import negocio.Usuario;
 
 public class ProductoDAO {
 	
@@ -39,6 +40,19 @@ public class ProductoDAO {
 			return new Producto(pe);			
 		}else {
 			throw new ProductoException("El producto no existe, verifique el codigo de barras");
+		}
+	}
+	
+	
+	public Usuario getVendedorAsociado(String codBarra) throws UsuarioException{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		UsuarioEntity us = (UsuarioEntity) session.createQuery("from UsuarioEntity as uss where uss.productos.producto_id=?")
+				.setParameter(0, codBarra).uniqueResult();
+		if (us!=null){
+			return new Usuario(us);			
+		}else {
+			throw new UsuarioException("El usuario no existe, verifique el codigo de barras");
 		}
 	}
 	
