@@ -94,6 +94,7 @@ public class Inicio extends HttpServlet {
 			String direccion    = request.getParameter("direccion");
 			String tipo_usuario = request.getParameter("tipo_usuario");			
 			Controlador.getInstancia().nuevoUsuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario, true);
+			Controlador.getInstancia().setearUsuario(username, password);
 			if (tipo_usuario.equalsIgnoreCase("comprador")) {
 				dispatch("vistaComprador.jsp", request, response);
 			}else {
