@@ -3,7 +3,6 @@ package hbt;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-import entities.ClubEntity;
 import entities.*;
 
 public class HibernateUtil
@@ -17,7 +16,6 @@ public class HibernateUtil
         	 AnnotationConfiguration config = new AnnotationConfiguration();
              config.addAnnotatedClass(UsuarioEntity.class);
              config.addAnnotatedClass(ProductoEntity.class);
-             //config.addAnnotatedClass(VentaEntity.class);
              config.addAnnotatedClass(ReclamoEntity.class);
              config.addAnnotatedClass(FacturaEntity.class);
              sessionFactory = config.buildSessionFactory();

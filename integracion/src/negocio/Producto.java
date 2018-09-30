@@ -2,8 +2,7 @@ package negocio;
 
 import dao.ProductoDAO;
 import dao.UsuarioDAO;
-import dto.JugadorDTO;
-import dto.ProductoDTO;
+
 import entities.ProductoEntity;
 import entities.UsuarioEntity;
 

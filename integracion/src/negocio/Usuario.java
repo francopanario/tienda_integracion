@@ -1,7 +1,7 @@
 package negocio;
 
 import dao.UsuarioDAO;
-import dto.UsuarioDTO;
+
 import entities.UsuarioEntity;
 
 public class Usuario {
@@ -112,18 +112,6 @@ public class Usuario {
 		this.activo = activo;
 	}
 
-	public UsuarioDTO toDTO() {
-		UsuarioDTO u = new UsuarioDTO();
-		u.setUsuario_id(this.usuario_id);
-		u.setUsername(this.username);
-		u.setPassword(this.password);
-		u.setMail(this.mail);
-		u.setDireccion(this.direccion);
-		u.setTelefono(this.telefono);
-		u.setActivo(this.activo);
-		u.setTipo_usuario(this.tipo_usuario);
-		System.out.println(u.getUsuario_id());
-		return u;
-	}
+
 
 }

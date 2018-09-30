@@ -1,8 +1,7 @@
 package tets;
 
 import controlador.Controlador;
-import dto.ProductoDTO;
-import dto.UsuarioDTO;
+
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
 

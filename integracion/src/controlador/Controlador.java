@@ -1,23 +1,19 @@
 package controlador;
 
-import negocio.Club;
+
 import negocio.Factura;
-import negocio.Jugador;
+
 import negocio.Producto;
 
 import java.sql.Date;
 import java.util.List;
 
-import dao.ClubDAO;
-import dao.JugadorDAO;
+
 import dao.ProductoDAO;
-import dto.JugadorDTO;
-import dto.ProductoDTO;
-import dto.UsuarioDTO;
-import entities.ClubEntity;
+
+
 import entities.ProductoEntity;
-import exceptions.ClubException;
-import exceptions.JugadorException;
+
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
 import negocio.Usuario;
@@ -39,26 +35,6 @@ public class Controlador {
 		return instancia;
 	}
 	
-	
-	/*public JugadorDTO getJugadorByDNI(String tipo, Integer numero) throws JugadorException
-	{
-		return JugadorDAO.getInstance().getJugadorById(tipo, numero).toDTO();
-	}
-	
-	public void nuevoJugador(String tipo, int numero, String nombre, Integer idClub)
-	{
-		Club club;
-		try {
-			club = new Club((ClubEntity)ClubDAO.getInstance().findByID(idClub));
-			Jugador jugador = new Jugador(tipo,numero,nombre);
-			jugador.setClub(club);
-			jugador.setCategoria(88);
-			jugador.save();
-		} catch (ClubException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-	}*/
 	
 	
 	//ProductoABM

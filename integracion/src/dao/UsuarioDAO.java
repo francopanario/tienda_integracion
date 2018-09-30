@@ -9,10 +9,10 @@ import javax.management.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import entities.ClubEntity;
+
 import entities.ProductoEntity;
 import entities.UsuarioEntity;
-import exceptions.ClubException;
+
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
 

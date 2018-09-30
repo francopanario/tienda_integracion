@@ -6,13 +6,12 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import dto.ProductoDTO;
 import entities.ProductoEntity;
 import entities.UsuarioEntity;
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
 import hbt.HibernateUtil;
-import negocio.Jugador;
+
 import negocio.Producto;
 
 public class ProductoDAO {
