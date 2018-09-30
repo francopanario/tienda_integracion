@@ -70,7 +70,7 @@
   </div><!-- /navbar-inner -->
 </div>
 <div>
-	<form method="post" action="Inicio?action=nuevoFactura&usuario=<%=request.getParameter("usuario") %>">
+	<form method="post" action="Inicio?action=nuevoFactura">
 			<table class="table table-striped">
 			<thead>
 				<tr>
