@@ -42,7 +42,7 @@
 		<thead>
 			<tr>
 				<th>Factura ID</th>
-				<th>Comprador</th>
+				<th>Vendedor</th>
 				<th>Articulo</th>				
 			</tr>
 		</thead>
@@ -55,7 +55,7 @@
 			%>
 			<tr>
 				<td><%out.print(fac.getFacturaID());%></td>
-				<td><%out.print(fac.getComprador().getUsername());%></td>
+				<td><%out.print(fac.getVendedor().getUsername());%></td>
 				<td><%out.print(fac.getArticulo().getNombre());%></td>
 			</tr>
 			<%
