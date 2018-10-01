@@ -71,7 +71,7 @@ private static FacturaDAO instancia;
 		List<Factura> facturas = new ArrayList<>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		List<FacturaEntity> list = (List<FacturaEntity>) session.createQuery("from FacturaEntity where vendedor=?").setString(0,usuario_id).list();
+		List<FacturaEntity> list = (List<FacturaEntity>) session.createQuery("from FacturaEntity f where f.vendedor.usuario_id=?").setString(0,usuario_id).list();
 		int i=0;
 		for(FacturaEntity entity: list) {
 			facturas.add(entity.toNegocio(list.get(i)));

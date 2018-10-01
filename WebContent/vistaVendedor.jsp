@@ -47,7 +47,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% List<Factura> facturas = Controlador.getInstancia().getAllFacturasVendedor(request.getParameter("usuario_id"));
+			<% List<Factura> facturas = Controlador.getInstancia().getAllFacturasVendedor(Controlador.getInstancia().getUsername(),Controlador.getInstancia().getPassword());
 		  		Factura fac;     
 			%>
 			<% for (Iterator<Factura> i = facturas.iterator(); i.hasNext();) {

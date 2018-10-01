@@ -74,7 +74,6 @@ public class Inicio extends HttpServlet {
 						dispatch("vistaComprador.jsp", request, response);
 					}else {
 						action = "default";
-						System.out.println(usuario.getUsuario_id());
 						request.setAttribute("usuario_id", usuario.getUsuario_id());
 						dispatch("vistaVendedor.jsp", request, response);
 					}

@@ -161,8 +161,10 @@ public class Controlador {
 		}
 	}
 	
-	public List<Factura> getAllFacturasVendedor(String usuario_id) {
-		return FacturaDAO.getInstancia().getAllFacturas(usuario_id);
+	public List<Factura> getAllFacturasVendedor(String username,String password) throws UsuarioException {
+		System.out.println(username);
+		Usuario us=existeUsuario(username, password);
+		return FacturaDAO.getInstancia().getAllFacturas(us.getUsuario_id());
 	}
 
 }
