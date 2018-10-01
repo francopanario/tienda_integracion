@@ -3,7 +3,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page import="negocio.Producto"%>
+<%@ page import="negocio.*"%>
 <%@page import="controlador.Controlador"%>
 
 
@@ -37,6 +37,30 @@
     </div>
   </div><!-- /navbar-inner -->
 </div>
-<body>
-	<center><h1>Estas son Mis Compras</h1></center>
-</body>
+<div class="container">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Factura ID</th>
+				<th>Comprador</th>
+				<th>Articulo</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<% List<Factura> facturas = Controlador.getInstancia().getAllFacturasComprador();
+		  		Factura fac;     
+			%>
+			<% for (Iterator<Factura> i = facturas.iterator(); i.hasNext();) {
+				fac = i.next();
+			%>
+			<tr>
+				<td><%out.print(fac.getFacturaID());%></td>
+				<td><%out.print(fac.getComprador());%></td>
+				<td><%out.print(fac.getArticulo());%></td>
+			</tr>
+			<%
+				}
+			%>
+		</tbody>
+	</table>
+</div>

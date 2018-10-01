@@ -37,36 +37,30 @@
     </div>
   </div><!-- /navbar-inner -->
 </div>
-<body>
-	<center><h1>Estas son Mis Ventas</h1></center>
-	<div>
-	<form method="post" action="Inicio?action=nuevaFactura">
-			<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Codigo de Barras</th>
-					<th>Nombre</th>
-					<th>Precio</th>				
-				</tr>
-			</thead>
-			<tbody>
-				<%List<Producto> productos = Controlador.getInstancia().getAllProductosVendedor(request.getParameter("usuario_id"));
-			  		Producto prod;    
-				%>
-				<% for (Iterator<Producto> i = productos.iterator(); i.hasNext();) {
-					prod = i.next();
-				%>
-				<tr>
-					<td id="codBarra" label for="usermail"><%out.print(prod.getCodBarra());%></td>
-					<td><%out.print(prod.getNombre());%></td>
-					<td><%out.print(prod.getPrecio());%></td>
-					<td><%out.print(prod.isActivo());%></td>					
-				</tr>
-				<%
-					}
-				%>
-			</tbody>
-		</table>
-	</form>
+<div class="container">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Factura ID</th>
+				<th>Comprador</th>
+				<th>Articulo</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<% List<Factura> facturas = Controlador.getInstancia().getAllFacturasVendedor();
+		  		Factura fac;     
+			%>
+			<% for (Iterator<Factura> i = facturas.iterator(); i.hasNext();) {
+				fac = i.next();
+			%>
+			<tr>
+				<td><%out.print(fac.getFacturaID());%></td>
+				<td><%out.print(fac.getComprador());%></td>
+				<td><%out.print(fac.getArticulo());%></td>
+			</tr>
+			<%
+				}
+			%>
+		</tbody>
+	</table>
 </div>
-</body>
