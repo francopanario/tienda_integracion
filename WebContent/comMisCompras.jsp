@@ -47,7 +47,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% List<Factura> facturas = Controlador.getInstancia().getAllFacturasComprador();
+			<% List<Factura> facturas = Controlador.getInstancia().getAllFacturasComprador(Controlador.getInstancia().getUsername(),Controlador.getInstancia().getPassword());
 		  		Factura fac;     
 			%>
 			<% for (Iterator<Factura> i = facturas.iterator(); i.hasNext();) {
@@ -55,8 +55,8 @@
 			%>
 			<tr>
 				<td><%out.print(fac.getFacturaID());%></td>
-				<td><%out.print(fac.getComprador());%></td>
-				<td><%out.print(fac.getArticulo());%></td>
+				<td><%out.print(fac.getComprador().getUsername());%></td>
+				<td><%out.print(fac.getArticulo().getNombre());%></td>
 			</tr>
 			<%
 				}
