@@ -46,7 +46,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% List<Producto> productos = Controlador.getInstancia().getAllProductosVendedor(request.getParameter("usuario_id"));
+			<% List<Producto> productos = Controlador.getInstancia().getAllProductosVendedor(Controlador.getInstancia().getUsername(),Controlador.getInstancia().getPassword());
 		  		Producto prod;    
 			%>
 			<% for (Iterator<Producto> i = productos.iterator(); i.hasNext();) {

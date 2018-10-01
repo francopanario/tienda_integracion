@@ -139,8 +139,6 @@ public class ProductoDAO {
 		List<Producto> productos = new ArrayList<>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-
-		System.out.println(usuario_id+"           asfghdfjgkhjgjhgdgsfhgjhkjlk");
 		List<ProductoEntity> list = (List<ProductoEntity>) session.createQuery("from ProductoEntity p where p.usuario.usuario_id=?").setParameter(0,usuario_id).list();
 		int i=0;
 		for(ProductoEntity entity: list) {

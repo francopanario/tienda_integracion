@@ -136,8 +136,9 @@ public class Controlador {
 		return ProductoDAO.getInstancia().getAll();
 	}
 	
-	public List<Producto> getAllProductosVendedor(String usuario_id) {
-		return ProductoDAO.getInstancia().getAllVendedor(usuario_id);
+	public List<Producto> getAllProductosVendedor(String username,String password) throws UsuarioException {
+		Usuario us=existeUsuario(username, password);
+		return ProductoDAO.getInstancia().getAllVendedor(us.getUsuario_id());
 	}
 	
 	// Factura ABM
@@ -162,7 +163,6 @@ public class Controlador {
 	}
 	
 	public List<Factura> getAllFacturasVendedor(String username,String password) throws UsuarioException {
-		System.out.println(username);
 		Usuario us=existeUsuario(username, password);
 		return FacturaDAO.getInstancia().getAllFacturas(us.getUsuario_id());
 	}
