@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import negocio.Factura;
+
 @Entity
 @Table(name = "facturas")
 public class FacturaEntity {
@@ -106,6 +108,11 @@ public class FacturaEntity {
 
 	public void setArticulo(ProductoEntity articulo) {
 		this.articulo = articulo;
+	}
+
+
+	public Factura toNegocio(FacturaEntity facturaEntity) {
+		return new Factura(facturaEntity);
 	}
 	
 	
