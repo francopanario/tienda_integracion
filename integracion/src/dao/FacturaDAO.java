@@ -67,11 +67,25 @@ private static FacturaDAO instancia;
 		session.close();
 	}
 	
-	public List<Factura> getAllFacturas(String usuario_id) {
+	public List<Factura> getAllFacturasVendedor(String usuario_id) {
 		List<Factura> facturas = new ArrayList<>();
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		List<FacturaEntity> list = (List<FacturaEntity>) session.createQuery("from FacturaEntity f where f.vendedor.usuario_id=?").setString(0,usuario_id).list();
+		int i=0;
+		for(FacturaEntity entity: list) {
+			facturas.add(entity.toNegocio(list.get(i)));
+			i++;
+		}
+		return facturas;
+	}
+
+
+	public List<Factura> getAllFacturasComprador(String usuario_id) {
+		List<Factura> facturas = new ArrayList<>();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		List<FacturaEntity> list = (List<FacturaEntity>) session.createQuery("from FacturaEntity f where f.comprador=?").setString(0,usuario_id).list();
 		int i=0;
 		for(FacturaEntity entity: list) {
 			facturas.add(entity.toNegocio(list.get(i)));
