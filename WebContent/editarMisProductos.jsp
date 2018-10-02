@@ -8,9 +8,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.blockUI.js"></script>
-<script type="text/javascript" src="js/bootstrap-notify.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
@@ -40,35 +37,23 @@
   </div><!-- /navbar-inner -->
 </div>
 <div class="container">
-	<form id="editarProducto" method="post" action="Inicio?action=editarProducto" class="form-horizontal" role="form">
+	<form method="post" action="Inicio?action=modificarProducto">
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Codigo de Barras</th>
 					<th>Nombre</th>
-					<th>Precio</th>
-					<th>Activo</th>			
+					<th>Precio</th>					
 				</tr>
 			</thead>
 			<tbody>
-				<% List<Producto> productos = Controlador.getInstancia().getAllProductosVendedor(Controlador.getInstancia().getUsername(),Controlador.getInstancia().getPassword());
-			  		Producto prod;    
-				%>
-				<% for (Iterator<Producto> i = productos.iterator(); i.hasNext();) {
-					prod = i.next();
-				%>
+				<% Producto prod = Controlador.getInstancia().getProductoVendedor(request.getParameter("codBarra"));%>
 				<tr>
 					<td><%out.print(prod.getCodBarra());%></td>
-					<td><%out.print(prod.getNombre());%></td>
-					<td><%out.print(prod.getPrecio());%></td>
-					<td><%out.print(prod.isActivo());%></td>
-					<td><button id="btn-editar" name="codBarra" value="<%out.print(prod.getCodBarra());%>" type="submit" class="btn btn-success">Editar</button></td>
-					<td><input id="btn-baja" name="baja" value="Baja" type="button" class="btn btn-success" onclick="baja()" /></td>
-					<td><input id="btn-activar" name="activar" value="Alta" type="button" class="btn btn-success" onclick="activar()" /></td>												
-				</tr>
-				<%				
-					}
-				%>
+					<td><input style="max-width: 60px;"type="text" value="<%out.print(prod.getNombre());%>" name="nombre" id="nombre" /></td>
+					<td><input style="max-width: 60px;"type="text" value="<%out.print(prod.getPrecio());%>" name="precio" id="precio" /></td>
+					<td><button name="codBarra" value=<%out.print(prod.getCodBarra());%> class="btn btn-success" type="submit">Editar</button></td>				
+				</tr>						
 			</tbody>
 		</table>
 	</form>

@@ -14,36 +14,7 @@
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<script type="text/javascript">
-	function callPostServletCompra() {
-		//var cantidad=$("#cantidad_"+codBarra).val();
-		var codBarra = ${prod.codBarra};
-		var nombre = ${prod.nombre};
-		var precio = ${prod.precio};
-		var usuario_id = ${usuario.usuario_id};
-		alert(codBarra);
-		alert(nombre);
-		alert(precio);
-		alert(cantidad);
-		alert(usuario_id);
-		var url='Compra';
-		//$(button).prop('disabled',true);
-		console.log('cantidad '+cantidad);	
-		$.ajax({
-			url: url,
-		    type: "post",
-		    //data: {codBarra: codBarra, nombre: nombre, precio: precio, cantidad, usuario_id : usuario_id}
-		}).done(function (respuesta){
-			//$(button).prop('disabled',false);
-			$.unblockUI();
-			$.notify({message: 'Articulo agregado correctamente!'},{type: 'success'});
-		}).fail(function(){
-			$.unblockUI();
-			var responseJsonObj = JSON.parse(data.responseText);
-			$.notify({message: responseJsonObj.errorMessage},{type: 'danger'});
-		});
-	}
-</script>
+
 
 <div class="navbar">
   <div class="navbar-inner">
@@ -77,7 +48,8 @@
 					<th>Codigo de Barras</th>
 					<th>Nombre</th>
 					<th>Precio</th>
-					<th>Cantidad</th>				
+					<th>Cantidad</th>
+					<th>TEST</th>			
 				</tr>
 			</thead>
 			<tbody>
@@ -91,15 +63,15 @@
 					<td id="codBarra" label for="usermail"><%out.print(prod.getCodBarra());%></td>
 					<td><%out.print(prod.getNombre());%></td>
 					<td><%out.print(prod.getPrecio());%></td>
-					<td><input style="max-width: 60px;"type="number" value="0" name="cantidad" id="cantidad"></td>
-					<td>
-						<button id="btn-login" name="codBarra" value=<%out.print(prod.getCodBarra());%> type="submit" class="btn btn-success">Comprar</button>				
-					</td>
+					<td><input style="max-width: 60px;"type="number" value="0" name="cantidad" id="cantidad" /></td>
+					<td><%=request.getAttribute("usuario") %></td>
+					<td><button id="btn-login" name="codBarra" value=<%out.print(prod.getCodBarra());%> type="submit" class="btn btn-success">Comprar</button></td>
+					<td><button class="btn btn-success" type="submit">Baja</button></td>
 				</tr>
 				<%
 					}
 				%>
 			</tbody>
-		</table>
+		</table>		
 	</form>
 </div>

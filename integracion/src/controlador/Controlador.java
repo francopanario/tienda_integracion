@@ -79,14 +79,19 @@ public class Controlador {
 		}
 	}	
 	
-	public void modificarUsuario(String codBarra, String nombre, float precio, String usuario_id, boolean b) {
+	public void modificarProducto(String codBarra, String nombre, float precio) {
 		try {
-			ProductoDAO.getInstancia().modificarProducto(codBarra,nombre,precio,usuario_id,b);
+			ProductoDAO.getInstancia().modificarProducto(codBarra,nombre,precio);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-	}	
+	}
+	
+	public Producto getProductoVendedor(String codBarra) throws ProductoException {
+		return ProductoDAO.getInstancia().getProductoById(codBarra);	
+	}
+	
 	
 	//UsuarioABM
 	

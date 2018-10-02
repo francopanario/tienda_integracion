@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 import controlador.*;
+import dao.ProductoDAO;
 import exceptions.UsuarioException;
 import negocio.Producto;
 import negocio.Usuario;
@@ -120,6 +121,26 @@ public class Inicio extends HttpServlet {
 			String precio = request.getParameter("precio");
 			Controlador.getInstancia().nuevoProducto(String.valueOf(n), nombre, Float.valueOf(precio), usuario, password);
 			dispatch("vistaVendedor.jsp", request, response);
+		}
+		
+		else if ("editarProducto".equalsIgnoreCase(action)) {
+			String codBarra = request.getParameter("codBarra");
+			String nombre =  request.getParameter("nombre");
+			String precio = request.getParameter("precio");
+			//Producto producto = ProductoDAO.getInstancia().getProductoById(codBarra);			
+			request.setAttribute("codBarra", codBarra);
+			request.getRequestDispatcher("./editarMisProductos.jsp").forward(request, response);			
+		}
+		
+		else if ("modificarProducto".equalsIgnoreCase(action)) {
+			String codBarra = request.getParameter("codBarra");
+			String nombre =  request.getParameter("nombre");
+			float precio = Float.parseFloat(request.getParameter("precio"));
+			//Producto producto = ProductoDAO.getInstancia().getProductoById(codBarra);
+			System.out.println(codBarra);
+			Controlador.getInstancia().modificarProducto(codBarra, nombre, precio);
+			request.setAttribute("codBarra", codBarra);
+			request.getRequestDispatcher("./venMisProductos.jsp").forward(request, response);			
 		}
 	}
 

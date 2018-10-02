@@ -101,16 +101,14 @@ public class ProductoDAO {
 		}		
 	}	
 
-	public void modificarProducto(String codBarra, String nombre, float precio, String usuario_id, boolean b) throws UsuarioException, ProductoException {
+	public void modificarProducto(String codBarra, String nombre, float precio) throws UsuarioException, ProductoException {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		ProductoEntity pe = (ProductoEntity) session.createQuery("from ProductoEntity where producto_id = ?")
-				.setParameter(0, codBarra).uniqueResult();
-		UsuarioEntity usuario = UsuarioDAO.getInstancia().findById(usuario_id); 
+				.setParameter(0, codBarra).uniqueResult();		
 		if (pe!=null){
 			pe.setNombre(nombre);
-			pe.setPrecio(precio);
-			pe.setUsuario(usuario);
+			pe.setPrecio(precio);			
 			pe.setActivo(true);
 			session.beginTransaction();
 			session.save(pe);
