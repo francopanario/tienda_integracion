@@ -64,7 +64,7 @@
 					<td><%out.print(prod.isActivo());%></td>
 					<td><button id="btn-editar" name="codBarra" value="<%out.print(prod.getCodBarra());%>" type="submit" class="btn btn-success">Editar</button></td>
 					<td><input id="btn-baja" name="baja" value="Baja" type="button" class="btn btn-success" onclick="baja()" /></td>
-					<td><input id="btn-activar" name="activar" value="Alta" type="button" class="btn btn-success" onclick="activar()" /></td>												
+					<td><input id="btn-activar" name="activar" value="Alta" type="button" class="btn btn-success" onclick="activar()" ></td>												
 				</tr>
 				<%				
 					}
