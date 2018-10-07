@@ -106,6 +106,7 @@ public class Inicio extends HttpServlet {
 				e1.printStackTrace();
 			}
 			
+			
 			if (tipo_usuario.equalsIgnoreCase("comprador")) {
 				dispatch("vistaComprador.jsp", request, response);
 			}else {
