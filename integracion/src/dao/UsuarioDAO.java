@@ -94,7 +94,7 @@ public class UsuarioDAO {
 		if (ue!=null){
 			return new Usuario(ue);			
 		}else {
-			throw new UsuarioException("El usuario no existe, verifique el codigo de barras");
+			throw new UsuarioException("El usuario no existe, verificar los datos de login");
 		}
 	}
 
@@ -131,7 +131,7 @@ public class UsuarioDAO {
 		if (ue!=null){
 			return new Usuario(ue);			
 		}else {
-			throw new UsuarioException("El usuario no existe, verifique el codigo de barras");
+			throw new UsuarioException("El usuario no existe, verificar los datos de login");
 		}
 	}
 	
