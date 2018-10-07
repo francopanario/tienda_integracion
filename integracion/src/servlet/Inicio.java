@@ -64,13 +64,6 @@ public class Inicio extends HttpServlet {
 			dispatch(jspPage, request, response);
 		}
 		
-		try {
-			GoogleMail.Send("tienda.integracion", "tienda123", "jmcovre@hotmail.com", "Integracion", "SUBI LA DOCUMENTACION LA PUTA MADRE");
-		} catch (MessagingException | javax.mail.MessagingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
 		if ("default".equalsIgnoreCase(action)) {
 			jspPage = "/index.jsp";
 		} else if ("login".equalsIgnoreCase(action)) {
