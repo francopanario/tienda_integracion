@@ -12,6 +12,7 @@
 <script type="text/javascript" src="js/jquery.blockUI.js"></script>
 <script type="text/javascript" src="js/bootstrap-notify.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="navbar">
@@ -53,6 +54,7 @@
 			<tbody>
 				<% List<Producto> productos = Controlador.getInstancia().getAllProductosVendedor(Controlador.getInstancia().getUsername(),Controlador.getInstancia().getPassword());
 			  		Producto prod;    
+			  		
 				%>
 				<% for (Iterator<Producto> i = productos.iterator(); i.hasNext();) {
 					prod = i.next();
@@ -61,14 +63,13 @@
 					<td><%out.print(prod.getCodBarra());%></td>
 					<td><%out.print(prod.getNombre());%></td>
 					<td><%out.print(prod.getPrecio());%></td>
-					<td><%out.print(prod.isActivo());%></td>
-					<td><button id="btn-editar" name="codBarra" value="<%out.print(prod.getCodBarra());%>" type="submit" class="btn btn-success">Editar</button></td>
-					<td><input id="btn-baja" name="baja" value="Baja" type="button" class="btn btn-success" onclick="baja()" /></td>
-					<td><input id="btn-activar" name="activar" value="Alta" type="button" class="btn btn-success" onclick="activar()" ></td>												
+					<td><%out.print(prod.isActivo());%></td>					
+					<td><button id="btn-editar" name="codBarra" value="<%out.print(prod.getCodBarra());%>" type="submit" class="btn btn-success">Editar</button></td>					
 				</tr>
 				<%				
 					}
 				%>
+				
 			</tbody>
 		</table>
 	</form>

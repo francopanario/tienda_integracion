@@ -79,9 +79,9 @@ public class Controlador {
 		}
 	}	
 	
-	public void modificarProducto(String codBarra, String nombre, float precio) {
+	public void modificarProducto(String codBarra, String nombre, float precio, String estado) {
 		try {
-			ProductoDAO.getInstancia().modificarProducto(codBarra,nombre,precio);
+			ProductoDAO.getInstancia().modificarProducto(codBarra,nombre,precio, estado);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
