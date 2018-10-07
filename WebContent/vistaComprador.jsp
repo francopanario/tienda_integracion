@@ -48,20 +48,23 @@
 					<th>Codigo de Barras</th>
 					<th>Nombre</th>
 					<th>Precio</th>
-					<th>Cantidad</th>						
+					<th>Vendedor</th>
+					<th>Cantidad</th>								
 				</tr>
 			</thead>
 			<tbody>
 				<% List<Producto> productos = Controlador.getInstancia().getAllProductos();
-			  		Producto prod;    
+			  		Producto prod;			  		
 				%>
 				<% for (Iterator<Producto> i = productos.iterator(); i.hasNext();) {
 					prod = i.next();
+					Usuario usuario = prod.getUsuario();
 				%>
 				<tr>
 					<td id="codBarra" label for="usermail"><%out.print(prod.getCodBarra());%></td>
 					<td><%out.print(prod.getNombre());%></td>
 					<td><%out.print(prod.getPrecio());%></td>
+					<td><%out.print(usuario.getUsername());%>
 					<td><input style="max-width: 60px;"type="number" value="0" name="cantidad" id="cantidad" /></td>
 					<td><button id="btn-login" name="codBarra" value=<%out.print(prod.getCodBarra());%> type="submit" class="btn btn-success">Comprar</button></td>					
 				</tr>
