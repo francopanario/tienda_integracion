@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import controlador.Controlador;
+import exceptions.ProductoException;
 
 public class altaProducto {
 
@@ -16,7 +17,7 @@ public class altaProducto {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws ProductoException{
 		Random rand = new Random();
 		int  n = rand.nextInt(999999999) + 111111111;
 		String usuario = "fpanario";
@@ -24,6 +25,7 @@ public class altaProducto {
 		String nombre = "Milanesa";
 		String precio = String.valueOf(52.2);
 		Controlador.getInstancia().nuevoProducto(String.valueOf(n), nombre, Float.valueOf(precio), usuario, password);
+
 	}
 
 }
