@@ -106,6 +106,13 @@ public class Inicio extends HttpServlet {
 			String tipo_usuario = request.getParameter("tipo_usuario");			
 			Controlador.getInstancia().nuevoUsuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario, true);
 			Controlador.getInstancia().setearUsuario(username, password);
+			try {
+				GoogleMail.Send("tienda.integracion", "tienda123", mail, "Bienvenido a la Tienda!", "Hola "+username+"! , bievenido a la tienda. Felices compras!." );
+			} catch (MessagingException | javax.mail.MessagingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			if (tipo_usuario.equalsIgnoreCase("comprador")) {
 				dispatch("vistaComprador.jsp", request, response);
 			}else {
