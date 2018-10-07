@@ -52,7 +52,12 @@
 					<td><%out.print(prod.getCodBarra());%></td>
 					<td><input style="max-width: 60px;"type="text" value="<%out.print(prod.getNombre());%>" name="nombre" id="nombre" /></td>
 					<td><input style="max-width: 60px;"type="text" value="<%out.print(prod.getPrecio());%>" name="precio" id="precio" /></td>
-					<td><input style="max-width: 60px;"type="checkbox" value="<%out.print(prod.isActivo());%>" checked="<%out.print(prod.isActivo());%>" name="estado" id="estado" /></td>
+					<td>
+						<select type="text" class="form-control" name="estado" placeholder="estado">
+							<option value="true">Activar</option>
+							<option value="false">Desactivar</option>
+						</select>
+					</td>
 					<td><button name="codBarra" value=<%out.print(prod.getCodBarra());%> class="btn btn-success" type="submit">Editar</button></td>								
 				</tr>						
 			</tbody>
