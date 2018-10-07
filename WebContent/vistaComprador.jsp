@@ -48,8 +48,7 @@
 					<th>Codigo de Barras</th>
 					<th>Nombre</th>
 					<th>Precio</th>
-					<th>Cantidad</th>
-					<th>TEST</th>			
+					<th>Cantidad</th>						
 				</tr>
 			</thead>
 			<tbody>
@@ -64,9 +63,7 @@
 					<td><%out.print(prod.getNombre());%></td>
 					<td><%out.print(prod.getPrecio());%></td>
 					<td><input style="max-width: 60px;"type="number" value="0" name="cantidad" id="cantidad" /></td>
-					<td><%=request.getAttribute("usuario") %></td>
-					<td><button id="btn-login" name="codBarra" value=<%out.print(prod.getCodBarra());%> type="submit" class="btn btn-success">Comprar</button></td>
-					<td><button class="btn btn-success" type="submit">Baja</button></td>
+					<td><button id="btn-login" name="codBarra" value=<%out.print(prod.getCodBarra());%> type="submit" class="btn btn-success">Comprar</button></td>					
 				</tr>
 				<%
 					}

@@ -177,8 +177,7 @@ public class Inicio extends HttpServlet {
 			String direccion =  request.getParameter("direccion");
 			String tipo =  request.getParameter("tipo");
 			String estado = request.getParameter("estado");
-			//Producto producto = ProductoDAO.getInstancia().getProductoById(codBarra);
-		
+			//Producto producto = ProductoDAO.getInstancia().getProductoById(codBarra);		
 			Controlador.getInstancia().modificarUsuario(dni, username, mail, direccion, telefono, tipo, estado);
 			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("./admin.jsp").forward(request, response);			

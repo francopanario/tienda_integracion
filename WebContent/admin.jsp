@@ -73,12 +73,12 @@
 							}
 						%>
 					</td>
+					<td><%out.print(usuario.isActivo());%></td>
 					<td><button id="btn-editar" name="usuarioId" value="<%out.print(usuario.getUsuario_id());%>" type="submit" class="btn btn-success">Editar</button></td>					
 				</tr>
 				<%				
 					}
-				%>
-				
+				%>				
 			</tbody>
 		</table>
 	</form>

@@ -109,8 +109,8 @@ public class ProductoDAO {
 		if (pe!=null){
 			pe.setNombre(nombre);
 			pe.setPrecio(precio);
-			String est=estado;
-			if (est.equalsIgnoreCase("true")){
+			
+			if (estado.equalsIgnoreCase("true")){
 				pe.setActivo(true);
 			}else {
 				pe.setActivo(false);
