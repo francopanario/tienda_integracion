@@ -33,7 +33,7 @@
 					</div>
 					<div style="margin-top: 10px" class="form-group">
 						<!-- #################################### BOTON SUBMIT ####################################-->
-						<div class="col-sm-12 controls">
+						<div class="col-sm-6 controls">
 							<button id="btn-login" type="submit" class="btn btn-success">Loguearse</button>
 						</div>
 					</div>

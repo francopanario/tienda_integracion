@@ -71,16 +71,23 @@ public class Inicio extends HttpServlet {
 			String password = request.getParameter("password");
 			try {
 				Usuario usuario = Controlador.getInstancia().existeUsuario(username,password);
+				//System.out.println(usuario.getTipo_usuario());
 				if (usuario != null ) {
 					Controlador.getInstancia().setearUsuario(username, password);
 					if (usuario.getTipo_usuario().equalsIgnoreCase("comprador")) {
 						action = "default";
 						request.setAttribute("usuario", usuario);
 						dispatch("vistaComprador.jsp", request, response);
-					}else {
+					}
+					if (usuario.getTipo_usuario().equalsIgnoreCase("vendedor")) {
 						action = "default";
 						request.setAttribute("usuario_id", usuario.getUsuario_id());
 						dispatch("vistaVendedor.jsp", request, response);
+					}
+					if(usuario.getTipo_usuario().equalsIgnoreCase("administrador")) {
+						action = "default";
+						request.setAttribute("usuario", usuario);
+						dispatch("admin.jsp", request, response);
 					}
 				}
 			} catch (UsuarioException e) {				
@@ -120,6 +127,7 @@ public class Inicio extends HttpServlet {
 			String usuario = Controlador.getInstancia().getUsername();
 			String password = Controlador.getInstancia().getPassword();
 			String codBarra = request.getParameter("codBarra");
+			
 			Controlador.getInstancia().nuevaFactura(String.valueOf(n), usuario, password, codBarra);
 			dispatch("vistaComprador.jsp", request, response);
 		}

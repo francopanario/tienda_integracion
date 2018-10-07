@@ -40,7 +40,7 @@
     </div>
   </div><!-- /navbar-inner -->
 </div>
-<div>
+<div class="container">
 	<form method="post" action="Inicio?action=nuevaFactura">
 			<table class="table table-striped">
 			<thead>
@@ -49,6 +49,7 @@
 					<th>Nombre</th>
 					<th>Precio</th>
 					<th>Vendedor</th>
+					<th>Medio de Pago</th>
 					<th>Cantidad</th>								
 				</tr>
 			</thead>
@@ -64,14 +65,48 @@
 					<td id="codBarra" label for="usermail"><%out.print(prod.getCodBarra());%></td>
 					<td><%out.print(prod.getNombre());%></td>
 					<td><%out.print(prod.getPrecio());%></td>
-					<td><%out.print(usuario.getUsername());%>
+					<td><%out.print(usuario.getUsername());%></td>
+					<td>
+						<select id="medio" type="text" class="form-control" name="medio" placeholder="estado" style="max-width: 90px;" onchange="yesnoCheck(this);">
+							<option value="blank"></option>
+							<option value="efectivo">Efectivo</option>
+							<option value="tarjeta">Tarjeta</option>
+							<option value="ctaCorriente">CtaCorriente</option>							
+						</select>
+					</td>
+					<script>
+    					function yesnoCheck(that) {
+        					if (that.value == "tarjeta") {
+            					document.getElementById("ifYes").style.display = "block";
+       						 } else {
+	           					document.getElementById("ifYes").style.display = "none";
+	       					 }
+        					if (that.value == "ctaCorriente") {
+        						document.getElementById("ifSo").style.display = "block";
+      						 } else {
+	           					document.getElementById("ifSo").style.display = "none";
+	       					 }
+ 					   	}
+					</script>
 					<td><input style="max-width: 60px;"type="number" value="0" name="cantidad" id="cantidad" /></td>
 					<td><button id="btn-login" name="codBarra" value=<%out.print(prod.getCodBarra());%> type="submit" class="btn btn-success">Comprar</button></td>					
-				</tr>
+				</tr>					
 				<%
 					}
 				%>
 			</tbody>
-		</table>		
+		</table>
+		<br />
+		<div class="row" id="ifYes" style="display: none;">
+    		<label for="nroTarjeta">Numero de Tarjeta</label><input id="nroTarjeta" name="nroTarjeta"></input>
+    		<label for="duenio">Nombre del propietario</label><input id="duenio" name="duenio"></input>
+    		<label for="fechaExp">Fecha expiracion</label><input id="fechaExp" name="fechaExp"></input>
+    		<label for="codigo">Codigo Seguridad</label><input id="codigo" type="password"  name="codigo"></input>    						
+		</div>
+		<div class="row" id="ifSo" style="display: none;">
+    		<label for="nroCuenta">Numero de Cuenta</label><input id="nroCuenta" name="nroCuenta"></input>
+    		<label for="duenio">Nombre del propietario</label><input id="duenio" name="duenio"></input>
+    		<label for="banco">Banco</label><input id="banco" name="banco"></input>    						
+		</div>
 	</form>
 </div>

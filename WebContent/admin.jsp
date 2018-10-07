@@ -12,7 +12,6 @@
 <script type="text/javascript" src="js/jquery.blockUI.js"></script>
 <script type="text/javascript" src="js/bootstrap-notify.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="navbar">
