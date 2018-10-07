@@ -72,8 +72,7 @@
 								out.print("<p style='max-width:20px; background-color: #ff0000;'>&nbsp;</p>");
 							}
 						%>
-					</td>
-					<td><%out.print(usuario.isActivo());%></td>
+					</td>					
 					<td><button id="btn-editar" name="usuarioId" value="<%out.print(usuario.getUsuario_id());%>" type="submit" class="btn btn-success">Editar</button></td>					
 				</tr>
 				<%				

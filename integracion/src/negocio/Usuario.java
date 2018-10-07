@@ -26,6 +26,7 @@ public class Usuario {
 		this.password=Usuario.getPassword();
 		this.mail=Usuario.getMail();
 		this.direccion=Usuario.getDireccion();
+		this.activo=Usuario.isActivo();
 	}	
 	
 	public Usuario(String usuario_id, String username, String password, String telefono, String mail, String direccion,
