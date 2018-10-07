@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import controlador.Controlador;
 import negocio.Producto;
-public class ObtenerProductos {
+public class obtenerProductos {
 
 
 	@Test
