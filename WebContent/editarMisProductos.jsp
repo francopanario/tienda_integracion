@@ -50,10 +50,10 @@
 				<% Producto prod = Controlador.getInstancia().getProductoVendedor(request.getParameter("codBarra"));%>
 				<tr>
 					<td><%out.print(prod.getCodBarra());%></td>
-					<td><input style="max-width: 60px;"type="text" value="<%out.print(prod.getNombre());%>" name="nombre" id="nombre" /></td>
-					<td><input style="max-width: 60px;"type="text" value="<%out.print(prod.getPrecio());%>" name="precio" id="precio" /></td>
+					<td><input style="max-width: 60px;" type="text" value="<%out.print(prod.getNombre());%>" name="nombre" id="nombre" /></td>
+					<td><input style="max-width: 60px;" type="text" value="<%out.print(prod.getPrecio());%>" name="precio" id="precio" /></td>
 					<td>
-						<select type="text" class="form-control" name="estado" placeholder="estado">
+						<select type="text" class="form-control" name="estado" placeholder="estado" style="max-width: 90px;">
 							<option value="true">Activar</option>
 							<option value="false">Desactivar</option>
 						</select>

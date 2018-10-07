@@ -63,7 +63,14 @@
 					<td><%out.print(prod.getCodBarra());%></td>
 					<td><%out.print(prod.getNombre());%></td>
 					<td><%out.print(prod.getPrecio());%></td>
-					<td><%out.print(prod.isActivo());%></td>					
+					<td><%
+							if (prod.isActivo()){
+								out.print("<p style='max-width:20px; background-color: #33cc33;'>&nbsp;</p>");
+							}else{
+								out.print("<p style='max-width:20px; background-color: #ff0000;'>&nbsp;</p>");
+							}
+						%>
+					</td>
 					<td><button id="btn-editar" name="codBarra" value="<%out.print(prod.getCodBarra());%>" type="submit" class="btn btn-success">Editar</button></td>					
 				</tr>
 				<%				
