@@ -121,7 +121,7 @@ public class Controlador {
 	}
 
 	public void modificarUsuario(String usuario_id,String username, String mail, String direccion, String telefono, String tipo_usuario,
-			boolean b) {
+			String b) {
 		try {
 			UsuarioDAO.getInstancia().modificarUsuario(usuario_id,username,mail,direccion,telefono,tipo_usuario,b);
 		} catch (Exception e) {
@@ -134,6 +134,9 @@ public class Controlador {
 		return UsuarioDAO.getInstancia().existeUsuario(username,password);		
 	}
 
+	public List<Usuario> getAllUsuarios() {
+		return UsuarioDAO.getInstancia().getUsuarios();
+	}
 	
 	// ############################ TIENDA ############################ 
 	

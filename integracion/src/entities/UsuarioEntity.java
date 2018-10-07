@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import negocio.Producto;
+import negocio.Usuario;
+
 @Entity
 @Table(name="usuarios")
 public class UsuarioEntity {
@@ -106,6 +109,9 @@ public class UsuarioEntity {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
-
+	
+	public Usuario toNegocio(UsuarioEntity usuarioEntity) {
+		return new Usuario(usuarioEntity);
+	}
 	
 }

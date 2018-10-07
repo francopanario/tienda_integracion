@@ -99,7 +99,7 @@ public class UsuarioDAO {
 	}
 
 	public void modificarUsuario(String usuario_id, String username, String mail, String direccion, String telefono, String tipo_usuario,
-			boolean b) throws UsuarioException {SessionFactory sf = HibernateUtil.getSessionFactory();
+			String b) throws UsuarioException {SessionFactory sf = HibernateUtil.getSessionFactory();
 			Session session = sf.openSession();
 			UsuarioEntity ue = (UsuarioEntity) session.createQuery("from UsuarioEntity where usuario_id = ?")
 					.setParameter(0, usuario_id).uniqueResult();
@@ -109,7 +109,11 @@ public class UsuarioDAO {
 				ue.setTelefono(telefono);
 				ue.setMail(mail);
 				ue.setDireccion(direccion);
-				ue.setActivo(b);
+				if (b.equals("true")) {
+					ue.setActivo(true);
+				}else {
+					ue.setActivo(false);
+				}
 				session.beginTransaction();
 				session.save(ue);
 				session.getTransaction().commit();
@@ -129,6 +133,19 @@ public class UsuarioDAO {
 		}else {
 			throw new UsuarioException("El usuario no existe, verifique el codigo de barras");
 		}
+	}
+	
+	public List<Usuario> getUsuarios() {
+		List<Usuario> usuarios = new ArrayList<>();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		List<UsuarioEntity> list = session.createQuery("from UsuarioEntity").list();
+		int i=0;
+		for(UsuarioEntity entity: list) {
+			usuarios.add(entity.toNegocio(list.get(i)));
+			i++;
+		}
+		return usuarios;
 	}		
 	
 }

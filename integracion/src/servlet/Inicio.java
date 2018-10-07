@@ -155,6 +155,34 @@ public class Inicio extends HttpServlet {
 			request.setAttribute("codBarra", codBarra);
 			request.getRequestDispatcher("./venMisProductos.jsp").forward(request, response);			
 		}
+		
+		else if ("admUsuarios".equalsIgnoreCase(action)) {
+			String dni = request.getParameter("usuarioId");
+			/*String username =  request.getParameter("username");
+			String mail =  request.getParameter("mail");
+			String password =  request.getParameter("password");
+			String telefono =  request.getParameter("telefono");
+			String direccion =  request.getParameter("direccion");
+			String tipo =  request.getParameter("tipo");*/
+			request.setAttribute("dni", dni);
+			request.getRequestDispatcher("./editarUsuarios.jsp").forward(request, response);						
+		}
+		
+		else if ("modificarUsuario".equalsIgnoreCase(action)) {
+			String dni = request.getParameter("usuarioId");
+			String username =  request.getParameter("username");
+			String mail =  request.getParameter("mail");
+			String password =  request.getParameter("password");
+			String telefono =  request.getParameter("telefono");
+			String direccion =  request.getParameter("direccion");
+			String tipo =  request.getParameter("tipo");
+			String estado = request.getParameter("estado");
+			//Producto producto = ProductoDAO.getInstancia().getProductoById(codBarra);
+		
+			Controlador.getInstancia().modificarUsuario(dni, username, mail, direccion, telefono, tipo, estado);
+			request.setAttribute("dni", dni);
+			request.getRequestDispatcher("./admin.jsp").forward(request, response);			
+		}
 	}
 
 	protected void dispatch(String jsp, HttpServletRequest request, HttpServletResponse response)
