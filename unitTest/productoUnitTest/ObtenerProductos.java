@@ -18,7 +18,6 @@ public class ObtenerProductos {
 	public void obtenerProductos() {
 		List<Producto> prod=Controlador.getInstancia().getAllProductos();
 		assertTrue(0<prod.size());
-		
 	}
 
 }
