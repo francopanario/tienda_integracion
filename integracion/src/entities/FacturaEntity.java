@@ -30,7 +30,8 @@ public class FacturaEntity {
 	@Column(name = "factura_id")
 	private String factura_id;
 
-	
+	private String medio;
+	private int cantidad;
 	
 	@OneToOne
 	@JoinColumn(name = "comprador_id")
@@ -46,10 +47,11 @@ public class FacturaEntity {
 	private ProductoEntity articulo;
 
 
-	public FacturaEntity(String factura_id) {
+	public FacturaEntity(String factura_id, String medio, int cantidad) {
 		super();
 		this.factura_id = factura_id;
-
+		this.medio = medio;
+		this.cantidad = cantidad;
 	}
 	
 
@@ -114,7 +116,25 @@ public class FacturaEntity {
 	public Factura toNegocio(FacturaEntity facturaEntity) {
 		return new Factura(facturaEntity);
 	}
+
+
+	public String getMedio() {		
+		return medio;
+	}
+
+
+	public void setMedio(String medio) {
+		this.medio = medio;
+	}
+
+
+	public int getCant() {
+		return cantidad;
+	}
 	
+	public void setCant(int cant) {
+		this.cantidad = cant;
+	}
 	
 	
 }

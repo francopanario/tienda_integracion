@@ -4,6 +4,7 @@ package controlador;
 import negocio.Factura;
 
 import negocio.Producto;
+import negocio.Reclamo;
 
 import java.sql.Date;
 import java.util.List;
@@ -152,7 +153,7 @@ public class Controlador {
 	
 	// Factura ABM
 	
-	public void nuevaFactura(String factura_id, String comprador_username,String comprador_password, String producto_id)
+	public void nuevaFactura(String factura_id, String comprador_username,String comprador_password, String producto_id, String cant, String medio)
 	{
 		Usuario comprador;
 		Usuario vendedor;
@@ -161,7 +162,8 @@ public class Controlador {
 			comprador = existeUsuario(comprador_username, comprador_password);
 			articulo = new Producto((ProductoEntity)ProductoDAO.getInstancia().getProductoEntityById(producto_id));
 			vendedor = ProductoDAO.getInstancia().getVendedorAsociado(producto_id);
-			Factura factura=new Factura(factura_id, comprador, vendedor, articulo, 2);		
+			int cantidad = Integer.parseInt(cant);
+			Factura factura=new Factura(factura_id, comprador, vendedor, articulo, cantidad, medio);
 			factura.save();
 		} catch (UsuarioException e) {
 			e.printStackTrace();
@@ -181,4 +183,22 @@ public class Controlador {
 		return FacturaDAO.getInstancia().getAllFacturasComprador(us.getUsuario_id());
 	}
 
+
+
+	public void ingresarReclamo(String n, String detalles,boolean b) {
+		Reclamo recla = new Reclamo(n,detalles,b);
+		recla.save();
+	}
+
+	/*public void nuevoUsuario(String usuario_id,String username , String password,  String telefono,String mail,String direccion,String tipo_usuario, boolean activo)
+	{	
+		
+		try {
+			Usuario usuario = new Usuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario,activo);
+			usuario.save();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}*/
 }

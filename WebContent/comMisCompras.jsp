@@ -38,29 +38,36 @@
   </div><!-- /navbar-inner -->
 </div>
 <div class="container">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Factura ID</th>
-				<th>Vendedor</th>
-				<th>Articulo</th>				
-			</tr>
-		</thead>
-		<tbody>
-			<% List<Factura> facturas = Controlador.getInstancia().getAllFacturasComprador(Controlador.getInstancia().getUsername(),Controlador.getInstancia().getPassword());
-		  		Factura fac;     
-			%>
-			<% for (Iterator<Factura> i = facturas.iterator(); i.hasNext();) {
-				fac = i.next();
-			%>
-			<tr>
-				<td><%out.print(fac.getFacturaID());%></td>
-				<td><%out.print(fac.getVendedor().getUsername());%></td>
-				<td><%out.print(fac.getArticulo().getNombre());%></td>
-			</tr>
-			<%
-				}
-			%>
-		</tbody>
-	</table>
+	<form method="post" action="Inicio?action=Reclamar">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Factura ID</th>
+					<th>Vendedor</th>
+					<th>Articulo</th>
+					<th>Cantidad</th>
+					<th>Medio de Pago</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% List<Factura> facturas = Controlador.getInstancia().getAllFacturasComprador(Controlador.getInstancia().getUsername(),Controlador.getInstancia().getPassword());
+			  		Factura fac;     
+				%>
+				<% for (Iterator<Factura> i = facturas.iterator(); i.hasNext();) {
+					fac = i.next();
+				%>
+				<tr>
+					<td><%out.print(fac.getFacturaID());%></td>
+					<td><%out.print(fac.getVendedor().getUsername());%></td>
+					<td><%out.print(fac.getArticulo().getNombre());%></td>
+					<td><%out.print(fac.getCant());%></td>
+					<td><%out.print(fac.getMedio());%></td>
+					<td><button id="btn-login" name="facturaId" value=<%out.print(fac.getFacturaID());%> type="submit" class="btn btn-success">Reclamar</button></td>
+				</tr>
+				<%
+					}
+				%>
+			</tbody>
+		</table>
+	</form>
 </div>

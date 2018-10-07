@@ -45,7 +45,6 @@
 			<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>Codigo de Barras</th>
 					<th>Nombre</th>
 					<th>Precio</th>
 					<th>Vendedor</th>
@@ -62,12 +61,11 @@
 					Usuario usuario = prod.getUsuario();
 				%>
 				<tr>
-					<td id="codBarra" label for="usermail"><%out.print(prod.getCodBarra());%></td>
 					<td><%out.print(prod.getNombre());%></td>
 					<td><%out.print(prod.getPrecio());%></td>
 					<td><%out.print(usuario.getUsername());%></td>
 					<td>
-						<select id="medio" type="text" class="form-control" name="medio" placeholder="estado" style="max-width: 90px;" onchange="yesnoCheck(this);">
+						<select id="medio" type="text" class="form-control" name="medio" placeholder="medio" style="max-width: 90px;" onchange="yesnoCheck(this);">
 							<option value="blank"></option>
 							<option value="efectivo">Efectivo</option>
 							<option value="tarjeta">Tarjeta</option>

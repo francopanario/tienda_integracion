@@ -11,24 +11,37 @@ public class Factura {
 	private Usuario comprador;
 	private Usuario vendedor;
 	private Producto articulo;
-	//private int cant;
+	private String medio;
+	private int cantidad;
 	
 	
-	public Factura(String facturaID, Usuario comprador, Usuario vendedor, Producto articulo , int cant) {
+	public Factura(String facturaID, Usuario comprador, Usuario vendedor, Producto articulo , int cantidad, String medio) {
 		super();
 		this.facturaID = facturaID;
 		this.comprador = comprador;
-		this.vendedor = vendedor;
-		this.articulo = articulo;
-		//this.cant = cant;
+		this.vendedor  = vendedor;
+		this.articulo  = articulo;
+		this.cantidad      = cantidad;
+		this.medio     = medio;		
+	}
+
+	public Factura(FacturaEntity fa) {
+		this.facturaID = fa.getFactura_id();
+		this.comprador = new Usuario(fa.getComprador());
+		this.vendedor  = new Usuario(fa.getVendedor());
+		this.articulo  = new Producto(fa.getArticulo());
+		this.medio     = fa.getMedio();
+		this.cantidad      = fa.getCant();
+		
+	}
+
+	public String getMedio() {
+		return medio;
 	}
 
 
-	public Factura(FacturaEntity fa) {
-		this.facturaID=fa.getFactura_id();
-		this.comprador=new Usuario(fa.getComprador());
-		this.vendedor=new Usuario(fa.getVendedor());
-		this.articulo=new Producto(fa.getArticulo());
+	public void setMedio(String medio) {
+		this.medio = medio;
 	}
 
 
@@ -68,11 +81,19 @@ public class Factura {
 		
 		return articulo.getPrecio() /* * cant*/;
 	}
+	
+	public int getCant() {
+		return cantidad;
+	}
+
+
+	public void setCant(int cant) {
+		this.cantidad = cant;
+	}
+	
 
 	public void save() {
-		// TODO Auto-generated method stub
-		FacturaDAO.getInstancia().grabar(this);
-		
+		FacturaDAO.getInstancia().grabar(this);		
 	}
 	
 }

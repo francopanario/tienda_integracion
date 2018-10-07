@@ -10,14 +10,16 @@ public class ReclamoEntity {
 	@Column(name="reclamo_id")
 	private String reclamo_id;
 	private String detalles;
+	private boolean activo;
 	
 	
 	public void ReclamoEntity() {}
 
-	public ReclamoEntity(String reclamo_id, String detalles) {
+	public ReclamoEntity(String reclamo_id, String detalles, boolean b) {
 		super();
 		this.reclamo_id = reclamo_id;
 		this.detalles = detalles;
+		this.activo=b;
 	}
 
 	public String getReclamo_id() {
@@ -34,5 +36,9 @@ public class ReclamoEntity {
 
 	public void setDetalles(String detalles) {
 		this.detalles = detalles;
+	}
+
+	public boolean isActivo() {
+		return activo;
 	}
 }

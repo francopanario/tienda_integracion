@@ -127,8 +127,9 @@ public class Inicio extends HttpServlet {
 			String usuario = Controlador.getInstancia().getUsername();
 			String password = Controlador.getInstancia().getPassword();
 			String codBarra = request.getParameter("codBarra");
-			
-			Controlador.getInstancia().nuevaFactura(String.valueOf(n), usuario, password, codBarra);
+			String cantidad = request.getParameter("cantidad");
+			String medio = request.getParameter("medio");
+			Controlador.getInstancia().nuevaFactura(String.valueOf(n), usuario, password, codBarra, cantidad, medio);
 			dispatch("vistaComprador.jsp", request, response);
 		}
 		
@@ -189,6 +190,30 @@ public class Inicio extends HttpServlet {
 			Controlador.getInstancia().modificarUsuario(dni, username, mail, direccion, telefono, tipo, estado);
 			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("./admin.jsp").forward(request, response);			
+		}
+		
+		else if ("Reclamar".equalsIgnoreCase(action)) {
+			String facturaId = request.getParameter("facturaId");
+			request.setAttribute("facturaId", facturaId);
+			request.getRequestDispatcher("./ingresarReclamo.jsp").forward(request, response);
+		}
+		
+		else if ("ingresarReclamo".equalsIgnoreCase(action)) {
+			/*String dni = request.getParameter("usuarioId");
+			String username =  request.getParameter("username");
+			String mail =  request.getParameter("mail");
+			String password =  request.getParameter("password");
+			String telefono =  request.getParameter("telefono");
+			String direccion =  request.getParameter("direccion");
+			String tipo =  request.getParameter("tipo");
+			String estado = request.getParameter("estado");*/
+			Random rand = new Random();
+			int  n = rand.nextInt(999999999) + 111111111;
+			String id = Integer.toString(n);
+			String reclamo = request.getParameter("reclamo");
+			Controlador.getInstancia().ingresarReclamo(id,reclamo,true);
+			String facturaId= request.getParameter("facturaId");
+			request.getRequestDispatcher("conMisCompras.jsp").forward(request, response);			
 		}
 	}
 
