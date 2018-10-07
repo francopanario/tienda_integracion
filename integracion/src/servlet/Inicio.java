@@ -19,12 +19,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
+
+import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
+
 import controlador.*;
 import dao.ProductoDAO;
 import exceptions.UsuarioException;
 import negocio.Producto;
 import negocio.Usuario;
 import java.util.Random;
+import mail.GoogleMail;
 
 
 
@@ -58,6 +62,13 @@ public class Inicio extends HttpServlet {
 			action = "default";
 			request.setAttribute("excepcion", "");
 			dispatch(jspPage, request, response);
+		}
+		
+		try {
+			GoogleMail.Send("tienda.integracion", "tienda123", "jmcovre@hotmail.com", "Integracion", "SUBI LA DOCUMENTACION LA PUTA MADRE");
+		} catch (MessagingException | javax.mail.MessagingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		if ("default".equalsIgnoreCase(action)) {
