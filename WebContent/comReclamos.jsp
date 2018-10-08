@@ -52,8 +52,8 @@
 		</thead>
 		<tbody>
 			<%
-				List<Factura> facturas = Controlador.getInstancia().getAllFacturasVendedor(Controlador.getInstancia().getUsername(),Controlador.getInstancia().getPassword());
-		  		Factura fac;
+				List<Factura> facturas = Controlador.getInstancia().getAllFacturasComprador(Controlador.getInstancia().getUsername(),Controlador.getInstancia().getPassword());
+	  			Factura fac;
 		  		Reclamo rec;
 		  		List<Reclamo> reclamos = Controlador.getInstancia().getAllReclamos();
 		  		for(int i=0;i<facturas.size();i++){

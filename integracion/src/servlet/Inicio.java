@@ -104,7 +104,7 @@ public class Inicio extends HttpServlet {
 			String password     = request.getParameter("password");
 			String usuario_id   = request.getParameter("dni");
 			String direccion    = request.getParameter("direccion");
-			String tipo_usuario = request.getParameter("tipo_usuario");			
+			String tipo_usuario = request.getParameter("tipo_usuario");
 			Controlador.getInstancia().nuevoUsuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario, true);
 			Controlador.getInstancia().setearUsuario(username, password);
 			try {
@@ -122,16 +122,30 @@ public class Inicio extends HttpServlet {
 			}
 		}
 		
+		else if ("comprar".equalsIgnoreCase(action)) {
+			String codBarra = request.getParameter("codBarra");	
+			request.setAttribute("codBarra", codBarra);
+			request.getRequestDispatcher("./carrito.jsp").forward(request, response);
+		}
+		
 		else if ("nuevaFactura".equalsIgnoreCase(action)) {
 			Random rand = new Random();
 			int  n = rand.nextInt(999999999) + 111111111;
-			String usuario = Controlador.getInstancia().getUsername();
+			String username = Controlador.getInstancia().getUsername();
 			String password = Controlador.getInstancia().getPassword();
 			String codBarra = request.getParameter("codBarra");
 			String cantidad = request.getParameter("cantidad");
-			String medio = request.getParameter("medio");
-			Controlador.getInstancia().nuevaFactura(String.valueOf(n), usuario, password, codBarra, cantidad, medio);
-			dispatch("vistaComprador.jsp", request, response);
+			String medio = request.getParameter("medio");			
+			Controlador.getInstancia().nuevaFactura(String.valueOf(n), username, password, codBarra, cantidad, medio);
+			Usuario usuario = null;
+			try {
+				usuario = Controlador.getInstancia().existeUsuario(username, password);
+			} catch (UsuarioException e) {
+				
+				e.printStackTrace();
+			}			
+			request.setAttribute("usuario", usuario);
+			request.getRequestDispatcher("./vistaComprador.jsp").forward(request, response);		
 		}
 		
 		else if ("subirProducto".equalsIgnoreCase(action)) {

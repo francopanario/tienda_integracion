@@ -74,7 +74,7 @@ private static FacturaDAO instancia;
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.saveOrUpdate(fa);
+		session.save(fa);
 		session.getTransaction().commit();
 		session.close();
 	}
