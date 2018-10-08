@@ -135,7 +135,7 @@ public class Inicio extends HttpServlet {
 			String password = Controlador.getInstancia().getPassword();
 			String codBarra = request.getParameter("codBarra");
 			String cantidad = request.getParameter("cantidad");
-			String medio = request.getParameter("medio");			
+			String medio = request.getParameter("medio");
 			Controlador.getInstancia().nuevaFactura(String.valueOf(n), username, password, codBarra, cantidad, medio);
 			Usuario usuario = null;
 			try {

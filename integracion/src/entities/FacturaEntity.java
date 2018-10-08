@@ -32,6 +32,7 @@ public class FacturaEntity {
 
 	private String medio;
 	private int cantidad;
+	private float total;
 	
 	@OneToOne
 	@JoinColumn(name = "comprador_id")
@@ -47,11 +48,12 @@ public class FacturaEntity {
 	private ProductoEntity articulo;
 
 
-	public FacturaEntity(String factura_id, String medio, int cantidad) {
+	public FacturaEntity(String factura_id, String medio, int cantidad, float total) {
 		super();
 		this.factura_id = factura_id;
 		this.medio = medio;
 		this.cantidad = cantidad;
+		this.total = total;
 	}
 	
 
@@ -134,6 +136,16 @@ public class FacturaEntity {
 	
 	public void setCant(int cant) {
 		this.cantidad = cant;
+	}
+
+
+	public float getTotal() {
+		return total;
+	}
+
+
+	public void setTotal(float total) {
+		this.total = total;
 	}
 	
 	

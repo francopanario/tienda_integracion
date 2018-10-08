@@ -16,13 +16,13 @@ public class misCompras {
 
 	@Test
 	public void test() throws UsuarioException,FacturaException{
-		String usuario = "santi";
-		String password = "asdasd";
+		String usuario = "asd";
+		String password = "asd";
 		
 		 List<Factura> facturas = Controlador.getInstancia().getAllFacturasComprador(usuario,password);
 		assertTrue(0<facturas.size());   
 		for(int i =0;i<facturas.size();i++) {
-			System.out.println(facturas.get(i).getFacturaID()+"  "+ facturas.get(i).getSubTotal());
+			System.out.println(facturas.get(i).getFacturaID()+"  "+ facturas.get(i).getTotal());
 		}
 	}
 	

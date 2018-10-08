@@ -13,9 +13,10 @@ public class Factura {
 	private Producto articulo;
 	private String medio;
 	private int cantidad;
+	private float total;
 	
 	
-	public Factura(String facturaID, Usuario comprador, Usuario vendedor, Producto articulo , int cantidad, String medio) {
+	public Factura(String facturaID, Usuario comprador, Usuario vendedor, Producto articulo , int cantidad, String medio, float total) {
 		super();
 		this.facturaID = facturaID;
 		this.comprador = comprador;
@@ -23,6 +24,7 @@ public class Factura {
 		this.articulo  = articulo;
 		this.cantidad  = cantidad;
 		this.medio     = medio;		
+		this.total     = total;
 	}
 
 	public Factura(FacturaEntity fa) {
@@ -32,6 +34,7 @@ public class Factura {
 		this.articulo  = new Producto(fa.getArticulo());
 		this.medio     = fa.getMedio();
 		this.cantidad  = fa.getCant();
+		this.total     = fa.getTotal();
 		
 	}
 
@@ -77,11 +80,6 @@ public class Factura {
 		this.articulo = articulo;
 	}	
 	
-	public float getSubTotal() {
-		
-		return articulo.getPrecio() /* * cant*/;
-	}
-	
 	public int getCant() {
 		return cantidad;
 	}
@@ -91,6 +89,16 @@ public class Factura {
 		this.cantidad = cant;
 	}
 	
+	
+	
+
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
+	}
 
 	public void save() {
 		FacturaDAO.getInstancia().grabar(this);		

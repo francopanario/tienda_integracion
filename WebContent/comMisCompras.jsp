@@ -47,6 +47,7 @@
 					<th>Articulo</th>
 					<th>Cantidad</th>
 					<th>Medio de Pago</th>
+					<th>Total</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -62,6 +63,7 @@
 					<td><%out.print(fac.getArticulo().getNombre());%></td>
 					<td><%out.print(fac.getCant());%></td>
 					<td><%out.print(fac.getMedio());%></td>
+					<td><%out.print(fac.getTotal());%></td>
 					<td><button id="btn-login" name="facturaId" value=<%out.print(fac.getFacturaID());%> type="submit" class="btn btn-success">Reclamar</button></td>
 				</tr>
 				<%

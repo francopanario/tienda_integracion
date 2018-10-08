@@ -162,7 +162,8 @@ public class Controlador {
 			articulo = new Producto((ProductoEntity)ProductoDAO.getInstancia().getProductoEntityById(producto_id));
 			vendedor = ProductoDAO.getInstancia().getVendedorAsociado(producto_id);
 			int cantidad = Integer.parseInt(cant);
-			Factura factura=new Factura(factura_id, comprador, vendedor, articulo, cantidad, medio);
+			float total = articulo.getPrecio() * cantidad;
+			Factura factura=new Factura(factura_id, comprador, vendedor, articulo, cantidad, medio, total);
 			factura.save();
 		} catch (UsuarioException e) {
 			e.printStackTrace();

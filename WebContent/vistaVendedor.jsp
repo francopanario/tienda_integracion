@@ -46,6 +46,7 @@
 				<th>Articulo</th>
 				<th>Cantidad</th>
 				<th>Medio de Pago</th>
+				<th>Total</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -59,9 +60,9 @@
 				<td><%out.print(fac.getFacturaID());%></td>
 				<td><%out.print(fac.getComprador().getUsername());%></td>
 				<td><%out.print(fac.getArticulo().getNombre());%></td>
-				<td><%out.print(fac.getArticulo().getNombre());%></td>
 				<td><%out.print(fac.getCant());%></td>
 				<td><%out.print(fac.getMedio());%></td>
+				<td><%out.print(fac.getTotal());%></td>
 				
 			</tr>
 			<%
