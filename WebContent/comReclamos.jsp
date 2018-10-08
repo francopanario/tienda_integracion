@@ -3,9 +3,8 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page import="negocio.Producto"%>
+<%@ page import="negocio.*"%>
 <%@page import="controlador.Controlador"%>
-
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -39,4 +38,32 @@
 </div>
 <body>
 	<center><h1>Estas son Mis Reclamos</h1></center>
+	<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Factura ID</th>
+					<th>Vendedor</th>
+					<th>Articulo</th>
+					<th>Reclamo</th>
+					<th>Estado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% List<Factura> facturas = Controlador.getInstancia().getAllFacturasComprador(Controlador.getInstancia().getUsername(),Controlador.getInstancia().getPassword());
+			  		Factura fac;
+			  		
+				%>
+				<% for (Iterator<Factura> i = facturas.iterator(); i.hasNext();) {
+					fac = i.next();
+				%>
+				<tr>
+					<td><%out.print(fac.getFacturaID());%></td>
+					<td><%out.print(fac.getVendedor().getUsername());%></td>
+					<td><%out.print(fac.getArticulo().getNombre());%></td>									
+				</tr>
+				<%
+					}
+				%>
+			</tbody>
+		</table>	
 </body>

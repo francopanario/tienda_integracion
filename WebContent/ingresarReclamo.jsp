@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="negocio.*"%>
+<%@page import="controlador.Controlador"%>
+
 <!DOCTYPE html>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
@@ -49,10 +55,13 @@
 						<textarea rows="7" cols="50" name="reclamo">
 						</textarea>
 					</div>
+					<% Factura fac = Controlador.getInstancia().getFactura(request.getParameter("facturaId"));
+					%>							
+					
 					<div style="margin-top: 10px" class="form-group">
 						<!-- #################################### BOTON SUBMIT ####################################-->
 						<div class="col-sm-12 controls">
-							<button id="btn-login" type="submit" class="btn btn-success">Subir</button>
+							<button id="btn-login" type="submit" name="facturaId" class="btn btn-success" value="<%out.print(fac.getFacturaID());%>">Subir</button>
 						</div>
 					</div>
 				</form>

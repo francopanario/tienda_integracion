@@ -43,7 +43,9 @@
 			<tr>
 				<th>Factura ID</th>
 				<th>Comprador</th>
-				<th>Articulo</th>				
+				<th>Articulo</th>
+				<th>Cantidad</th>
+				<th>Medio de Pago</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -57,6 +59,10 @@
 				<td><%out.print(fac.getFacturaID());%></td>
 				<td><%out.print(fac.getComprador().getUsername());%></td>
 				<td><%out.print(fac.getArticulo().getNombre());%></td>
+				<td><%out.print(fac.getArticulo().getNombre());%></td>
+				<td><%out.print(fac.getCant());%></td>
+				<td><%out.print(fac.getMedio());%></td>
+				
 			</tr>
 			<%
 				}

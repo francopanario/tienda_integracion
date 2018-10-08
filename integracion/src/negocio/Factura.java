@@ -21,7 +21,7 @@ public class Factura {
 		this.comprador = comprador;
 		this.vendedor  = vendedor;
 		this.articulo  = articulo;
-		this.cantidad      = cantidad;
+		this.cantidad  = cantidad;
 		this.medio     = medio;		
 	}
 
@@ -31,7 +31,7 @@ public class Factura {
 		this.vendedor  = new Usuario(fa.getVendedor());
 		this.articulo  = new Producto(fa.getArticulo());
 		this.medio     = fa.getMedio();
-		this.cantidad      = fa.getCant();
+		this.cantidad  = fa.getCant();
 		
 	}
 

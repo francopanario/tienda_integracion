@@ -14,7 +14,7 @@ import dao.ProductoDAO;
 
 
 import entities.ProductoEntity;
-
+import exceptions.FacturaException;
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
 import negocio.Usuario;
@@ -185,12 +185,21 @@ public class Controlador {
 
 
 
-	public void ingresarReclamo(String n, String detalles,boolean b) {
-		Reclamo recla = new Reclamo(n,detalles,b);
+	public void ingresarReclamo(String n, String detalles,boolean b, String estado, String facturaId) throws FacturaException {
+		System.out.println(facturaId);
+		Factura fac = FacturaDAO.getInstancia().getFacturaById(facturaId);
+		Reclamo recla = new Reclamo(n,detalles,b,estado,fac);
 		recla.save();
 	}
+	
+	public Factura getFactura(String facturaID) throws FacturaException {
+		return FacturaDAO.getInstancia().getFacturaById(facturaID);
+	}
 
-	/*public void nuevoUsuario(String usuario_id,String username , String password,  String telefono,String mail,String direccion,String tipo_usuario, boolean activo)
+	/*public Producto getProductoVendedor(String codBarra) throws ProductoException {
+		return ProductoDAO.getInstancia().getProductoById(codBarra);	
+	}
+	public void nuevoUsuario(String usuario_id,String username , String password,  String telefono,String mail,String direccion,String tipo_usuario, boolean activo)
 	{	
 		
 		try {

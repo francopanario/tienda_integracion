@@ -41,6 +41,18 @@ private static FacturaDAO instancia;
 		}
 	}
 	
+	public FacturaEntity getFacturaByID(String factura_id) throws FacturaException, FacturaException{
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		FacturaEntity fe = (FacturaEntity) session.createQuery("from FacturaEntity where factura_id = ?")
+				.setParameter(0, factura_id).uniqueResult();
+		if(fe != null){
+			return fe;
+		}
+		else 
+			throw new FacturaException("La Factura solicitado no existe");
+	}
+	
 	public void grabar(Factura factura){
 		FacturaEntity fa = new FacturaEntity(factura.getFacturaID(), factura.getMedio(), factura.getCant());
 		UsuarioEntity comprador = null;

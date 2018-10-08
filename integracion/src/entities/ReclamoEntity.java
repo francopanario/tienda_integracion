@@ -10,16 +10,22 @@ public class ReclamoEntity {
 	@Column(name="reclamo_id")
 	private String reclamo_id;
 	private String detalles;
+	private String estado;
 	private boolean activo;
 	
-	
-	public void ReclamoEntity() {}
+	@OneToOne
+	@JoinColumn(name = "factura_id")
+	private FacturaEntity factura;
 
-	public ReclamoEntity(String reclamo_id, String detalles, boolean b) {
+	public void ReclamoEntity() {}
+	
+
+	public ReclamoEntity(String reclamo_id, String detalles, boolean b, String estado) {
 		super();
 		this.reclamo_id = reclamo_id;
 		this.detalles = detalles;
 		this.activo=b;
+		this.estado=estado;
 	}
 
 	public String getReclamo_id() {
@@ -40,5 +46,25 @@ public class ReclamoEntity {
 
 	public boolean isActivo() {
 		return activo;
+	}
+	
+	public FacturaEntity getFactura() {
+		return factura;
+	}
+
+	public void setFactura(FacturaEntity factura) {
+		this.factura = factura;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+	
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 }

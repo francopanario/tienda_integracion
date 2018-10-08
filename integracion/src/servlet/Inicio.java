@@ -24,6 +24,7 @@ import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 
 import controlador.*;
 import dao.ProductoDAO;
+import exceptions.FacturaException;
 import exceptions.UsuarioException;
 import negocio.Producto;
 import negocio.Usuario;
@@ -194,36 +195,30 @@ public class Inicio extends HttpServlet {
 		
 		else if ("Reclamar".equalsIgnoreCase(action)) {
 			String facturaId = request.getParameter("facturaId");
-			request.setAttribute("facturaId", facturaId);
+			request.setAttribute("facturaId", facturaId);			
 			request.getRequestDispatcher("./ingresarReclamo.jsp").forward(request, response);
 		}
 		
 		else if ("ingresarReclamo".equalsIgnoreCase(action)) {
-			/*String dni = request.getParameter("usuarioId");
-			String username =  request.getParameter("username");
-			String mail =  request.getParameter("mail");
-			String password =  request.getParameter("password");
-			String telefono =  request.getParameter("telefono");
-			String direccion =  request.getParameter("direccion");
-			String tipo =  request.getParameter("tipo");
-			String estado = request.getParameter("estado");*/
 			Random rand = new Random();
 			int  n = rand.nextInt(999999999) + 111111111;
 			String id = Integer.toString(n);
 			String reclamo = request.getParameter("reclamo");
-			Controlador.getInstancia().ingresarReclamo(id,reclamo,true);
-			String facturaId= request.getParameter("facturaId");
-			request.getRequestDispatcher("conMisCompras.jsp").forward(request, response);			
+			String facturaId = request.getParameter("facturaId");			
+			try {
+				Controlador.getInstancia().ingresarReclamo(id,reclamo,true,"abierto",facturaId);
+			} catch (FacturaException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dispatch("vistaComprador.jsp", request, response);						
 		}
 	}
 
 	protected void dispatch(String jsp, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (jsp != null) {
-			/*
-			 * Env�a el control al JSP que pasamos como par�metro, y con los
-			 * request / response cargados con los par�metros
-			 */		
+			
 			RequestDispatcher rd = request.getRequestDispatcher(jsp);
 			rd.forward(request, response);
 		}
