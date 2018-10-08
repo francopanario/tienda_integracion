@@ -2,6 +2,9 @@ package entities;
 
 
 import javax.persistence.*;
+
+import negocio.Factura;
+import negocio.Reclamo;
 @Entity
 @Table(name="reclamos")
 public class ReclamoEntity {
@@ -17,7 +20,9 @@ public class ReclamoEntity {
 	@JoinColumn(name = "factura_id")
 	private FacturaEntity factura;
 
-	public void ReclamoEntity() {}
+	public ReclamoEntity() {
+		super();
+	}
 	
 
 	public ReclamoEntity(String reclamo_id, String detalles, boolean b, String estado) {
@@ -66,5 +71,10 @@ public class ReclamoEntity {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+
+	public Reclamo toNegocio(ReclamoEntity reclamoEntity) {
+		return new Reclamo(reclamoEntity);
 	}
 }

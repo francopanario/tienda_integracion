@@ -11,8 +11,7 @@ import java.util.List;
 
 import dao.FacturaDAO;
 import dao.ProductoDAO;
-
-
+import dao.ReclamoDAO;
 import entities.ProductoEntity;
 import exceptions.FacturaException;
 import exceptions.ProductoException;
@@ -195,19 +194,9 @@ public class Controlador {
 	public Factura getFactura(String facturaID) throws FacturaException {
 		return FacturaDAO.getInstancia().getFacturaById(facturaID);
 	}
-
-	/*public Producto getProductoVendedor(String codBarra) throws ProductoException {
-		return ProductoDAO.getInstancia().getProductoById(codBarra);	
+	
+	public List<Reclamo> getAllReclamos(){		
+		return ReclamoDAO.getInstancia().getAll();		
 	}
-	public void nuevoUsuario(String usuario_id,String username , String password,  String telefono,String mail,String direccion,String tipo_usuario, boolean activo)
-	{	
-		
-		try {
-			Usuario usuario = new Usuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario,activo);
-			usuario.save();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}*/
+
 }
