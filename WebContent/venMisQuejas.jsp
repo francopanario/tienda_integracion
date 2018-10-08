@@ -38,7 +38,6 @@
   </div><!-- /navbar-inner -->
 </div>
 <body>
-	<center><h1>Estas son Mis Quejas</h1></center>
 	<table class="table table-striped">
 		<thead>
 			<tr>
