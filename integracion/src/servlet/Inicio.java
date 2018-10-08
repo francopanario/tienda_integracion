@@ -160,7 +160,6 @@ public class Inicio extends HttpServlet {
 			String estado =  request.getParameter("estado");
 			float precio = Float.parseFloat(request.getParameter("precio"));
 			//Producto producto = ProductoDAO.getInstancia().getProductoById(codBarra);
-			System.out.println(codBarra);
 			Controlador.getInstancia().modificarProducto(codBarra, nombre, precio, estado);
 			request.setAttribute("codBarra", codBarra);
 			request.getRequestDispatcher("./venMisProductos.jsp").forward(request, response);			
