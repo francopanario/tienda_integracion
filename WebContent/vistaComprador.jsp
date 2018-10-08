@@ -51,6 +51,7 @@
 			  		for(int i= 0; i<productos.size();i++) {
 					prod = productos.get(i);
 					Usuario usuario = prod.getUsuario();
+					if(prod.isActivo() == true){
 					
 				%>
 				<tr>
@@ -60,6 +61,7 @@
 					<td><button class="btn btn-success" value=<%out.print(prod.getCodBarra());%> name="codBarra" type="submit">Comprar</button></td>					
 				</tr>					
 				<%
+					   }
 					}
 				%>
 			</tbody>

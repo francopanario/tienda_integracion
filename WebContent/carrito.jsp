@@ -22,10 +22,10 @@
       <a class="brand" href="#">Integracion</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li><a href="vistaVendedor.jsp">Mis Ventas</a></li>
-          <li class="active"><a>Mis Productos</a></li>
-          <li><a href="venSubirProducto.jsp">Subir Producto</a></li>
-          <li><a href="venMisQuejas.jsp">Mis Quejas</a></li>
+          <li><a href="vistaComprador.jsp">Tienda</a></li>
+          <li><a href="comMisCompras.jsp">Mis Compras</a></li>
+          <li><a href="comReclamos.jsp">Reclamos</a></li>
+          <li class="active"><a>Realizar Compra</a></li>
         </ul>    
         <ul class="nav pull-right">
           <li class="divider-vertical"></li>
