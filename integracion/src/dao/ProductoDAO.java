@@ -80,7 +80,7 @@ public class ProductoDAO {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.saveOrUpdate(pe);
+		session.save(pe);
 		session.getTransaction().commit();
 		session.close();
 	}
