@@ -1,4 +1,4 @@
-package productoUnitTest;
+package usuarioUnitTest;
 
 import static org.junit.Assert.*;
 
@@ -20,6 +20,9 @@ public class misProductos {
 		
 		List<Producto> productos = Controlador.getInstancia().getAllProductosVendedor(usuario,password);
 		assertTrue(0<productos.size());   
+		for(int i =0;i<productos.size();i++) {
+			System.out.println(productos.get(i).getNombre());
+		}
 	}
 
 }

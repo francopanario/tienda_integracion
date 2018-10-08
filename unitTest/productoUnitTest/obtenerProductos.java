@@ -18,6 +18,9 @@ public class obtenerProductos {
 	public void obtenerProductos() {
 		List<Producto> prod=Controlador.getInstancia().getAllProductos();
 		assertTrue(0<prod.size());
+		for(int i =0;i<prod.size();i++) {
+			System.out.println(prod.get(i).getNombre());
+		}
 	}
 
 }

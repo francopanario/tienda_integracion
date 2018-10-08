@@ -29,7 +29,9 @@ public class visibilidadDelComprador {
 		List<Producto> productos = Controlador.getInstancia().getAllProductos();
 		assertTrue(0<productos.size());
 		
-		
+		for(int i =0;i<productos.size();i++) {
+			System.out.println(productos.get(i).getNombre());
+		}
 	}
 
 }
