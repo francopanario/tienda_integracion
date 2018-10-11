@@ -10,61 +10,73 @@
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/custom.css">
+
 <!------ Include the above in your HEAD tag ---------->
-<div class="navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">Integracion</a>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li class="active"><a>Tienda</a></li>
-          <li><a href="comMisCompras.jsp">Mis Compras</a></li>
-          <li><a href="comReclamos.jsp">Reclamos</a></li>
-        </ul>    
-        <ul class="nav pull-right">
-          <li class="divider-vertical"></li>
-          <!-- ################ ACA CERRAR SESION DE USUARIO ######### -->
-          <li><a href="/tienda_integracion">Salir</a></li>
-        </ul>
-      </div><!-- /.nav-collapse -->
-    </div>
-  </div><!-- /navbar-inner -->
-</div>
-<div class="container">
-	<form id="comprador" method="post" action="Inicio?action=comprar">
-			<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Nombre</th>
-					<th>Precio</th>
-					<th>Vendedor</th>					
-				</tr>
-			</thead>
-			<tbody>
-				<% List<Producto> productos = Controlador.getInstancia().getAllProductos();
-			  		Producto prod;			 	
-			  		for(int i= 0; i<productos.size();i++) {
-					prod = productos.get(i);
-					Usuario usuario = prod.getUsuario();
-					if(prod.isActivo() == true){
-					
-				%>
-				<tr>
-					<td><%out.print(prod.getNombre());%></td>
-					<td><%out.print(prod.getPrecio());%></td>
-					<td><%out.print(usuario.getUsername());%></td>										
-					<td><button class="btn btn-success" value=<%out.print(prod.getCodBarra());%> name="codBarra" type="submit">Comprar</button></td>					
-				</tr>					
-				<%
-					   }
-					}
-				%>
-			</tbody>
-		</table>		
-	</form>
-</div>
+
+
+<nav class="navbar navbar-default col-xs-12 navbar-color">
+	<div class="container-fluid">
+    	<div class="row-fluid">   
+      		<!-- Brand and toggle get grouped for better mobile display -->    
+      		<div class="navbar-header">
+        		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                	<span class="icon-bar"></span>
+          			<span class="icon-bar"></span>
+          			<span class="icon-bar"></span>
+        		</button>
+       		 	<a class="navbar-brand" href="vistaComprador.jsp">Tienda</a>
+      		</div>
+      		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+       	 		<ul class="nav navbar-nav">          			
+          			<li><a href="comMisCompras.jsp">Mis Compras</a></li>
+	          		<li><a href="comReclamos.jsp">Reclamos</a></li>
+	        	</ul>
+	        	<ul class="nav navbar-nav right">
+		    		<li class="divider-vertical"></li>
+	        		<li><a href="/tienda_integracion">Salir</a></li>
+        		</ul>
+      		</div>
+  		</div>  
+	</div>
+</nav>
+<body class ="body-color">
+	<div class="container">
+		<form id="comprador" method="post" action="Inicio?action=comprar">
+				<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Precio</th>
+						<th>Vendedor</th>					
+					</tr>
+				</thead>
+				<tbody>
+					<% List<Producto> productos = Controlador.getInstancia().getAllProductos();
+				  		Producto prod;			 	
+				  		for(int i= 0; i<productos.size();i++) {
+						prod = productos.get(i);
+						Usuario usuario = prod.getUsuario();
+						if(prod.isActivo() == true){
+						
+					%>
+					<tr>
+						<td><%out.print(prod.getNombre());%></td>
+						<td><%out.print(prod.getPrecio());%></td>
+						<td><%out.print(usuario.getUsername());%></td>										
+						<td><button class="btn btn-success" value=<%out.print(prod.getCodBarra());%> name="codBarra" type="submit">Comprar</button></td>					
+					</tr>					
+					<%
+						   }
+						}
+					%>
+				</tbody>
+			</table>		
+		</form>
+	</div>
+</body>
+

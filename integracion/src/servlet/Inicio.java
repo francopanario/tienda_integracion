@@ -73,7 +73,7 @@ public class Inicio extends HttpServlet {
 			try {
 				Usuario usuario = Controlador.getInstancia().existeUsuario(username,password);
 				//System.out.println(usuario.getTipo_usuario());
-				if (usuario != null ) {
+				if (usuario != null && usuario.isActivo()) {
 					Controlador.getInstancia().setearUsuario(username, password);
 					if (usuario.getTipo_usuario().equalsIgnoreCase("comprador")) {
 						action = "default";
@@ -90,11 +90,14 @@ public class Inicio extends HttpServlet {
 						request.setAttribute("usuario", usuario);
 						dispatch("admin.jsp", request, response);
 					}
+				}else {
+					action = "default";					
+					dispatch("index.jsp", request, response);
 				}
 			} catch (UsuarioException e) {				
 				action = "default";
-				request.setAttribute("excepcion", "");
-				dispatch(jspPage, request, response);		
+				request.setAttribute("error", "Usuario o contraseña invalida");
+				dispatch("/index.jsp", request, response);		
 			}			
 		}
 		else if ("altaCliente".equalsIgnoreCase(action)) {
@@ -110,7 +113,6 @@ public class Inicio extends HttpServlet {
 			try {
 				GoogleMail.Send("tienda.integracion", "tienda123", mail, "Bienvenido a la Tienda!", "Hola "+username+"! , bievenido a la tienda. Felices compras!." );
 			} catch (MessagingException | javax.mail.MessagingException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			

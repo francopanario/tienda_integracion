@@ -8,6 +8,12 @@
 
 <div class="container">
 	<div id="loginbox" style="margin-top: 50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+	<%
+		String login_msg=(String)request.getAttribute("error");  
+		if(login_msg!=null){
+			out.println("<font color=red size=4px>"+login_msg+"</font>");
+		}
+	%>
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<div class="panel-title">Ingresar</div>

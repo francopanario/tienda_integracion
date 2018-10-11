@@ -1,0 +1,33 @@
+.test{
+	color: red;
+}
+
+.right{
+	 float: right;
+}
+
+.navbar-color{
+	background-color:#e6ffcc;
+	color:black;
+}
+
+.label-tarjeta{
+	font-size:.8em;
+}
+
+.size-btn{
+	font-size: 2.7em;	
+}
+
+.center-img{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 30%;
+    height: 20%;
+}
+
+.body-color{
+	background-color:#aec6cf;
+	color:black;
+}

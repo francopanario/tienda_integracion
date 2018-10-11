@@ -9,34 +9,37 @@
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/custom.css">
 
-<div class="navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">Integracion</a>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li><a href="vistaComprador.jsp">Tienda</a></li>
-          <li class="active"><a>Mis Compras</a></li>
-          <li><a href="comReclamos.jsp">Reclamos</a></li>
-        </ul>    
-        <ul class="nav pull-right">
-          <li class="divider-vertical"></li>
-          <li><a href="/tienda_integracion">Salir</a></li>
-        </ul>
-      </div><!-- /.nav-collapse -->
-    </div>
-  </div><!-- /navbar-inner -->
-</div>
+<nav class="navbar navbar-default col-xs-12 navbar-color">
+	<div class="container-fluid">
+    	<div class="row-fluid">   
+      		<!-- Brand and toggle get grouped for better mobile display -->    
+      		<div class="navbar-header">
+        		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                	<span class="icon-bar"></span>
+          			<span class="icon-bar"></span>
+          			<span class="icon-bar"></span>
+        		</button>
+       		 	<a class="navbar-brand" href="vistaComprador.jsp">Tienda</a>
+      		</div>
+      		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+       	 		<ul class="nav navbar-nav">          			
+          			<li><a href="comMisCompras.jsp">Mis Compras</a></li>
+	          		<li><a href="comReclamos.jsp">Reclamos</a></li>
+	        	</ul>
+	        	<ul class="nav navbar-nav right">
+		    		<li class="divider-vertical"></li>
+	        		<li><a href="/tienda_integracion">Salir</a></li>
+        		</ul>
+      		</div>
+  		</div>  
+	</div>
+</nav>
 <div class="container">
 	<form method="post" action="Inicio?action=Reclamar">
 		<table class="table table-striped">
