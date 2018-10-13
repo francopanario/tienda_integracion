@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import org.json.simple.JSONObject;
+
 import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 
 import controlador.*;
@@ -138,6 +140,11 @@ public class Inicio extends HttpServlet {
 			String codBarra = request.getParameter("codBarra");
 			String cantidad = request.getParameter("cantidad");
 			String medio = request.getParameter("medio");
+			JSONObject obj = new JSONObject();
+			obj.put("username", username);
+			obj.put("codBarra", cantidad);
+			obj.put("medio", medio);	
+			System.out.print(obj);
 			Controlador.getInstancia().nuevaFactura(String.valueOf(n), username, password, codBarra, cantidad, medio);
 			Usuario usuario = null;
 			try {
