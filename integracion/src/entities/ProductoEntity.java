@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import javafx.scene.image.Image;
 import negocio.Producto;
 import negocio.Usuario;
 
@@ -27,6 +28,7 @@ public class ProductoEntity {
 	private boolean activo;
 	
 	
+	
 	public ProductoEntity() {}	
 	
 	public ProductoEntity(String codBarra, String nombre, float precio,boolean activo) {
@@ -34,7 +36,8 @@ public class ProductoEntity {
 		this.codBarra = codBarra;
 		this.nombre = nombre;
 		this.precio = precio;		
-		this.activo=activo;
+		this.activo = activo;
+		
 	}
 	
 	public Producto toNegocio(ProductoEntity productoEntity){
@@ -81,5 +84,6 @@ public class ProductoEntity {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
+
 	
 }

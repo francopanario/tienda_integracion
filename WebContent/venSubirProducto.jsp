@@ -56,6 +56,13 @@
 						<input id="precio" type="number" class="form-control" name="precio" 
 							placeholder="Precio..." />
 					</div>
+					<div style="margin-bottom: 25px" class="input-group">
+						<span class="input-group-addon">
+							<i class="glyphicon glyphicon-user"></i>
+						</span> 
+						<input id="ruta" type="file" class="form-control" name="ruta" 
+							placeholder="Imagen..." />
+					</div>
 					<div style="margin-top: 10px" class="form-group">
 						<!-- #################################### BOTON SUBMIT ####################################-->
 						<div class="col-sm-12 controls">

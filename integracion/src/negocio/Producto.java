@@ -5,6 +5,7 @@ import dao.UsuarioDAO;
 
 import entities.ProductoEntity;
 import entities.UsuarioEntity;
+import javafx.scene.image.Image;
 
 public class Producto {
 	
@@ -15,12 +16,14 @@ public class Producto {
 	private boolean activo;
 	
 	
+	
 	public Producto(ProductoEntity Producto) {
 		this.codBarra = Producto.getCodBarra();
 		this.nombre   = Producto.getNombre();
 		this.precio   = Producto.getPrecio();
 		this.usuario  = new Usuario(Producto.getUsuario());
-		this.activo=Producto.isActivo();
+		this.activo   = Producto.isActivo();
+		
 	}
 	
 	public Producto(String codBarra, String nombre, float precio,boolean activo) {
@@ -28,10 +31,10 @@ public class Producto {
 		this.codBarra = codBarra;
 		this.nombre   = nombre;
 		this.precio   = precio;
-		this.activo   = activo;		
+		this.activo   = activo;
+		
 	}
-
-
+ 
 	public String getCodBarra() {
 		return codBarra;
 	}
@@ -75,6 +78,6 @@ public class Producto {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
-	
+
 		
 }

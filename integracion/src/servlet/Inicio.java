@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import javax.swing.JOptionPane;
 
 import org.json.simple.JSONObject;
@@ -28,6 +29,7 @@ import controlador.*;
 import dao.ProductoDAO;
 import exceptions.FacturaException;
 import exceptions.UsuarioException;
+import javafx.scene.image.Image;
 import negocio.Producto;
 import negocio.Usuario;
 import java.util.Random;
@@ -132,6 +134,9 @@ public class Inicio extends HttpServlet {
 			request.getRequestDispatcher("./carrito.jsp").forward(request, response);
 		}
 		
+		//**********************************************************************************FACTURA
+		//**********************************************************************************
+		//**********************************************************************************
 		else if ("nuevaFactura".equalsIgnoreCase(action)) {
 			Random rand = new Random();
 			int  n = rand.nextInt(999999999) + 111111111;
@@ -140,11 +145,14 @@ public class Inicio extends HttpServlet {
 			String codBarra = request.getParameter("codBarra");
 			String cantidad = request.getParameter("cantidad");
 			String medio = request.getParameter("medio");
+			String numeroTienda = "2";
 			JSONObject obj = new JSONObject();
 			obj.put("username", username);
-			obj.put("codBarra", cantidad);
-			obj.put("medio", medio);	
-			System.out.print(obj);
+			obj.put("codBarra", codBarra);
+			obj.put("codBarra", cantidad);			
+			obj.put("numeroTienda", numeroTienda);
+			//System.out.print(obj);
+			Controlador.getInstancia().consultarStock(obj);
 			Controlador.getInstancia().nuevaFactura(String.valueOf(n), username, password, codBarra, cantidad, medio);
 			Usuario usuario = null;
 			try {
@@ -152,9 +160,9 @@ public class Inicio extends HttpServlet {
 			} catch (UsuarioException e) {
 				
 				e.printStackTrace();
-			}			
+			}
 			request.setAttribute("usuario", usuario);
-			request.getRequestDispatcher("./vistaComprador.jsp").forward(request, response);		
+			request.getRequestDispatcher("./vistaComprador.jsp").forward(request, response);				
 		}
 		
 		else if ("subirProducto".equalsIgnoreCase(action)) {
@@ -181,8 +189,7 @@ public class Inicio extends HttpServlet {
 			String codBarra = request.getParameter("codBarra");
 			String nombre =  request.getParameter("nombre");
 			String estado =  request.getParameter("estado");
-			float precio = Float.parseFloat(request.getParameter("precio"));
-			//Producto producto = ProductoDAO.getInstancia().getProductoById(codBarra);
+			float precio = Float.parseFloat(request.getParameter("precio"));			
 			Controlador.getInstancia().modificarProducto(codBarra, nombre, precio, estado);
 			request.setAttribute("codBarra", codBarra);
 			request.getRequestDispatcher("./venMisProductos.jsp").forward(request, response);			

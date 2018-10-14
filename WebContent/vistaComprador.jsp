@@ -21,7 +21,7 @@
 
 <nav class="navbar navbar-default col-xs-12 navbar-color">
 	<div class="container-fluid">
-    	<div class="row-fluid">   
+	   	<div class="row-fluid">   
       		<!-- Brand and toggle get grouped for better mobile display -->    
       		<div class="navbar-header">
         		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -38,7 +38,7 @@
 	        	</ul>
 	        	<ul class="nav navbar-nav right">
 		    		<li class="divider-vertical"></li>
-	        		<li><a href="/tienda_integracion">Salir</a></li>
+	        		<li class="rigth"><a href="/tienda_integracion">Salir</a></li>
         		</ul>
       		</div>
   		</div>  
@@ -46,7 +46,7 @@
 </nav>
 <body class ="body-color">
 	<div class="container">
-		<form id="comprador" method="post" action="Inicio?action=comprar">
+		<form id="comprador" method="post" action="Inicio?action=comprar">			
 				<table class="table table-striped">
 				<thead>
 					<tr>
@@ -67,7 +67,7 @@
 					<tr>
 						<td><%out.print(prod.getNombre());%></td>
 						<td><%out.print(prod.getPrecio());%></td>
-						<td><%out.print(usuario.getUsername());%></td>										
+						<td><%out.print(usuario.getUsername());%></td>
 						<td><button class="btn btn-success" value=<%out.print(prod.getCodBarra());%> name="codBarra" type="submit">Comprar</button></td>					
 					</tr>					
 					<%

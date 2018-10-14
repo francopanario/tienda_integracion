@@ -66,9 +66,9 @@
 							<td><%out.print(prod.getCodBarra());%></td>
 							<td><%out.print(prod.getNombre());%></td>
 							<td><%out.print(prod.getPrecio());%></td>
-							<td><input style="max-width: 60px;" type="text" value="0" name="cantidad" id="cantidad"/></td>
+							<td><input style="max-width: 60px;" type="text"  name="cantidad" id="cantidad" required='true' onchange="cantCheck()"/></td>							
 							<td>
-								<select id="<%prod.getCodBarra();%>medio" type="text" class="form-control" name="medio" style="max-width: 90px;" onchange="yesnoCheck(this);">
+								<select id="<%prod.getCodBarra();%>medio" type="text" class="form-control" name="medio" required ="true" style="max-width: 90px;" onchange="yesnoCheck(this);">
 									<option value="blank"></option>
 									<option value="efectivo">Efectivo</option>
 									<option value="tarjeta">Tarjeta</option>
@@ -107,8 +107,9 @@
 	    			<label for="banco">Banco</label><input id="banco" name="banco"></input>    						
 				</div>		
 			</div>
+			
 			<div class="row">
-				<center><button name="codBarra" value=<%out.print(prod.getCodBarra());%> class="btn btn-success size-btn" type="submit">Confirmar</button></center>
+				<center><button name="codBarra" value=<%out.print(prod.getCodBarra());%> class="btn btn-success size-btn" type="submit" id="confirmar">Confirmar</button></center>				
 			</div>
 		</form>
 	</div>

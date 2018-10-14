@@ -9,6 +9,8 @@ import negocio.Reclamo;
 import java.sql.Date;
 import java.util.List;
 
+import org.json.simple.JSONObject;
+
 import dao.FacturaDAO;
 import dao.ProductoDAO;
 import dao.ReclamoDAO;
@@ -16,6 +18,7 @@ import entities.ProductoEntity;
 import exceptions.FacturaException;
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
+import javafx.scene.image.Image;
 import negocio.Usuario;
 import dao.UsuarioDAO;
 import entities.UsuarioEntity;
@@ -198,6 +201,13 @@ public class Controlador {
 	
 	public List<Reclamo> getAllReclamos(){		
 		return ReclamoDAO.getInstancia().getAll();		
+	}
+
+
+
+	public void consultarStock(JSONObject obj) {
+		String json = obj.toJSONString();
+		//System.out.println(json);		
 	}
 
 }
