@@ -73,43 +73,43 @@
 					<div class="form-group">
 						<label for="dni" class="col-md-3 control-label">DNI</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" name="dni" placeholder="DNI" />
+							<input type="text" class="form-control" name="dni" placeholder="DNI"  required ="true"/>
 						</div>
 					</div>					
 					<div class="form-group">
 						<label for="mail" class="col-md-3 control-label">Mail</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" name="mail"	placeholder="Mail" />
+							<input type="text" class="form-control" name="mail"	placeholder="Mail"  required ="true" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="username" class="col-md-3 control-label">Username</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" name="username"	placeholder="Username" />
+							<input type="text" class="form-control" name="username"	placeholder="Username"  required ="true"/>
 						</div>
 					</div>					
 					<div class="form-group">
 						<label for="password" class="col-md-3 control-label">Password</label>
 						<div class="col-md-9">
-							<input type="password" class="form-control" name="password"	placeholder="Password" />
+							<input type="password" class="form-control" name="password"	placeholder="Password"  required ="true"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="direccion" class="col-md-3 control-label">Direccion</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" name="direccion" placeholder="Direccion" />
+							<input type="text" class="form-control" name="direccion" placeholder="Direccion"  required ="true"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="telefono" class="col-md-3 control-label">Telefono</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" name="telefono"	placeholder="Telefono" />
+							<input type="text" class="form-control" name="telefono"	placeholder="Telefono" required ="true" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="tipo_usuario" class="col-md-3 control-label">Tipo Usuario</label>
 						<div class="col-md-9">
-							<select type="text" class="form-control" name="tipo_usuario" placeholder="Tipo Usuario">
+							<select type="text" class="form-control" name="tipo_usuario" placeholder="Tipo Usuario"  required ="true">
 								<option value="comprador">Comprador</option>
 								<option value="vendedor">Vendedor</option>
 							</select>
