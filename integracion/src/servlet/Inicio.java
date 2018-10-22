@@ -3,9 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.rmi.RemoteException;
-
 import java.sql.SQLException;
-
 
 import java.util.ArrayList;
 import java.text.DateFormat;
@@ -21,7 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.swing.JOptionPane;
 
-import org.json.simple.JSONObject;
+import org.json.JSONException;
+//import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 
@@ -147,11 +147,37 @@ public class Inicio extends HttpServlet {
 			String medio = request.getParameter("medio");
 			String numeroTienda = "2";
 			JSONObject obj = new JSONObject();
-			obj.put("username", username);
-			obj.put("codBarra", codBarra);
-			obj.put("codBarra", cantidad);			
-			obj.put("numeroTienda", numeroTienda);
-			//System.out.print(obj);
+			try {
+				obj.put("username", username);
+			} catch (JSONException e1) {				
+				e1.printStackTrace();
+			}
+			try {
+				obj.put("codBarra", codBarra);
+			} catch (JSONException e1) {
+				e1.printStackTrace();
+			}
+			try {
+				obj.put("codBarra", cantidad);
+			} catch (JSONException e1) {
+				e1.printStackTrace();
+			}			
+			try {
+				obj.put("numeroTienda", numeroTienda);
+			} catch (JSONException e1) {
+				e1.printStackTrace();
+			}
+			try {
+				System.out.print(obj.getString("username"));
+			} catch (JSONException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			//obj.
+			
+			//System.out.print("JSON ");
+			//obj.getString(username);
+			//System.out.print(obj.toString(username, obj));
 			Controlador.getInstancia().consultarStock(obj);
 			Controlador.getInstancia().nuevaFactura(String.valueOf(n), username, password, codBarra, cantidad, medio);
 			Usuario usuario = null;

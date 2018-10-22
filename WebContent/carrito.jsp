@@ -46,7 +46,7 @@
 		<form method="post" action="Inicio?action=nuevaFactura">
 			<div class="container">
 				<div class="row center-img">
-					<img src="${pageContext.request.contextPath}/img/carne-cerdo.jpg" />					
+					<img src="${pageContext.request.contextPath}/img/.jpg" />					
 				</div>
 			</div>
 			<div class="container">

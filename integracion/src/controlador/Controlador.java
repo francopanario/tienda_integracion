@@ -205,8 +205,13 @@ public class Controlador {
 
 
 
-	public void consultarStock(JSONObject obj) {
-		String json = obj.toJSONString();
+	public void consultarStock(org.json.JSONObject obj) {
+		/* String venta = obj.toJSONString();
+		 * enviar venta
+		 * JSONObject respuesta = new JSONObject(Respuesta);
+		 * String respuestaFinal = respuesta.get(stock);
+		 */
+		//retrun respuestaFinal;
 		//System.out.println(json);		
 	}
 
