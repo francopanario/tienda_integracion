@@ -16,34 +16,34 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/custom.css">
 <!------ Include the above in your HEAD tag ---------->
 
-<nav class="navbar navbar-default col-xs-12 navbar-color">
-	<div class="container-fluid">
-    	<div class="row-fluid">   
-      		<!-- Brand and toggle get grouped for better mobile display -->    
-      		<div class="navbar-header">
-        		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                	<span class="icon-bar"></span>
-          			<span class="icon-bar"></span>
-          			<span class="icon-bar"></span>
-        		</button>
-       		 	<a class="navbar-brand" href="vistaComprador.jsp">Tienda</a>
-      		</div>
-      		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-       	 		<ul class="nav navbar-nav">
-          			<li><a href="comMisCompras.jsp">Mis Compras</a></li>
-	          		<li><a href="comReclamos.jsp">Reclamos</a></li>
-	        	</ul>
-	        	<ul class="nav navbar-nav right">
-		    		<li class="divider-vertical"></li>
-	        		<li><a href="/tienda_integracion">Salir</a></li>
-        		</ul>
-      		</div>
-  		</div>  
-	</div>
-</nav>
 <body class ="body-color">
+	<nav class="navbar navbar-default col-xs-12 navbar-color">
+		<div class="container-fluid">
+	    	<div class="row-fluid">   
+	      		<!-- Brand and toggle get grouped for better mobile display -->    
+	      		<div class="navbar-header">
+	        		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	                	<span class="icon-bar"></span>
+	          			<span class="icon-bar"></span>
+	          			<span class="icon-bar"></span>
+	        		</button>
+	       		 	<a class="navbar-brand" href="/vistaComprador.jsp">Tienda</a>
+	      		</div>
+	      		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	       	 		<ul class="nav navbar-nav">          			
+	          			<li><a href="comMisCompras.jsp">Mis Compras</a></li>
+		          		<li><a href="comReclamos.jsp">Reclamos</a></li>
+		        	</ul>
+		        	<ul class="nav navbar-nav right">
+			    		<li class="divider-vertical"></li>
+		        		<li><a href="/tienda_integracion">Salir</a></li>
+	        		</ul>
+	      		</div>
+	  		</div>  
+		</div>
+	</nav>
 	<div class="container">
-		<form method="post" action="Inicio?action=nuevaFactura">
+		<form method="post" action="Comprar?action=nuevaFactura">
 			<div class="container">
 				<div class="row center-img">
 					<img src="${pageContext.request.contextPath}/img/.jpg" />					

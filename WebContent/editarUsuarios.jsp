@@ -10,7 +10,7 @@
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+<body>
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
@@ -67,3 +67,4 @@
 		</table>
 	</form>
 </div>
+</body>

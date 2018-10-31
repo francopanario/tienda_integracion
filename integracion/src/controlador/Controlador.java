@@ -107,7 +107,6 @@ public class Controlador {
 			Usuario usuario = new Usuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario,activo);
 			usuario.save();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -171,7 +170,6 @@ public class Controlador {
 		} catch (UsuarioException e) {
 			e.printStackTrace();
 		} catch (ProductoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -185,9 +183,7 @@ public class Controlador {
 		Usuario us=existeUsuario(username, password);
 		return FacturaDAO.getInstancia().getAllFacturasComprador(us.getUsuario_id());
 	}
-
-
-
+	
 	public void ingresarReclamo(String n, String detalles,boolean b, String estado, String facturaId) throws FacturaException {
 		System.out.println(facturaId);
 		Factura fac = FacturaDAO.getInstancia().getFacturaById(facturaId);
@@ -202,8 +198,6 @@ public class Controlador {
 	public List<Reclamo> getAllReclamos(){		
 		return ReclamoDAO.getInstancia().getAll();		
 	}
-
-
 
 	public void consultarStock(org.json.JSONObject obj) {
 		/* String venta = obj.toJSONString();
