@@ -43,7 +43,7 @@
 		</div>
 	</nav>
 	<div class="container">
-		<form method="post" action="Comprar?action=nuevaFactura">
+		<form method="post" action="Comprador?action=nuevaFactura">
 			<div class="container">
 				<div class="row center-img">
 					<img src="${pageContext.request.contextPath}/img/.jpg" />					
