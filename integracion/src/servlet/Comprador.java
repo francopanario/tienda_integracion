@@ -60,49 +60,30 @@ public class Comprador extends HttpServlet {
 			String codBarra = request.getParameter("codBarra");
 			String cantidad = request.getParameter("cantidad");
 			String medio = request.getParameter("medio");
-			String numeroTienda = "2";
-			JSONObject obj = new JSONObject();
-			try {
-				obj.put("username", username);
-			} catch (JSONException e1) {				
-				e1.printStackTrace();
-			}
-			try {
-				obj.put("codBarra", codBarra);
-			} catch (JSONException e1) {
-				e1.printStackTrace();
-			}
-			try {
-				obj.put("codBarra", cantidad);
-			} catch (JSONException e1) {
-				e1.printStackTrace();
-			}			
-			try {
-				obj.put("numeroTienda", numeroTienda);
-			} catch (JSONException e1) {
-				e1.printStackTrace();
-			}
-			try {
-				System.out.print(obj.getString("username"));
-			} catch (JSONException e1) {
-				e1.printStackTrace();
-			}
-			//obj.
 			
-			//System.out.print("JSON ");
-			//obj.getString(username);
-			//System.out.print(obj.toString(username, obj));
-			Controlador.getInstancia().consultarStock(obj);
-			Controlador.getInstancia().nuevaFactura(String.valueOf(n), username, password, codBarra, cantidad, medio);
-			Usuario usuario = null;
+			//ACA LLAMA A LA API DE ALMACEN
 			try {
-				usuario = Controlador.getInstancia().existeUsuario(username, password);
-			} catch (UsuarioException e) {
-				
-				e.printStackTrace();
+				int respuesta = Controlador.getInstancia().consultarStock("http://123456/" + codBarra);
+				if(respuesta >= Integer.parseInt(cantidad)) {
+					Controlador.getInstancia().nuevaFactura(String.valueOf(n), username, password, codBarra, cantidad, medio);
+					Usuario usuario = null;
+					try {
+						usuario = Controlador.getInstancia().existeUsuario(username, password);
+					} catch (UsuarioException e) {
+						
+						e.printStackTrace();
+					}
+					request.setAttribute("usuario", usuario);
+					request.getRequestDispatcher("./vistaComprador.jsp").forward(request, response);
+				}
+				else {
+					System.out.println("La cantidad supera el Stock disponible, Disculpe.");
+				}
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-			request.setAttribute("usuario", usuario);
-			request.getRequestDispatcher("./vistaComprador.jsp").forward(request, response);				
+						
 		}
 		
 		else if ("Reclamar".equalsIgnoreCase(action)) {

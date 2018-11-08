@@ -18,6 +18,7 @@ import entities.ProductoEntity;
 import exceptions.FacturaException;
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
+import integracion.Almacen;
 import javafx.scene.image.Image;
 import negocio.Usuario;
 import dao.UsuarioDAO;
@@ -199,14 +200,8 @@ public class Controlador {
 		return ReclamoDAO.getInstancia().getAll();		
 	}
 
-	public void consultarStock(org.json.JSONObject obj) {
-		/* String venta = obj.toJSONString();
-		 * enviar venta
-		 * JSONObject respuesta = new JSONObject(Respuesta);
-		 * String respuestaFinal = respuesta.get(stock);
-		 */
-		//retrun respuestaFinal;
-		//System.out.println(json);		
+	public int consultarStock(String url) throws Exception {
+		return Almacen.consultarStock(url);
 	}
 
 }

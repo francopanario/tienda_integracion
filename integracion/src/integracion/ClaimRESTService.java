@@ -29,7 +29,7 @@ import exceptions.FacturaException;
 @Path("/")
 public class ClaimRESTService {
 	@POST
-	@Path("/claim/")
+	@Path("/claim")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response crunchifyREST(InputStream incomingData) {
 		StringBuilder crunchifyBuilder = new StringBuilder();
