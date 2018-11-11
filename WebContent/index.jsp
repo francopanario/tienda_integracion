@@ -87,6 +87,12 @@
 						<div class="col-md-9">
 							<input type="text" class="form-control" name="username"	placeholder="Username"  required ="true"/>
 						</div>
+					</div>
+					<div class="form-group">
+						<label for="apellido" class="col-md-3 control-label">Apellido</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" name="apellido"	placeholder="apellido"  required ="true" />
+						</div>
 					</div>					
 					<div class="form-group">
 						<label for="password" class="col-md-3 control-label">Password</label>
