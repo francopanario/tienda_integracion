@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import controlador.*;
 import exceptions.FacturaException;
 import exceptions.UsuarioException;
+import negocio.Factura;
 import negocio.Usuario;
 import java.util.Random;
 
@@ -63,9 +64,19 @@ public class Comprador extends HttpServlet {
 			
 			//ACA LLAMA A LA API DE ALMACEN
 			try {
-				int respuesta = Controlador.getInstancia().consultarStock("http://123456/" + codBarra);
+				/************************  Modificar  **************************/
+				String urlConsultaStock = "https://leren.com.ar/iaa/almacen/getStock/";
+					/**************************************************/
+				/************************  Modificar  **************************/
+				String urlEnviarCompra = "PONERLINKADONDEENVIAMOSCOMPRA";
+					/**************************************************/
+				
+				int respuesta = Controlador.getInstancia().consultarStock(urlConsultaStock + codBarra);
 				if(respuesta >= Integer.parseInt(cantidad)) {
+					System.out.println("La respuesta fue : " + respuesta);
 					Controlador.getInstancia().nuevaFactura(String.valueOf(n), username, password, codBarra, cantidad, medio);
+					Factura fac =  Controlador.getInstancia().getFactura(String.valueOf(n));
+					Controlador.getInstancia().enviarCompra(urlEnviarCompra, fac);
 					Usuario usuario = null;
 					try {
 						usuario = Controlador.getInstancia().existeUsuario(username, password);
@@ -78,6 +89,15 @@ public class Comprador extends HttpServlet {
 				}
 				else {
 					System.out.println("La cantidad supera el Stock disponible, Disculpe.");
+					Usuario usuario = null;
+					try {
+						usuario = Controlador.getInstancia().existeUsuario(username, password);
+					} catch (UsuarioException e) {
+						
+						e.printStackTrace();
+					}
+					request.setAttribute("usuario", usuario);
+					request.getRequestDispatcher("./vistaComprador.jsp").forward(request, response);
 				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block

@@ -204,4 +204,11 @@ public class Controlador {
 		return Almacen.consultarStock(url);
 	}
 
+
+
+	public void enviarCompra(String url, Factura fac) {
+		Almacen.enviarCompra(url, fac);
+		
+	}
+
 }
