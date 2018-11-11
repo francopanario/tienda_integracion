@@ -49,7 +49,8 @@
 					<th>Estado</th>			
 				</tr>
 			</thead>
-			<tbody>
+			<tbody> 
+				
 				<% List<Usuario> usuarios = Controlador.getInstancia().getAllUsuarios();
 			  		Usuario usuario;    
 			  		

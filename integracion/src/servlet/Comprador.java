@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +19,7 @@ import exceptions.UsuarioException;
 import negocio.Factura;
 import negocio.Usuario;
 import java.util.Random;
+import static java.lang.System.out;
 
 
 
@@ -97,7 +100,7 @@ public class Comprador extends HttpServlet {
 						e.printStackTrace();
 					}
 					request.setAttribute("usuario", usuario);
-					request.getRequestDispatcher("./vistaComprador.jsp").forward(request, response);
+					request.getRequestDispatcher("./sinStock.jsp").forward(request, response);
 				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
@@ -124,6 +127,20 @@ public class Comprador extends HttpServlet {
 				e.printStackTrace();
 			}
 			dispatch("comReclamos.jsp", request, response);						
+		}
+		
+		else if("volverComp".equalsIgnoreCase(action)) {
+			Usuario usuario = null;
+			String username = Controlador.getInstancia().getUsername();
+			String password = Controlador.getInstancia().getPassword();
+			try {
+				usuario = Controlador.getInstancia().existeUsuario(username, password);
+			} catch (UsuarioException e) {
+				
+				e.printStackTrace();
+			}
+			request.setAttribute("usuario", usuario);
+			request.getRequestDispatcher("./vistaComprador.jsp").forward(request, response);
 		}
 		
 		/*else if ("admUsuarios".equalsIgnoreCase(action)) {

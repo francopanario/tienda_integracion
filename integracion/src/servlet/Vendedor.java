@@ -42,7 +42,6 @@ public class Vendedor extends HttpServlet {
 
 		String action = request.getParameter("action");
 		String jspPage = "/index.jsp";
-		System.out.println(action);
 		if ("subirProducto".equalsIgnoreCase(action)) {
 			Random rand = new Random();
 			int  n = rand.nextInt(999999999) + 111111111;
@@ -50,7 +49,7 @@ public class Vendedor extends HttpServlet {
 			String password = Controlador.getInstancia().getPassword();
 			String nombre = request.getParameter("nombre");
 			String precio = request.getParameter("precio");
-			System.out.println(usuario);
+
 			Controlador.getInstancia().nuevoProducto(String.valueOf(n), nombre, Float.valueOf(precio), usuario, password);
 			dispatch("vistaVendedor.jsp", request, response);
 		}
