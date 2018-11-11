@@ -17,6 +17,7 @@ public class UsuarioEntity {
 	@Column(name="usuario_id")
 	private String usuario_id;
 	private String username;
+	private String apellido;
 	private String password;
 	private String telefono;
 	private String mail;
@@ -28,7 +29,7 @@ public class UsuarioEntity {
 	public UsuarioEntity() {}	
 	
 	public UsuarioEntity(String usuario_id, String username, String password, String telefono, String mail,
-			String direccion, String tipo_usuario,boolean activo) {
+			String direccion,String apellido, String tipo_usuario,boolean activo) {
 		super();
 		this.usuario_id = usuario_id;
 		this.username = username;
@@ -38,6 +39,7 @@ public class UsuarioEntity {
 		this.direccion = direccion;
 		this.tipo_usuario = tipo_usuario;
 		this.activo=activo;
+		this.apellido=apellido;
 	}
 
 	
@@ -113,5 +115,15 @@ public class UsuarioEntity {
 	public Usuario toNegocio(UsuarioEntity usuarioEntity) {
 		return new Usuario(usuarioEntity);
 	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	
+	
 	
 }

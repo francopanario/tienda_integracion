@@ -91,10 +91,11 @@ public class Inicio extends HttpServlet {
 			String username     = request.getParameter("username");
 			String telefono     = request.getParameter("telefono");
 			String password     = request.getParameter("password");
+			String apellido     = request.getParameter("apellido");
 			String usuario_id   = request.getParameter("dni");
 			String direccion    = request.getParameter("direccion");
 			String tipo_usuario = request.getParameter("tipo_usuario");
-			Controlador.getInstancia().nuevoUsuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario, true);
+			Controlador.getInstancia().nuevoUsuario(apellido,usuario_id, username, password, telefono, mail, direccion, tipo_usuario, true);
 			Controlador.getInstancia().setearUsuario(username, password);
 			try {
 				GoogleMail.Send("tienda.integracion", "tienda123", mail, "Bienvenido a la Tienda!", "Hola "+username+"! , bievenido a la tienda. Felices compras!." );

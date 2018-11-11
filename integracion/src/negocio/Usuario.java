@@ -9,6 +9,7 @@ public class Usuario {
 	
 	private String usuario_id;
 	private String username;
+	private String apellido;
 	private String password;
 	private String telefono;
 	private String mail;
@@ -21,6 +22,7 @@ public class Usuario {
 
 		this.usuario_id=Usuario.getUsuario_id();
 		this.username=Usuario.getUsername();
+		this.apellido=Usuario.getApellido();
 		this.tipo_usuario=Usuario.getTipo_usuario();
 		this.telefono=Usuario.getTelefono();
 		this.password=Usuario.getPassword();
@@ -30,7 +32,7 @@ public class Usuario {
 	}	
 	
 	public Usuario(String usuario_id, String username, String password, String telefono, String mail, String direccion,
-			String tipo_usuario, boolean activo) {
+			String tipo_usuario,String apellido, boolean activo) {
 		super();
 		this.usuario_id = usuario_id;
 		this.username = username;
@@ -40,6 +42,7 @@ public class Usuario {
 		this.direccion = direccion;
 		this.tipo_usuario = tipo_usuario;
 		this.activo=activo;
+		this.apellido=apellido;
 	}
 
 	
@@ -110,5 +113,15 @@ public class Usuario {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	
+	
 
 }

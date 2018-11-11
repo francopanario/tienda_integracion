@@ -101,11 +101,11 @@ public class Controlador {
 	//UsuarioABM
 	
 	
-	public void nuevoUsuario(String usuario_id,String username , String password,  String telefono,String mail,String direccion,String tipo_usuario, boolean activo)
+	public void nuevoUsuario(String apellido,String usuario_id,String username , String password,  String telefono,String mail,String direccion,String tipo_usuario, boolean activo)
 	{	
 		
 		try {
-			Usuario usuario = new Usuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario,activo);
+			Usuario usuario = new Usuario(usuario_id, username, password, telefono, mail, direccion, tipo_usuario,apellido,activo);
 			usuario.save();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -125,9 +125,9 @@ public class Controlador {
 	}
 
 	public void modificarUsuario(String usuario_id,String username, String mail, String direccion, String telefono, String tipo_usuario,
-			String b) {
+			String b,String apellido) {
 		try {
-			UsuarioDAO.getInstancia().modificarUsuario(usuario_id,username,mail,direccion,telefono,tipo_usuario,b);
+			UsuarioDAO.getInstancia().modificarUsuario(usuario_id,username,mail,direccion,telefono,apellido,tipo_usuario,b);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -34,12 +34,13 @@
   </div><!-- /navbar-inner -->
 </div>
 <div class="container">
-	<form id="usuarios" method="post" action="Inicio?action=admUsuarios" class="form-horizontal" role="form">
+	<form id="usuarios" method="post" action="Administrador?action=admUsuarios" class="form-horizontal" role="form">
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>DNI</th>
 					<th>Username</th>
+					<th>Apellido</th>
 					<th>Email</th>
 					<th>Password</th>
 					<th>Tipo</th>
@@ -59,6 +60,7 @@
 				<tr>
 					<td><%out.print(usuario.getUsuario_id());%></td>
 					<td><%out.print(usuario.getUsername());%></td>
+					<td><%out.print(usuario.getApellido());%></td>
 					<td><%out.print(usuario.getMail());%></td>
 					<td>*******</td>
 					<td><%out.print(usuario.getTipo_usuario());%></td>

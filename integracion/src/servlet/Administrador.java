@@ -58,7 +58,8 @@ public class Administrador extends HttpServlet {
 			String direccion =  request.getParameter("direccion");
 			String tipo =  request.getParameter("tipo");
 			String estado = request.getParameter("estado");
-			Controlador.getInstancia().modificarUsuario(dni, username, mail, direccion, telefono, tipo, estado);
+			String apellido = request.getParameter("apellido");
+			Controlador.getInstancia().modificarUsuario(dni, username, mail, direccion, telefono, tipo, estado,apellido);
 			request.setAttribute("dni", dni);
 			request.getRequestDispatcher("./admin.jsp").forward(request, response);			
 		}	

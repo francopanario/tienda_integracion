@@ -60,7 +60,7 @@ public class UsuarioDAO {
 	}
 	
 	public void grabar(Usuario Usuario){
-		UsuarioEntity ue = new UsuarioEntity(Usuario.getUsuario_id(),Usuario.getUsername(),Usuario.getPassword(),Usuario.getTelefono(),Usuario.getMail(),Usuario.getDireccion(),Usuario.getTipo_usuario(),Usuario.isActivo());
+		UsuarioEntity ue = new UsuarioEntity(Usuario.getUsuario_id(),Usuario.getUsername(),Usuario.getPassword(),Usuario.getTelefono(),Usuario.getMail(),Usuario.getDireccion(),Usuario.getApellido(),Usuario.getTipo_usuario(),Usuario.isActivo());
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
@@ -98,7 +98,7 @@ public class UsuarioDAO {
 		}
 	}
 
-	public void modificarUsuario(String usuario_id, String username, String mail, String direccion, String telefono, String tipo_usuario,
+	public void modificarUsuario(String usuario_id, String username, String mail, String direccion, String telefono,String apellido, String tipo_usuario,
 			String b) throws UsuarioException {SessionFactory sf = HibernateUtil.getSessionFactory();
 			Session session = sf.openSession();
 			UsuarioEntity ue = (UsuarioEntity) session.createQuery("from UsuarioEntity where usuario_id = ?")
@@ -109,6 +109,7 @@ public class UsuarioDAO {
 				ue.setTelefono(telefono);
 				ue.setMail(mail);
 				ue.setDireccion(direccion);
+				ue.setApellido(apellido);
 				if (b.equals("true")) {
 					ue.setActivo(true);
 				}else {

@@ -31,12 +31,13 @@
   </div><!-- /navbar-inner -->
 </div>
 <div class="container">
-	<form method="post" action="Inicio?action=modificarUsuario">
+	<form method="post" action="Administrador?action=modificarUsuario">
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>DNI</th>
 					<th>Username</th>
+					<th>Apellido</th>
 					<th>Email</th>
 					<th>Password</th>
 					<th>Tipo</th>
@@ -51,6 +52,7 @@
 					<td><%out.print(usuario.getUsuario_id());%></td>
 					<td><input style="max-width: 60px;" type="text" value="<%out.print(usuario.getUsername());%>" name="username" id="username" /></td>
 					<td><input style="max-width: 60px;" type="text" value="<%out.print(usuario.getMail());%>" name="mail" id="mail" /></td>
+					<td><input style="max-width: 60px;" type="text" value="<%out.print(usuario.getApellido());%>" name="apellido" id="apellido" /></td>
 					<td><input style="max-width: 60px;" type="text" value="<%out.print(usuario.getPassword());%>" name="password" id="password" /></td>
 					<td><input style="max-width: 60px;" type="text" value="<%out.print(usuario.getTipo_usuario());%>" name="tipo" id="tipo" /></td>
 					<td><input style="max-width: 60px;" type="text" value="<%out.print(usuario.getTelefono());%>" name="telefono" id="telefono" /></td>
