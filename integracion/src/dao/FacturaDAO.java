@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -98,6 +99,20 @@ private static FacturaDAO instancia;
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		List<FacturaEntity> list = (List<FacturaEntity>) session.createQuery("from FacturaEntity f where f.comprador=?").setString(0,usuario_id).list();
+		int i=0;
+		for(FacturaEntity entity: list) {
+			facturas.add(entity.toNegocio(list.get(i)));
+			i++;
+		}
+		return facturas;
+	}
+
+
+	public List<Factura> getAllFacturasDay(Date truncatedDate) {
+		List<Factura> facturas = new ArrayList<>();
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		List<FacturaEntity> list = (List<FacturaEntity>) session.createQuery("from FacturaEntity f where f.fecha=?").setParameter(0,truncatedDate).list();
 		int i=0;
 		for(FacturaEntity entity: list) {
 			facturas.add(entity.toNegocio(list.get(i)));

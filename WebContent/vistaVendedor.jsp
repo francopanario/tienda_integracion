@@ -70,4 +70,9 @@
 			%>
 		</tbody>
 	</table>
+	<div>
+		<form id="vendedor" method="post"  action="Vendedor?action=generarCsv">			
+				<button class="btn btn-success" type="submit">GenerarCsv</button>	
+		</form>
+	</div>
 </div>

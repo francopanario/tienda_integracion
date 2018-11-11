@@ -6,6 +6,7 @@ import negocio.Factura;
 import negocio.Producto;
 import negocio.Reclamo;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import exceptions.FacturaException;
 import exceptions.ProductoException;
 import exceptions.UsuarioException;
 import integracion.Almacen;
+import integracion.EnviarCsv;
 import javafx.scene.image.Image;
 import negocio.Usuario;
 import dao.UsuarioDAO;
@@ -208,6 +210,19 @@ public class Controlador {
 
 	public void enviarCompra(String url, Factura fac) {
 		Almacen.enviarCompra(url, fac);
+		
+	}
+
+
+
+	public List<Factura> getAllFacturasDay(java.util.Date truncatedDate) {
+		return FacturaDAO.getInstancia().getAllFacturasDay(truncatedDate);
+	}
+
+
+
+	public void generarCsv() throws IOException {
+		EnviarCsv.traerFacturas();
 		
 	}
 

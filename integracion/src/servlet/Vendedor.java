@@ -92,6 +92,10 @@ public class Vendedor extends HttpServlet {
 			request.getRequestDispatcher("./admin.jsp").forward(request, response);			
 		}*/	
 		
+		else if ("generarCsv".equalsIgnoreCase(action)) {
+			Controlador.getInstancia().generarCsv();		
+		}
+		
 	}
 	
 	protected void dispatch(String jsp, HttpServletRequest request, HttpServletResponse response)
