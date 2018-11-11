@@ -71,7 +71,7 @@ public class Comprador extends HttpServlet {
 				String urlEnviarCompra = "PONERLINKADONDEENVIAMOSCOMPRA";
 					/**************************************************/
 				
-				int respuesta = Controlador.getInstancia().consultarStock(urlConsultaStock + codBarra);
+				int respuesta = Controlador.getInstancia().consultarStock(urlConsultaStock+codBarra);
 				if(respuesta >= Integer.parseInt(cantidad)) {
 					System.out.println("La respuesta fue : " + respuesta);
 					Controlador.getInstancia().nuevaFactura(String.valueOf(n), username, password, codBarra, cantidad, medio);

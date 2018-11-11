@@ -5,7 +5,6 @@ import dao.UsuarioDAO;
 
 import entities.ProductoEntity;
 import entities.UsuarioEntity;
-import javafx.scene.image.Image;
 
 public class Producto {
 	

@@ -98,8 +98,11 @@ public class Inicio extends HttpServlet {
 			Controlador.getInstancia().setearUsuario(username, password);
 			try {
 				GoogleMail.Send("tienda.integracion", "tienda123", mail, "Bienvenido a la Tienda!", "Hola "+username+"! , bievenido a la tienda. Felices compras!." );
-			} catch (MessagingException | javax.mail.MessagingException e1) {
+			} catch (javax.mail.MessagingException e1) {
 				e1.printStackTrace();
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
 			

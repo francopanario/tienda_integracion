@@ -8,7 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import javafx.scene.image.Image;
 import negocio.Producto;
 import negocio.Usuario;
 
