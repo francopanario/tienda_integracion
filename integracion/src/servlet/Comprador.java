@@ -68,10 +68,10 @@ public class Comprador extends HttpServlet {
 			//ACA LLAMA A LA API DE ALMACEN
 			try {
 				/************************  Modificar  **************************/
-				String urlConsultaStock = "https://leren.com.ar/iaa/almacen/getStock/";
+				String urlConsultaStock = "https://almacengrupo1.azurewebsites.net/json/getStock/";
 					/**************************************************/
 				/************************  Modificar  **************************/
-				String urlEnviarCompra = "PONERLINKADONDEENVIAMOSCOMPRA";
+				String urlEnviarCompra = "https://almacengrupo1.azurewebsites.net/json/enviarCompra";
 					/**************************************************/
 				
 				int respuesta = Controlador.getInstancia().consultarStock(urlConsultaStock+codBarra);

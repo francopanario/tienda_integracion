@@ -26,7 +26,7 @@ public class Almacen {
 	
 	public static String getHTML(String urlToRead) throws Exception {
 		
-		  System.setProperty("javax.net.ssl.trustStore","C:\\Program Files\\Java\\jdk-11.0.1\\lib\\security\\cacerts");
+		  //System.setProperty("javax.net.ssl.trustStore","C:\\Program Files\\Java\\jdk-11.0.1\\lib\\security\\cacerts");
 	      StringBuilder result = new StringBuilder();
 	      URL url = new URL(urlToRead);
 	      HttpURLConnection conn = (HttpURLConnection) url.openConnection();
