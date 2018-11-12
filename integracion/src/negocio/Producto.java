@@ -13,6 +13,7 @@ public class Producto {
 	private float precio;
 	private Usuario usuario;
 	private boolean activo;
+	private int cantidad;
 	
 	
 	
@@ -76,6 +77,11 @@ public class Producto {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+
+	public int getCantidad() {
+		// TODO Auto-generated method stub
+		return cantidad ;
 	}
 
 		

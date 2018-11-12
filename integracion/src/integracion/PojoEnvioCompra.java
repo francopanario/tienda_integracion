@@ -1,9 +1,14 @@
 package integracion;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
 public class PojoEnvioCompra {
 	
 	String nro_orden;
+	 @JsonUnwrapped
 	ClientePojo cliente;
+	 @JsonUnwrapped
 	ProductoPojo producto;
 	
 	public PojoEnvioCompra(String nro_orden, ClientePojo cliente, ProductoPojo producto) {

@@ -29,7 +29,8 @@ public class FacturaEntity {
 	@Id
 	@Column(name = "factura_id")
 	private String factura_id;
-
+	
+	private java.sql.Date fecha;
 	private String medio;
 	private int cantidad;
 	private float total;
@@ -147,6 +148,29 @@ public class FacturaEntity {
 	public void setTotal(float total) {
 		this.total = total;
 	}
+
+
+
+	public java.sql.Date getFecha() {
+		return fecha;
+	}
+
+
+	public void setFecha(java.sql.Date fecha) {
+		this.fecha = fecha;
+	}
+
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+	
+	
 	
 	
 }

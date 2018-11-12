@@ -2,14 +2,19 @@ package negocio;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
 import dao.FacturaDAO;
 import entities.FacturaEntity;
 
 public class Factura {
 	
 	private String facturaID;
+	 @JsonUnwrapped
 	private Usuario comprador;
+	 @JsonUnwrapped
 	private Usuario vendedor;
+	 @JsonUnwrapped
 	private Producto articulo;
 	private String medio;
 	private int cantidad;
@@ -103,5 +108,15 @@ public class Factura {
 	public void save() {
 		FacturaDAO.getInstancia().grabar(this);		
 	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+	
+	
 	
 }
