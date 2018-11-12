@@ -43,7 +43,7 @@ public class Almacen {
 	public static void enviarCompra(String urlToPost, Factura fac) {
 		
 		ObjectMapper mapper = new ObjectMapper();
-		ClientePojo cliente = new ClientePojo(fac.getComprador().getUsername(), "ApellidoHardcodeado", fac.getComprador().getMail(), fac.getComprador().getDireccion());
+		ClientePojo cliente = new ClientePojo(fac.getComprador().getUsername(), fac.getComprador().getApellido(), fac.getComprador().getMail(), fac.getComprador().getDireccion());
 		ProductoPojo producto = new ProductoPojo(fac.getArticulo().getCodBarra(), fac.getCant());
 		PojoEnvioCompra pojEnv = new PojoEnvioCompra(fac.getFacturaID(), cliente, producto);
 	
