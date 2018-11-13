@@ -93,7 +93,14 @@ public class Vendedor extends HttpServlet {
 		}*/	
 		
 		else if ("generarCsv".equalsIgnoreCase(action)) {
-			Controlador.getInstancia().generarCsv();		
+			try {
+				Controlador.getInstancia().generarCsv();
+				request.getRequestDispatcher("./admin.jsp").forward(request, response);
+				
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
 		}
 		
 	}

@@ -10,6 +10,8 @@ import java.net.URLConnection;
  
 import org.json.JSONObject;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class ClaimRESTServiceClient {
 	public static void main(String[] args) {
 		String string = "";
@@ -26,10 +28,17 @@ public class ClaimRESTServiceClient {
 			}
  
 			JSONObject jsonObject = new JSONObject(string);
+			
+			//create ObjectMapper instance
+		    ObjectMapper objectMapper = new ObjectMapper();
+
+		    //convert json string to object
+		    PojoConfiguracion conf = objectMapper.readValue(jsonObject.toString(), PojoConfiguracion.class); 
 			System.out.println(jsonObject);
+			System.out.println(conf.getIp());
  
 			// Step2: Now pass JSON File Data to REST Service
-			try {
+			/*try {
 				URL url = new URL("http://localhost:8080/tienda_integracion/api/claim");
 				URLConnection connection = url.openConnection();
 				connection.setDoOutput(true);
@@ -49,7 +58,7 @@ public class ClaimRESTServiceClient {
 			} catch (Exception e) {
 				System.out.println("\nError while calling Crunchify REST Service");
 				System.out.println(e);
-			}
+			}*/
  
 			br.close();
 		} catch (Exception e) {

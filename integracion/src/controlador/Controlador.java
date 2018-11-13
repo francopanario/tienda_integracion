@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
+import org.json.JSONException;
 import org.json.simple.JSONObject;
 
 import dao.FacturaDAO;
@@ -221,7 +222,7 @@ public class Controlador {
 
 
 
-	public void generarCsv() throws IOException {
+	public void generarCsv() throws IOException, JSONException {
 		EnviarCsv.traerFacturas();
 		
 	}

@@ -1,6 +1,7 @@
 package integracion;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
@@ -9,6 +10,8 @@ import controlador.Controlador;
 import negocio.Factura;
 
 import org.apache.commons.lang3.time.DateUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,27 +49,65 @@ public class EnviarCsv {
    
     private static String sourceUrl;
 
+
+	private static String string="";
+
    
 
     
-    public static void traerFacturas() throws IOException {
+    public static void traerFacturas() throws IOException, JSONException {
         try {
+        	// Change CrunchifyJSON.txt path here
+			InputStream crunchifyInputStream = new FileInputStream("C://CrunchifyJSON.txt");
+			InputStreamReader crunchifyReader = new InputStreamReader(crunchifyInputStream);
+			BufferedReader br = new BufferedReader(crunchifyReader);
+			String line;
+			while ((line = br.readLine()) != null) {
+				string += line + "\n";
+			}
+ 
+			JSONObject jsonObject = new JSONObject(string);
+			
+			//create ObjectMapper instance
+		    ObjectMapper objectMapper = new ObjectMapper();
+
+		    //convert json string to object
+		    PojoConfiguracion conf = objectMapper.readValue(jsonObject.toString(), PojoConfiguracion.class); 
+        	ftpClient= new FtpClient();
             Date fechaTruncada = DateUtils.truncate(new Date(), Calendar.DATE);
             List<Factura> facturas = Controlador.getInstancia().getAllFacturasDay(fechaTruncada);
             System.out.println(facturas.get(0).getFacturaID());
+            sourceUrl=conf.getRutaOrigenArchivo()+conf.getNombreArchivo()/*"C:/source.csv"*/;
             generarCsv(facturas);
-            sourceUrl="C:\\Users\\Franco\\Desktop\\source.csv";
-            ftpClient.open(ftpAddress,ftpPort ,ftpUser ,ftpPassword );
-            ftpClient.upload(sourceUrl,destinationUrl);
+           // 192.168.1.115 2221 francis francis
+            ftpClient.open(conf.getIp() ,Integer.parseInt(conf.getPuerto()) ,conf.getUsuario(),conf.getPassword());
+            //ftpClient.open("test.rebex.net:22",21 ,"demo","password" );
+            ftpClient.upload(conf.getRutaOrigenArchivo()+conf.getNombreArchivo(),conf.getNombreArchivo());
         }finally {
-            ftpClient.close();
+        	if(ftpClient!=null)
+            	ftpClient.close();
         }
     }
 
-    public static void generarCsv(List<Factura> purchases) {
+    public static void generarCsv(List<Factura> purchases) throws JSONException {
         try {
         	List<PojoEnvioReclamos> pojos= new ArrayList();
-        	sourceUrl="C:\\Users\\Franco\\Desktop\\source.csv";
+        	InputStream crunchifyInputStream = new FileInputStream("C://CrunchifyJSON.txt");
+			InputStreamReader crunchifyReader = new InputStreamReader(crunchifyInputStream);
+			BufferedReader br = new BufferedReader(crunchifyReader);
+			String line;
+			while ((line = br.readLine()) != null) {
+				string += line + "\n";
+			}
+ 
+			JSONObject jsonObject = new JSONObject(string);
+			
+			//create ObjectMapper instance
+		    ObjectMapper objectMapper = new ObjectMapper();
+
+		    //convert json string to object
+		    PojoConfiguracion conf = objectMapper.readValue(jsonObject.toString(), PojoConfiguracion.class); 
+        	 sourceUrl=conf.getNombreArchivo();
         	for(int i=0;i<purchases.size();i++) {
         		ClientePojo cli= new ClientePojo(purchases.get(i).getComprador().getUsername(), purchases.get(i).getComprador().getApellido(), purchases.get(i).getComprador().getMail(), purchases.get(i).getComprador().getDireccion());
         		ProductoPojo prod= new ProductoPojo(purchases.get(i).getArticulo().getCodBarra(),purchases.get(i).getCantidad());

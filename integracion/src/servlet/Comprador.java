@@ -1,6 +1,10 @@
 package servlet;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
@@ -13,9 +17,12 @@ import org.json.JSONException;
 //import org.json.simple.JSONObject;
 import org.json.JSONObject;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import controlador.*;
 import exceptions.FacturaException;
 import exceptions.UsuarioException;
+import integracion.PojoConfiguracion;
 import negocio.Factura;
 import negocio.Usuario;
 import java.util.Random;
@@ -27,6 +34,7 @@ import static java.lang.System.out;
 public class Comprador extends HttpServlet {
 	
 	private static final long serialVersionUID = -2974964705278096050L;
+	private static String string="";
 
 	public Comprador() {
 		super();
@@ -67,11 +75,27 @@ public class Comprador extends HttpServlet {
 			
 			//ACA LLAMA A LA API DE ALMACEN
 			try {
+				// Change CrunchifyJSON.txt path here
+				InputStream crunchifyInputStream = new FileInputStream("C://CrunchifyJSON.txt");
+				InputStreamReader crunchifyReader = new InputStreamReader(crunchifyInputStream);
+				BufferedReader br = new BufferedReader(crunchifyReader);
+				String line;
+				while ((line = br.readLine()) != null) {
+					string += line + "\n";
+				}
+	 
+				JSONObject jsonObject = new JSONObject(string);
+				
+				//create ObjectMapper instance
+			    ObjectMapper objectMapper = new ObjectMapper();
+
+			    //convert json string to object
+			    PojoConfiguracion conf = objectMapper.readValue(jsonObject.toString(), PojoConfiguracion.class); 
 				/************************  Modificar  **************************/
-				String urlConsultaStock = "https://almacengrupo1.azurewebsites.net/json/getStock/";
+				String urlConsultaStock = conf.getUrlChequearStock();
 					/**************************************************/
 				/************************  Modificar  **************************/
-				String urlEnviarCompra = "https://almacengrupo1.azurewebsites.net/json/enviarCompra";
+				String urlEnviarCompra = conf.getUrlEnviarCompra();
 					/**************************************************/
 				
 				int respuesta = Controlador.getInstancia().consultarStock(urlConsultaStock+codBarra);

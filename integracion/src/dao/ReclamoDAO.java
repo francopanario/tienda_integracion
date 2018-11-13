@@ -39,7 +39,7 @@ private static ReclamoDAO instancia;
 		Session session = sf.openSession();
 		session.beginTransaction();
 		re.setFactura(factura);
-		session.save(re);
+		session.saveOrUpdate(re);
 		session.getTransaction().commit();
 		session.close();
 	}

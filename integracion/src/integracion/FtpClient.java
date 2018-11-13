@@ -27,8 +27,9 @@ public class FtpClient {
 		ftp.login(user, password);
 	}
 
-	public void upload(String fileName, String destination) throws IOException {
-		ftp.storeFile(destination, new FileInputStream(fileName));
+	public void upload(String path,String fileName) throws IOException {
+		ftp.storeFile(fileName, new FileInputStream(path));
+		
 	}
 
 	public void close() throws IOException {
