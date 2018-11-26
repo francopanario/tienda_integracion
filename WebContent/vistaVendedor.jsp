@@ -1,3 +1,4 @@
+<head>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List"%>
@@ -11,7 +12,11 @@
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+</head>
+<body>
+<% 
+					if (request.getParameter("usuario") != null){
+		%>
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
@@ -67,7 +72,9 @@
 			</tr>
 			<%
 				}
+			}
 			%>
 		</tbody>
 	</table>
 </div>
+</body>

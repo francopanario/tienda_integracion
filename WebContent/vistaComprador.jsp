@@ -16,7 +16,10 @@
 </head>
 <!------ Include the above in your HEAD tag ---------->
 
-<body class ="body-color">	
+<body class ="body-color">
+       <% 
+					if (request.getParameter("usuario") != null){
+		%>
 	<nav class="navbar navbar-default col-xs-12 navbar-color">
 		<div class="container-fluid">
 	    	<div class="row-fluid">   
@@ -71,6 +74,7 @@
 							}
 						}
 					%>
+					<% } %>
 				</tbody>
 			</table>		
 		</form>

@@ -1,3 +1,4 @@
+<head>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List"%>
@@ -14,78 +15,92 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">Integracion</a>
-      <div class="nav-collapse">
-        <ul class="nav pull-right">
-          <li class="divider-vertical"></li>
-          <!-- ################ ACA CERRAR SESION DE USUARIO ######### -->
-          <li><a href="/tienda_integracion">Salir</a></li>
-        </ul>
-      </div><!-- /.nav-collapse -->
-    </div>
-  </div><!-- /navbar-inner -->
-</div>
-<div class="container">
-	<form id="usuarios" method="post" action="Administrador?action=admUsuarios" class="form-horizontal" role="form">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>DNI</th>
-					<th>Username</th>
-					<th>Apellido</th>
-					<th>Email</th>
-					<th>Password</th>
-					<th>Tipo</th>
-					<th>Telefono</th>
-					<th>Direccion</th>
-					<th>Estado</th>			
-				</tr>
-			</thead>
-			<tbody> 
-				
-				<% List<Usuario> usuarios = Controlador.getInstancia().getAllUsuarios();
-			  		Usuario usuario;    
-			  		
-				%>
-				<% for (Iterator<Usuario> i = usuarios.iterator(); i.hasNext();) {
-					usuario = i.next();
-				%>
-				<tr>
-					<td><%out.print(usuario.getUsuario_id());%></td>
-					<td><%out.print(usuario.getUsername());%></td>
-					<td><%out.print(usuario.getApellido());%></td>
-					<td><%out.print(usuario.getMail());%></td>
-					<td>*******</td>
-					<td><%out.print(usuario.getTipo_usuario());%></td>
-					<td><%out.print(usuario.getTelefono());%></td>
-					<td><%out.print(usuario.getDireccion());%></td>
-					<td><%
-							if (usuario.isActivo()){
-								out.print("<p style='max-width:20px; background-color: #33cc33;'>&nbsp;</p>");
-							}else{
-								out.print("<p style='max-width:20px; background-color: #ff0000;'>&nbsp;</p>");
-							}
-						%>
-					</td>					
-					<td><button id="btn-editar" name="usuarioId" value="<%out.print(usuario.getUsuario_id());%>" type="submit" class="btn btn-success">Editar</button></td>					
-				</tr>
-				<%				
-					}
-				%>				
-			</tbody>
-		</table>
-	</form>
-	<div>
-		<form id="admin" method="post"  action="Vendedor?action=generarCsv">			
-				<button class="btn btn-success" type="submit">GenerarCsv</button>	
-		</form>
+</head>
+<body>
+	<div class="navbar">
+	  <div class="navbar-inner">
+	    <div class="container">
+	      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </a>
+	      <a class="brand" href="#">Integracion</a>
+	      <div class="nav-collapse">
+	        <ul class="nav pull-right">
+	          <li class="divider-vertical"></li>
+	          <!-- ################ ACA CERRAR SESION DE USUARIO ######### -->
+	          <li><a href="/tienda_integracion">Salir</a></li>
+	        </ul>
+	      </div><!-- /.nav-collapse -->
+	    </div>
+	  </div><!-- /navbar-inner -->
 	</div>
-</div>
+		<% 
+					if (request.getParameter("usuario") != null){
+		%>				
+		<div class="container">
+		<form id="usuarios" method="post" action="Administrador?action=admUsuarios" class="form-horizontal" role="form">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>DNI</th>
+						<th>Username</th>
+						<th>Apellido</th>
+						<th>Email</th>
+						<th>Password</th>
+						<th>Tipo</th>
+						<th>Telefono</th>
+						<th>Direccion</th>
+						<th>Estado</th>			
+					</tr>
+				</thead>
+				<tbody> 
+					
+					<% 
+					
+					
+					
+			  		
+					List<Usuario> usuarios = Controlador.getInstancia().getAllUsuarios();
+				  		Usuario usuario;    
+				  		
+					%>
+					<% for (Iterator<Usuario> i = usuarios.iterator(); i.hasNext();) {
+						usuario = i.next();
+					%>
+					<tr>
+						<td><%out.print(usuario.getUsuario_id());%></td>
+						<td><%out.print(usuario.getUsername());%></td>
+						<td><%out.print(usuario.getApellido());%></td>
+						<td><%out.print(usuario.getMail());%></td>
+						<td>*******</td>
+						<td><%out.print(usuario.getTipo_usuario());%></td>
+						<td><%out.print(usuario.getTelefono());%></td>
+						<td><%out.print(usuario.getDireccion());%></td>
+						<td><%
+								if (usuario.isActivo()){
+									out.print("<p style='max-width:20px; background-color: #33cc33;'>&nbsp;</p>");
+								}else{
+									out.print("<p style='max-width:20px; background-color: #ff0000;'>&nbsp;</p>");
+								}
+							%>
+						</td>					
+						<td><button id="btn-editar" name="usuarioId" value="<%out.print(usuario.getUsuario_id());%>" type="submit" class="btn btn-success">Editar</button></td>					
+					</tr>
+					<%				
+						}
+					
+					%>				
+				</tbody>
+			</table>
+		</form>
+		<div>			
+			<form id="admin" method="post"  action="Vendedor?action=generarCsv">			
+					<button class="btn btn-success" type="submit">GenerarCsv</button>	
+			</form>
+			<% } %>
+		</div>
+		
+	</div>
+</body>

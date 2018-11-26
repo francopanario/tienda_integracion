@@ -77,21 +77,18 @@ public class EnviarCsv {
             Date fechaTruncada = DateUtils.truncate(new Date(), Calendar.DATE);
             List<Factura> facturas = Controlador.getInstancia().getAllFacturasDay(fechaTruncada);
             System.out.println(facturas.get(0).getFacturaID());
-            sourceUrl=conf.getRutaOrigenArchivo()+conf.getNombreArchivo()/*"C:/source.csv"*/;
             generarCsv(facturas);
-           // 192.168.1.115 2221 francis francis
             ftpClient.open(conf.getIp() ,Integer.parseInt(conf.getPuerto()) ,conf.getUsuario(),conf.getPassword());
-            //ftpClient.open("test.rebex.net:22",21 ,"demo","password" );
             ftpClient.upload(conf.getRutaOrigenArchivo()+conf.getNombreArchivo(),conf.getNombreArchivo());
         }finally {
         	if(ftpClient!=null)
-            	ftpClient.close();
+        		ftpClient.close();
         }
     }
 
     public static void generarCsv(List<Factura> purchases) throws JSONException {
         try {
-        	List<PojoEnvioReclamos> pojos= new ArrayList();
+        	List<PojoEnvioReclamos> pojos= new ArrayList<PojoEnvioReclamos>();
         	InputStream crunchifyInputStream = new FileInputStream("C://CrunchifyJSON.txt");
 			InputStreamReader crunchifyReader = new InputStreamReader(crunchifyInputStream);
 			BufferedReader br = new BufferedReader(crunchifyReader);
@@ -107,10 +104,10 @@ public class EnviarCsv {
 
 		    //convert json string to object
 		    PojoConfiguracion conf = objectMapper.readValue(jsonObject.toString(), PojoConfiguracion.class); 
-        	 sourceUrl=conf.getNombreArchivo();
+        	sourceUrl=conf.getNombreArchivo();
         	for(int i=0;i<purchases.size();i++) {
-        		ClientePojo cli= new ClientePojo(purchases.get(i).getComprador().getUsername(), purchases.get(i).getComprador().getApellido(), purchases.get(i).getComprador().getMail(), purchases.get(i).getComprador().getDireccion());
-        		ProductoPojo prod= new ProductoPojo(purchases.get(i).getArticulo().getCodBarra(),purchases.get(i).getCantidad());
+        		//ClientePojo cli= new ClientePojo(purchases.get(i).getComprador().getUsername(), purchases.get(i).getComprador().getApellido(), purchases.get(i).getComprador().getMail(), purchases.get(i).getComprador().getDireccion());
+        	//	ProductoPojo prod= new ProductoPojo(purchases.get(i).getArticulo().getCodBarra(),purchases.get(i).getCantidad());
         		PojoEnvioReclamos pojo= new PojoEnvioReclamos(purchases.get(i).getArticulo().getNombre(), purchases.get(i).getComprador().getUsuario_id(), Integer.parseInt(purchases.get(i).getFacturaID()), purchases.get(i).getArticulo().getCodBarra(), purchases.get(i).getComprador().getMail(), purchases.get(i).getTotal(), purchases.get(i).getComprador().getUsername());
         		pojos.add(pojo);
         	}
@@ -119,12 +116,13 @@ public class EnviarCsv {
             schema = schema.withColumnSeparator(',').withoutQuoteChar().withoutHeader().sortedBy("descripcionProd","dni","nro_orden","id_prod","mail","monto","nombrecli");
 
             ObjectWriter myObjectWriter = mapper.writer(schema);
-            File tempFile = new File(sourceUrl);
+            File tempFile = new File(conf.getRutaOrigenArchivo()+conf.getNombreArchivo());
             FileOutputStream tempFileOutputStream = null;
             tempFileOutputStream = new FileOutputStream(tempFile);
 
             BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(tempFileOutputStream, 1024);
             OutputStreamWriter writerOutputStream = new OutputStreamWriter(bufferedOutputStream, "UTF-8");
+            System.out.println(pojos.get(0).id_prod+"  ASFADGSFHJFSGHGJSHFH");;
             myObjectWriter.writeValue(writerOutputStream, pojos);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

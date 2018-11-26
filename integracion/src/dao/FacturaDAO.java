@@ -1,8 +1,12 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;    
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -56,6 +60,8 @@ private static FacturaDAO instancia;
 	
 	public void grabar(Factura factura){
 		FacturaEntity fa = new FacturaEntity(factura.getFacturaID(), factura.getMedio(), factura.getCant(), factura.getTotal());
+		java.sql.Date time = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+		fa.setFecha(time);
 		UsuarioEntity comprador = null;
 		UsuarioEntity vendedor = null;
 		ProductoEntity articulo=null;

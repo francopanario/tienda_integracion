@@ -76,7 +76,7 @@ public class Comprador extends HttpServlet {
 			//ACA LLAMA A LA API DE ALMACEN
 			try {
 				// Change CrunchifyJSON.txt path here
-				InputStream crunchifyInputStream = new FileInputStream("C://CrunchifyJSON.txt");
+				InputStream crunchifyInputStream = new FileInputStream("C:\\CrunchifyJSON.txt");
 				InputStreamReader crunchifyReader = new InputStreamReader(crunchifyInputStream);
 				BufferedReader br = new BufferedReader(crunchifyReader);
 				String line;

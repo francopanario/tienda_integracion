@@ -1,3 +1,4 @@
+<head>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -5,7 +6,8 @@
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+</head>
+<body>
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
@@ -73,3 +75,4 @@
 			</div>
 		</div>
 	</div>
+</body>
