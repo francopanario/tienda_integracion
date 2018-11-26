@@ -14,7 +14,6 @@
 <script type="text/javascript" src="js/bootstrap-notify.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
 </head>
 <body>
 	<div class="navbar">
@@ -35,10 +34,7 @@
 	      </div><!-- /.nav-collapse -->
 	    </div>
 	  </div><!-- /navbar-inner -->
-	</div>
-		<% 
-					if (request.getParameter("usuario") != null){
-		%>				
+	</div>			
 		<div class="container">
 		<form id="usuarios" method="post" action="Administrador?action=admUsuarios" class="form-horizontal" role="form">
 			<table class="table table-striped">
@@ -99,7 +95,6 @@
 			<form id="admin" method="post"  action="Vendedor?action=generarCsv">			
 					<button class="btn btn-success" type="submit">GenerarCsv</button>	
 			</form>
-			<% } %>
 		</div>
 		
 	</div>

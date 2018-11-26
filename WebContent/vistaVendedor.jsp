@@ -14,9 +14,7 @@
 <!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
-<% 
-					if (request.getParameter("usuario") != null){
-		%>
+
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
@@ -72,7 +70,7 @@
 			</tr>
 			<%
 				}
-			}
+		
 			%>
 		</tbody>
 	</table>
